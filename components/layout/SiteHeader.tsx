@@ -47,6 +47,12 @@ export function SiteHeader({ mega, industries, knowledge, topLinks, quote, hubs 
     setMobile(false);
   }
 
+  // Navigation also cancels any pending hover timer; clear it on unmount too.
+  useEffect(() => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    hoverTimer.current = null;
+  }, [pathname]);
+
   // Escape closes; clicking outside closes the desktop menus.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -89,8 +95,17 @@ export function SiteHeader({ mega, industries, knowledge, topLinks, quote, hubs 
     hoverTimer.current = setTimeout(() => setOpen(null), 180);
   };
   const toggle = (m: Exclude<Menu, null>) => setOpen((cur) => (cur === m ? null : m));
-  const close = () => setOpen(null);
+  // A pending hover timer must not reopen a menu that a click (or navigation) just closed.
+  const cancelHover = () => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    hoverTimer.current = null;
+  };
+  const close = () => {
+    cancelHover();
+    setOpen(null);
+  };
   const closeAll = () => {
+    cancelHover();
     setOpen(null);
     setMobile(false);
   };
