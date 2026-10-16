@@ -1,9 +1,7 @@
 import Link from 'next/link';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
 import { site } from '@/content/site';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
 
 const page = corePages.terms;
@@ -14,11 +12,6 @@ const TBC = (what: string) => <mark className="tbc">[{what}: to be confirmed]</m
 export default function TermsPage() {
   return (
     <>
-      {showDrafts() ? (
-        <DraftNotice>
-          These terms are a working draft and need legal review before publication.
-        </DraftNotice>
-      ) : null}
       <PageHero crumbs={[{ name: 'Terms of use', path: page.path }]} title="Terms of use" />
       <div className="container section">
         <div className="prose">

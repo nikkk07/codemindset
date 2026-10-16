@@ -1,12 +1,10 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CTABand } from '@/components/ui/Blocks';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
-import { getVisibleGlossary, isDraft } from '@/lib/visibility';
+import { getVisibleGlossary } from '@/lib/visibility';
 
 const page = corePages.glossary;
 export const metadata = buildMetadata(page);
@@ -16,9 +14,6 @@ export default function GlossaryPage() {
   if (terms.length === 0) notFound();
   return (
     <>
-      {showDrafts() && isDraft(page) ? (
-        <DraftNotice>Awaiting approval; hidden from search until approved.</DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[
           { name: 'Knowledge', path: corePages.knowledge.path },

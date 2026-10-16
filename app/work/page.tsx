@@ -1,11 +1,9 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CTABand } from '@/components/ui/Blocks';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
 import { caseStudies } from '@/content/work';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
 import { isWorkEnabled } from '@/lib/visibility';
 
@@ -20,12 +18,6 @@ export default function WorkPage() {
   if (!isWorkEnabled()) notFound();
   return (
     <>
-      {showDrafts() ? (
-        <DraftNotice>
-          Case studies appear here only with client permission. Hidden in production until one is
-          approved.
-        </DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[{ name: 'Work', path: page.path }]}
         eyebrow="Our work"

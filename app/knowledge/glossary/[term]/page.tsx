@@ -1,13 +1,11 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CTABand, SectionHead } from '@/components/ui/Blocks';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata, definedTermJsonLd, graph } from '@/lib/seo';
-import { getVisibleGlossary, isDraft, resolveRef } from '@/lib/visibility';
+import { getVisibleGlossary, resolveRef } from '@/lib/visibility';
 
 type Params = { params: Promise<{ term: string }> };
 export const dynamicParams = false;
@@ -39,9 +37,6 @@ export default async function TermPage({ params }: Params) {
     .slice(0, 8);
   return (
     <>
-      {showDrafts() && isDraft(t) ? (
-        <DraftNotice>Awaiting approval; hidden from search until approved.</DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[
           { name: 'Knowledge', path: corePages.knowledge.path },

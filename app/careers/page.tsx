@@ -1,14 +1,11 @@
 import { ContactLink } from '@/components/ui/ContactLink';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { PageHero } from '@/components/ui/PageHero';
 import { SectionHead } from '@/components/ui/Blocks';
 import { teamRoles } from '@/content/home';
 import { corePages } from '@/content/pages';
 import { site } from '@/content/site';
 import { emailHref } from '@/lib/contact';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
-import { isDraft } from '@/lib/visibility';
 
 const page = corePages.careers;
 export const metadata = buildMetadata(page);
@@ -16,11 +13,6 @@ export const metadata = buildMetadata(page);
 export default function CareersPage() {
   return (
     <>
-      {showDrafts() && isDraft(page) ? (
-        <DraftNotice>
-          No open roles are listed yet. Confirm the careers email address before launch.
-        </DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[{ name: 'Careers', path: page.path }]}
         eyebrow="Careers"

@@ -11,11 +11,9 @@ import {
 } from '@/components/ui/Blocks';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { ContactLink } from '@/components/ui/ContactLink';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { ArrowIcon, ChatIcon, CheckIcon } from '@/components/ui/Icons';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { quoteHref, whatsappHref } from '@/lib/contact';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata, graph, serviceJsonLd } from '@/lib/seo';
 import {
   getHub,
@@ -23,7 +21,6 @@ import {
   getVisibleHubs,
   getVisibleSubs,
   hubHref,
-  isDraft,
   isGuideVisible,
   resolveRef,
   subHref,
@@ -61,12 +58,6 @@ export default async function HubPage({ params }: { params: Promise<{ hub: strin
 
   return (
     <>
-      {showDrafts() && isDraft(hub) ? (
-        <DraftNotice>
-          This service page is awaiting approval and is hidden from search until approved.
-        </DraftNotice>
-      ) : null}
-
       <section className="hero hero--tint" aria-labelledby="hub-title">
         <div className="container">
           <Breadcrumbs

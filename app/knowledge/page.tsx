@@ -1,16 +1,13 @@
 import Link from 'next/link';
 import { CTABand, SectionHead } from '@/components/ui/Blocks';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
 import {
   getVisibleArticles,
   getVisibleGlossary,
   getVisibleHubs,
   guideHref,
-  isDraft,
   isGuideVisible,
 } from '@/lib/visibility';
 
@@ -23,9 +20,6 @@ export default function KnowledgePage() {
   const articles = getVisibleArticles();
   return (
     <>
-      {showDrafts() && isDraft(page) ? (
-        <DraftNotice>Awaiting approval; hidden from search until approved.</DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[{ name: 'Knowledge', path: page.path }]}
         eyebrow="Knowledge hub"

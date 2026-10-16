@@ -1,12 +1,10 @@
 import Link from 'next/link';
 import { CTABand } from '@/components/ui/Blocks';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { ServiceIcon } from '@/components/ui/Icons';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
-import { getVisibleIndustries, isDraft } from '@/lib/visibility';
+import { getVisibleIndustries } from '@/lib/visibility';
 
 const page = corePages.industries;
 export const metadata = buildMetadata(page);
@@ -15,9 +13,6 @@ export default function IndustriesPage() {
   const industries = getVisibleIndustries();
   return (
     <>
-      {showDrafts() && isDraft(page) ? (
-        <DraftNotice>Awaiting approval; hidden from search until approved.</DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[{ name: 'Industries', path: page.path }]}
         eyebrow="Industries"

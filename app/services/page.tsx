@@ -1,10 +1,8 @@
 import Link from 'next/link';
 import { CTABand, SectionHead } from '@/components/ui/Blocks';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { ServiceIcon } from '@/components/ui/Icons';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
 import { lcFirst } from '@/lib/text';
 import {
@@ -12,7 +10,6 @@ import {
   getVisibleSubs,
   guideHref,
   hubHref,
-  isDraft,
   isGuideVisible,
   subHref,
 } from '@/lib/visibility';
@@ -24,9 +21,6 @@ export default function ServicesPage() {
   const hubs = getVisibleHubs();
   return (
     <>
-      {showDrafts() && isDraft(page) ? (
-        <DraftNotice>Awaiting approval; hidden from search until approved.</DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[{ name: 'Services', path: page.path }]}
         eyebrow="Services"

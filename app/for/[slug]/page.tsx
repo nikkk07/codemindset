@@ -10,13 +10,11 @@ import {
   gridStyle,
 } from '@/components/ui/Blocks';
 import { ContactLink } from '@/components/ui/ContactLink';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { ArrowIcon, ChatIcon } from '@/components/ui/Icons';
 import { PageHero } from '@/components/ui/PageHero';
 import { whatsappHref } from '@/lib/contact';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
-import { getAudience, getVisibleAudiences, isDraft, resolveRef } from '@/lib/visibility';
+import { getAudience, getVisibleAudiences, resolveRef } from '@/lib/visibility';
 
 type Params = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
@@ -40,9 +38,6 @@ export default async function AudiencePage({ params }: Params) {
   const whatsapp = `Hi CodeMindset, we're ${a.name.toLowerCase()} and need help with technology.`;
   return (
     <>
-      {showDrafts() && isDraft(a) ? (
-        <DraftNotice>Awaiting approval; hidden from search until approved.</DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[{ name: `For ${a.name.toLowerCase()}`, path: `/for/${a.slug}/` }]}
         eyebrow={`For ${a.name.toLowerCase()}`}

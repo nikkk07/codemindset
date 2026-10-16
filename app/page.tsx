@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { CallbackForm } from '@/components/contact/CallbackForm';
 import { ContactBand, FAQSection, SectionHead, Steps } from '@/components/ui/Blocks';
 import { ContactLink } from '@/components/ui/ContactLink';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import {
   ArrowIcon,
   ChatIcon,
@@ -13,10 +12,10 @@ import {
 } from '@/components/ui/Icons';
 import { commitments, featuredRegions, homeFaqs, problems, steps, teamRoles } from '@/content/home';
 import { corePages } from '@/content/pages';
+import { site } from '@/content/site';
 import { regions } from '@/content/regions';
 import { callHref, emailHref, whatsappHref } from '@/lib/contact';
 import { getServiceOptions } from '@/lib/enquiry/options';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
 import {
   getRegion,
@@ -25,7 +24,6 @@ import {
   getVisibleSubs,
   guideHref,
   hubHref,
-  isDraft,
   isGuideVisible,
   subHref,
 } from '@/lib/visibility';
@@ -43,18 +41,11 @@ export default function HomePage() {
 
   return (
     <>
-      {showDrafts() && isDraft(page) ? (
-        <DraftNotice>
-          This page and the services it lists are awaiting approval. Hidden from search until
-          approved.
-        </DraftNotice>
-      ) : null}
-
       {/* 1. Hook: what we do, for whom, and a direct route to every service */}
       <section className="hero" aria-labelledby="hero-title">
         <div className="container hero__grid">
           <div className="hero__copy">
-            <span className="pill">Indian IT services company · Think in Algorithms</span>
+            <span className="pill">Indian IT services company · {site.tagline}</span>
             <h1 id="hero-title">
               We build websites, apps and software that <span>grow your business.</span>
             </h1>

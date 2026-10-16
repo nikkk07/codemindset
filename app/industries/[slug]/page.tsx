@@ -1,11 +1,9 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CTABand, ContactBand, FAQSection, SectionHead } from '@/components/ui/Blocks';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { PageHero } from '@/components/ui/PageHero';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
-import { getIndustry, getVisibleIndustries, isDraft, resolveRef } from '@/lib/visibility';
+import { getIndustry, getVisibleIndustries, resolveRef } from '@/lib/visibility';
 
 type Params = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
@@ -26,9 +24,6 @@ export default async function IndustryPage({ params }: Params) {
   const whatsapp = `Hi CodeMindset, I run a business in the ${i.name} sector and need help with technology.`;
   return (
     <>
-      {showDrafts() && isDraft(i) ? (
-        <DraftNotice>Awaiting approval; hidden from search until approved.</DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[
           { name: 'Industries', path: '/industries/' },

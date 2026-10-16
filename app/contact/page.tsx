@@ -1,15 +1,12 @@
 import { IntakeForm } from '@/components/contact/IntakeForm';
 import { CheckList } from '@/components/ui/Blocks';
 import { ContactLink } from '@/components/ui/ContactLink';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { ChatIcon, MailIcon, PhoneIcon } from '@/components/ui/Icons';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
 import { callHref, emailHref, whatsappHref } from '@/lib/contact';
 import { getServiceOptions } from '@/lib/enquiry/options';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
-import { isDraft } from '@/lib/visibility';
 
 const page = corePages.contact;
 export const metadata = buildMetadata(page);
@@ -17,11 +14,6 @@ export const metadata = buildMetadata(page);
 export default function ContactPage() {
   return (
     <>
-      {showDrafts() && isDraft(page) ? (
-        <DraftNotice>
-          Enquiries are delivered only when the email service is configured (see README).
-        </DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[{ name: 'Get a quote', path: page.path }]}
         eyebrow="Get a quote"

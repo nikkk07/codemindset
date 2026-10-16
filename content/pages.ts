@@ -111,7 +111,8 @@ export const corePages: Record<CorePageKey, CorePage> = {
   terms: {
     path: '/terms/',
     title: 'Website Terms of Use',
-    description: 'Terms for using the CodeMindset website.',
+    description:
+      'Terms for using the CodeMindset website: content, enquiries, intellectual property and links to other sites.',
     review: 'draft',
   },
 };

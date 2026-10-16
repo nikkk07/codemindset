@@ -1,13 +1,10 @@
 import Link from 'next/link';
 import { CTABand, SectionHead, Steps } from '@/components/ui/Blocks';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { PageHero } from '@/components/ui/PageHero';
 import { commitments, steps, teamRoles } from '@/content/home';
 import { corePages } from '@/content/pages';
 import { site } from '@/content/site';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
-import { isDraft } from '@/lib/visibility';
 
 const page = corePages.about;
 export const metadata = buildMetadata(page);
@@ -28,9 +25,6 @@ const mindset = [
 export default function AboutPage() {
   return (
     <>
-      {showDrafts() && isDraft(page) ? (
-        <DraftNotice>Awaiting approval; hidden from search until approved.</DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[{ name: 'About', path: page.path }]}
         eyebrow="About CodeMindset"

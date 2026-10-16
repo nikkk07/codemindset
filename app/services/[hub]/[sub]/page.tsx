@@ -11,7 +11,6 @@ import {
   gridStyle,
 } from '@/components/ui/Blocks';
 import { ContactLink } from '@/components/ui/ContactLink';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { ArrowIcon, ChatIcon } from '@/components/ui/Icons';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
@@ -19,7 +18,6 @@ import { steps } from '@/content/home';
 import { GUIDE_SLUG } from '@/content/services';
 import type { FAQ, ServiceHub, SubService } from '@/content/types';
 import { quoteHref, whatsappHref } from '@/lib/contact';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata, graph, serviceJsonLd } from '@/lib/seo';
 import { lcFirst } from '@/lib/text';
 import {
@@ -29,7 +27,6 @@ import {
   getVisibleSubs,
   guideHref,
   hubHref,
-  isDraft,
   isGuideVisible,
   subHref,
 } from '@/lib/visibility';
@@ -109,11 +106,6 @@ function SubServicePage({ hub, s }: { hub: ServiceHub; s: SubService }) {
 
   return (
     <>
-      {showDrafts() && (isDraft(s) || isDraft(hub)) ? (
-        <DraftNotice>
-          This page is awaiting approval and is hidden from search until approved.
-        </DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[
           { name: 'Services', path: '/services/' },
@@ -288,11 +280,6 @@ function GuidePage({ hub }: { hub: ServiceHub }) {
   const goals = chooserGoals(hub);
   return (
     <>
-      {showDrafts() && (isDraft(hub.guide) || isDraft(hub)) ? (
-        <DraftNotice>
-          This guide is awaiting approval and is hidden from search until approved.
-        </DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[
           { name: 'Knowledge', path: '/knowledge/' },

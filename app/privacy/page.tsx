@@ -1,8 +1,6 @@
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
 import { site } from '@/content/site';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
 
 const page = corePages.privacy;
@@ -14,13 +12,6 @@ export default function PrivacyPage() {
   const entity = site.legal.entityName;
   return (
     <>
-      {showDrafts() ? (
-        <DraftNotice>
-          This privacy notice is a working draft. It needs the legal entity details, retention
-          period and service-provider list, and review by a qualified lawyer against the Digital
-          Personal Data Protection Act, 2023 and the DPDP Rules, 2025, before publication.
-        </DraftNotice>
-      ) : null}
       <PageHero crumbs={[{ name: 'Privacy notice', path: page.path }]} title="Privacy notice" />
       <div className="container section">
         <div className="prose">

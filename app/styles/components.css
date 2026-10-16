@@ -655,26 +655,6 @@ a.card:hover {
   margin-top: 8px;
 }
 
-/* ---------- Notices ---------- */
-.draft-notice {
-  background: var(--amber-50);
-  border-bottom: 1px solid #f5d77a;
-  color: #5c3d00;
-  font-size: 14px;
-}
-.draft-notice__inner {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  padding-block: 10px;
-}
-.draft-notice svg {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  margin-top: 3px;
-}
-
 .notice {
   padding: 20px 22px;
   border-radius: 16px;

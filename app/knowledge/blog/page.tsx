@@ -1,9 +1,7 @@
 import Link from 'next/link';
 import { CTABand } from '@/components/ui/Blocks';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
 import { getVisibleArticles } from '@/lib/visibility';
 
@@ -18,11 +16,6 @@ export const metadata = buildMetadata({
 export default function BlogPage() {
   return (
     <>
-      {showDrafts() ? (
-        <DraftNotice>
-          Articles will be added by the owner; the blog stays out of search until it has some.
-        </DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[
           { name: 'Knowledge', path: corePages.knowledge.path },

@@ -1,12 +1,10 @@
 import { notFound } from 'next/navigation';
 import { CTABand } from '@/components/ui/Blocks';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
-import { showDrafts } from '@/lib/env';
 import { articleJsonLd, buildMetadata, graph } from '@/lib/seo';
-import { getVisibleArticles, isDraft } from '@/lib/visibility';
+import { getVisibleArticles } from '@/lib/visibility';
 
 type Params = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
@@ -35,9 +33,6 @@ export default async function ArticlePage({ params }: Params) {
   const path = `/knowledge/blog/${a.slug}/`;
   return (
     <>
-      {showDrafts() && isDraft(a) ? (
-        <DraftNotice>Awaiting approval; hidden from search until approved.</DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[
           { name: 'Knowledge', path: corePages.knowledge.path },

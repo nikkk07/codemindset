@@ -1,9 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CTABand, SectionHead } from '@/components/ui/Blocks';
-import { DraftNotice } from '@/components/ui/DraftNotice';
 import { PageHero } from '@/components/ui/PageHero';
-import { showDrafts } from '@/lib/env';
 import { buildMetadata } from '@/lib/seo';
 import {
   getRegion,
@@ -37,12 +35,6 @@ export default async function RegionPage({ params }: Params) {
   const hubs = getVisibleHubs();
   return (
     <>
-      {showDrafts() && !isRegionPublishable(r) ? (
-        <DraftNotice>
-          Template preview. This page goes live only after unique local content for {r.name} is
-          written and approved (content/regions.ts → local).
-        </DraftNotice>
-      ) : null}
       <PageHero
         crumbs={[
           { name: 'Across India', path: '/india/' },
