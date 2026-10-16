@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="440" viewBox="0 0 1800 440" role="img" aria-labelledby="title desc">
+<title id="title">CodeMindset — Think in Algorithms</title>
+<desc id="desc">Horizontal CodeMindset logo with a violet code symbol and wordmark.</desc>
+<g transform="translate(70 98) scale(0.64)"><g fill="#8B5CF6">
+  <path d="M20 76 L124 31 L124 65 L66 91 L124 117 L124 151 L20 106 Z"/>
+  <path d="M380 76 L276 31 L276 65 L334 91 L276 117 L276 151 L380 106 Z"/>
+  <path d="M231 18 L267 18 L169 190 L133 190 Z"/>
+</g></g>
+<text x="365" y="218" fill="#0B0B0F" text-anchor="start" font-family="Inter Display, Inter, Arial, sans-serif" font-size="116" font-weight="650" letter-spacing="0.7">CodeMindset</text>
+<text x="373" y="302" fill="#44414D" text-anchor="start" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="500" letter-spacing="7.3">Think in Algorithms</text>
+</svg>

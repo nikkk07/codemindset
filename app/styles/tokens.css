@@ -1,0 +1,76 @@
+/*
+ * CodeMindset design tokens.
+ * Light, clean corporate base + bold purple blocks. Purple comes from the confirmed logo (#8B5CF6).
+ * Contrast: --purple-600 on white 5.7:1, --muted on white 7.3:1, white on --purple-800 8.6:1.
+ */
+:root {
+  /* Brand */
+  --purple-500: #8b5cf6; /* logo mark, graphics */
+  --purple-600: #7c3aed; /* buttons, links */
+  --purple-700: #6d28d9;
+  --purple-800: #5b21b6; /* bold blocks */
+  --purple-200: #ddd6fe;
+  --purple-100: #ede6ff;
+  --purple-50: #f4f0ff;
+  --purple-25: #f7f5fc;
+  --amber: #fbbf24; /* single accent: highlights on purple/dark */
+  --amber-50: #fef3c7;
+  --amber-ink: #1a0b3d;
+
+  /* Neutrals */
+  --ink: #0b0b0f; /* headings, logo wordmark */
+  --text: #1f1b2d;
+  --text-2: #44414d;
+  --muted: #5a5470;
+  --line: #eeebf5;
+  --line-strong: #e6e1f2;
+  --white: #ffffff;
+  --dark: #120d1f;
+  --darker: #0e0a18;
+  --on-dark: #cfc6e8;
+  --on-dark-2: #a9a2bd;
+  --success: #15803d;
+  --error: #b42318;
+
+  /* Type */
+  --font-sans:
+    var(--font-jakarta, 'Plus Jakarta Sans'), ui-sans-serif, system-ui, 'Segoe UI', Roboto, Arial,
+    sans-serif;
+  --font-brand:
+    var(--font-inter, 'Inter'), ui-sans-serif, system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
+  --fs-h1: clamp(2.25rem, 1.4rem + 3.6vw, 4rem);
+  --fs-h2: clamp(1.875rem, 1.4rem + 1.9vw, 2.875rem);
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --fs-lead: clamp(1rem, 0.94rem + 0.3vw, 1.1875rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-xs: 0.8125rem;
+
+  /* Space & shape */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --section-y: clamp(56px, 8vw, 104px);
+  --container: 1280px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: clamp(20px, 2.5vw, 28px);
+  --header-h: clamp(64px, 7vw, 76px);
+  --tap: 44px;
+
+  --shadow-pop: 0 30px 70px -30px rgb(26 11 61 / 0.35);
+  --shadow-purple: 0 30px 60px -30px rgb(76 29 149 / 0.55);
+  --dots: radial-gradient(rgb(255 255 255 / 0.12) 1px, transparent 1px);
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --t-fast: 150ms;
+  --t-med: 260ms;
+}

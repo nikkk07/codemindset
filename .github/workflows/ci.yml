@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    name: Lint, types, unit tests, build, e2e, accessibility, Lighthouse
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CI: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Formatting (informational)
+        run: npm run format:check
+        continue-on-error: true
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Production build
+        run: npm run build
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: End-to-end, accessibility, links, SEO and responsive tests
+        run: npm run test:e2e
+
+      - name: Lighthouse (mobile)
+        run: |
+          npm start -- -p 3200 &
+          npx wait-on -t 60000 http://127.0.0.1:3200/ || sleep 10
+          CHROME_PATH="$(node -e "console.log(require('playwright').chromium.executablePath())")" npm run lighthouse -- http://127.0.0.1:3200
+
+      - name: Launch gate (informational until owner approvals are recorded)
+        run: npm run check:launch
+        continue-on-error: true
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: |
+            playwright-report
+            reports
+          retention-days: 14
