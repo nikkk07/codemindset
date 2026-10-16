@@ -35,7 +35,8 @@ export const metadata = buildMetadata({ ...page, absoluteTitle: true });
 
 export default function HomePage() {
   const hubs = getVisibleHubs();
-  const main = hubs.filter((h) => h.slug !== 'technical-assessment');
+  // Hero tiles stay the six everyday starting points; every service is in the directory below.
+  const main = hubs.filter((h) => h.segment === 'everyday' || h.slug === 'custom-software');
   const assessment = hubs.find((h) => h.slug === 'technical-assessment');
   const industries = getVisibleIndustries();
   const visibleProblems = problems.filter((p) => hubs.some((h) => h.slug === p.link));

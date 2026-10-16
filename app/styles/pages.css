@@ -339,3 +339,26 @@
 .section--dark .chooser__static a:not(.btn) {
   color: var(--purple-600);
 }
+
+/* Example scenarios on service detail pages (clearly not case studies) */
+.use {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--purple-500);
+  border-radius: 18px;
+  background: var(--white);
+}
+.use__sector {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--purple-700);
+}
+.use p {
+  color: var(--text-2);
+  line-height: 1.6;
+}

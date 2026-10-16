@@ -18,7 +18,7 @@ export const OG_IMAGE = {
   url: '/og/default.png',
   width: 1200,
   height: 630,
-  alt: 'CodeMindset — Think in Algorithms',
+  alt: 'CodeMindset — Think in Algorithm',
 };
 
 export function buildMetadata(

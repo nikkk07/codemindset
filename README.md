@@ -1,6 +1,6 @@
 # CodeMindset website
 
-The website for **CodeMindset** (https://www.codemindset.in), an Indian IT services company — _Think in Algorithms_.
+The website for **CodeMindset** (https://www.codemindset.in), an Indian IT services company — _Think in Algorithm_.
 
 Built with Next.js (App Router), React and TypeScript (strict), with hand-written CSS (design tokens in `app/styles/tokens.css`). Every page is static HTML; the enquiry and callback forms use a server action.
 

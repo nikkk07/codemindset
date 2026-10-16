@@ -1,3 +1,4 @@
+import { audiences } from '@/content/audiences';
 import { articles, glossary } from '@/content/knowledge';
 import { industries } from '@/content/industries';
 import { regions } from '@/content/regions';
@@ -71,6 +72,11 @@ export function resolveRef(
 }
 
 /* ---------- other collections ---------- */
+
+export const getVisibleAudiences = (env?: NodeJS.ProcessEnv) =>
+  audiences.filter((a) => visible(a, env));
+export const getAudience = (slug: string, env?: NodeJS.ProcessEnv) =>
+  getVisibleAudiences(env).find((a) => a.slug === slug);
 
 export const getVisibleIndustries = (env?: NodeJS.ProcessEnv) =>
   industries.filter((i) => visible(i, env));

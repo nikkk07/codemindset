@@ -1,43 +1,21 @@
-import type { FAQ, ServiceHub, SubService } from './types';
+import { P, T } from './service-helpers';
+import { advancedHubs } from './services-advanced';
+import type { ServiceHub } from './types';
 
 /**
- * Service catalogue: 7 hubs → platform and need pages → one "how to choose" guide each.
+ * Service catalogue: hubs → platform and need pages → one "how to choose" guide each.
+ * Everyday hubs live here; advanced hubs (AI engineering, data, security, blockchain) in services-advanced.ts.
  *
  * Readiness 'ready' reflects the owner's confirmation (2026-10-16) that the team delivers across
  * these technologies. Every page stays 'draft' (hidden in production) until its copy is approved.
  * Write in plain words first; technical detail comes lower on each page.
  */
 
-const sub = (
-  kind: SubService['kind'],
-  slug: string,
-  name: string,
-  title: string,
-  plain: string,
-  best: string,
-  includes: string[],
-  faqs?: FAQ[],
-): SubService => ({
-  kind,
-  slug,
-  name,
-  title,
-  plain,
-  best,
-  includes,
-  faqs,
-  readiness: 'ready',
-  review: 'draft',
-});
-
-type SubArgs = Parameters<typeof sub> extends [unknown, ...infer R] ? R : never;
-const P = (...a: SubArgs) => sub('platform', ...a);
-const T = (...a: SubArgs) => sub('type', ...a);
-
 /* ------------------------------------------------------------------ */
 
 const website: ServiceHub = {
   slug: 'website-development',
+  segment: 'everyday',
   icon: 'website',
   title: 'Website development',
   plainTitle: 'A website for my business',
@@ -318,6 +296,7 @@ const website: ServiceHub = {
 
 const apps: ServiceHub = {
   slug: 'app-development',
+  segment: 'everyday',
   icon: 'app',
   title: 'App development',
   plainTitle: 'A mobile app for my customers',
@@ -568,6 +547,7 @@ const apps: ServiceHub = {
 
 const ai: ServiceHub = {
   slug: 'ai-automation',
+  segment: 'everyday',
   icon: 'spark',
   title: 'AI chatbots & automation',
   plainTitle: 'Reply to customers automatically',
@@ -829,6 +809,7 @@ const ai: ServiceHub = {
 
 const integrations: ServiceHub = {
   slug: 'integrations',
+  segment: 'everyday',
   icon: 'link',
   title: 'CRM & WhatsApp integration',
   plainTitle: 'Make my tools work together',
@@ -1074,6 +1055,7 @@ const integrations: ServiceHub = {
 
 const software: ServiceHub = {
   slug: 'custom-software',
+  segment: 'advanced',
   icon: 'code',
   title: 'Custom software',
   plainTitle: 'Software made for my business',
@@ -1185,6 +1167,59 @@ const software: ServiceHub = {
         'Accounting sync',
       ],
     ),
+    T(
+      'legacy-modernisation',
+      'Legacy modernisation',
+      'Legacy software modernisation',
+      'Move old software (COBOL, old PHP, desktop apps) to modern, cloud-ready code — without stopping the business.',
+      'Businesses held back by old systems few people can maintain.',
+      [
+        'Code and risk assessment',
+        'Step-by-step migration plan',
+        'Automated code translation where safe',
+        'Parallel running before switch-over',
+      ],
+      [
+        {
+          question: 'Can you modernise without downtime?',
+          answer:
+            'Usually yes: the old and new systems run side by side, data is kept in sync, and users move over in stages.',
+        },
+      ],
+      [
+        {
+          sector: 'Banking',
+          story:
+            'A core banking system written decades ago is moved to modern cloud services piece by piece, with both versions running in parallel so customers never notice the switch.',
+        },
+      ],
+    ),
+    T(
+      'microservices',
+      'Monolith to microservices',
+      'Monolith to microservices migration',
+      'Split one large, fragile application into smaller services that can be updated and scaled separately.',
+      'Products where every release is slow and risky.',
+      [
+        'Domain and dependency mapping',
+        'Service boundaries designed',
+        'API gateway and messaging',
+        'Gradual extraction with tests',
+      ],
+    ),
+    T(
+      'database-migration',
+      'Database migration',
+      'Database migration and modernisation',
+      'Move your data to a modern database or cloud — checked, cleaned and without losing a record.',
+      'Slow, outdated or costly databases.',
+      [
+        'Schema review and redesign',
+        'Data cleaning and normalisation',
+        'Automated migration with checks',
+        'Rollback plan',
+      ],
+    ),
   ],
   guide: {
     question: 'Custom software or a ready-made tool?',
@@ -1279,6 +1314,7 @@ const software: ServiceHub = {
 
 const seo: ServiceHub = {
   slug: 'seo-performance',
+  segment: 'everyday',
   icon: 'chart',
   title: 'SEO, speed & maintenance',
   plainTitle: 'Get found on Google, load faster',
@@ -1491,6 +1527,7 @@ const seo: ServiceHub = {
 
 const assessment: ServiceHub = {
   slug: 'technical-assessment',
+  segment: 'start',
   icon: 'search',
   title: 'Technical assessment',
   plainTitle: 'Not sure what I need',
@@ -1629,7 +1666,22 @@ const assessment: ServiceHub = {
   review: 'draft',
 };
 
-export const hubs: ServiceHub[] = [website, apps, ai, integrations, software, seo, assessment];
+const [aiEngineering, data, security, blockchain] = advancedHubs;
+
+/** Menu and page order: everyday needs first, then custom and advanced work, then "not sure". */
+export const hubs: ServiceHub[] = [
+  website,
+  apps,
+  ai,
+  integrations,
+  seo,
+  software,
+  aiEngineering!,
+  data!,
+  security!,
+  blockchain!,
+  assessment,
+];
 
 export const GUIDE_SLUG = 'how-to-choose';
 

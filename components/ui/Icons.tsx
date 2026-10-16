@@ -44,6 +44,62 @@ export const MailIcon = make(
 );
 
 const SERVICE_ICONS: Record<IconName, React.ReactNode> = {
+  brain: (
+    <>
+      <path d="M9 4a3 3 0 0 0-3 3v.5A3 3 0 0 0 4 10.3a3 3 0 0 0 1 4.9V16a3 3 0 0 0 4 2.8V4.6A3 3 0 0 0 9 4z" />
+      <path d="M15 4a3 3 0 0 1 3 3v.5a3 3 0 0 1 2 2.8 3 3 0 0 1-1 4.9V16a3 3 0 0 1-4 2.8V4.6A3 3 0 0 1 15 4z" />
+    </>
+  ),
+  shield: (
+    <>
+      <path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z" />
+      <path d="M9 12l2 2 4-4" />
+    </>
+  ),
+  database: (
+    <>
+      <ellipse cx="12" cy="5.5" rx="7.5" ry="2.8" />
+      <path d="M4.5 5.5v6c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-6M4.5 11.5v6c0 1.5 3.4 2.8 7.5 2.8s7.5-1.3 7.5-2.8v-6" />
+    </>
+  ),
+  blocks: (
+    <>
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      <path d="M10 6.5h4.5a2 2 0 0 1 2 2V14M14 17.5H9.5a2 2 0 0 1-2-2V10" />
+    </>
+  ),
+  rocket: (
+    <>
+      <path d="M5 15c-1.5 1-2 3.5-2 6 2.5 0 5-.5 6-2" />
+      <path d="M9 15l-3-3c1.5-5 5.5-9 13-9 0 7.5-4 11.5-9 13z" />
+      <circle cx="14.5" cy="9.5" r="1.8" />
+    </>
+  ),
+  building: (
+    <>
+      <rect x="4" y="3" width="11" height="18" rx="1" />
+      <path d="M15 9h4a1 1 0 0 1 1 1v11M8 7h3M8 11h3M8 15h3M3 21h18" />
+    </>
+  ),
+  truck: (
+    <>
+      <path d="M3 6h11v10H3zM14 9h4l3 3v4h-7" />
+      <circle cx="7" cy="17.5" r="1.8" />
+      <circle cx="17" cy="17.5" r="1.8" />
+    </>
+  ),
+  bank: (
+    <>
+      <path d="M3 9l9-5 9 5M4 9h16M5 9v9M9.5 9v9M14.5 9v9M19 9v9M3 21h18" />
+    </>
+  ),
+  home: (
+    <>
+      <path d="M3 11l9-7 9 7" />
+      <path d="M5 10v10h14V10M10 20v-5h4v5" />
+    </>
+  ),
   website: (
     <>
       <rect x="3" y="4" width="18" height="12" rx="2" />

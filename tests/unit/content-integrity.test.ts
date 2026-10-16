@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { audiences } from '@/content/audiences';
 import { problems } from '@/content/home';
 import { industries } from '@/content/industries';
 import { glossary } from '@/content/knowledge';
@@ -21,7 +22,7 @@ describe('brand facts', () => {
   it('uses the confirmed name, domain, tagline and India positioning', () => {
     expect(site.name).toBe('CodeMindset');
     expect(site.url).toBe('https://www.codemindset.in');
-    expect(site.tagline).toBe('Think in Algorithms');
+    expect(site.tagline).toBe('Think in Algorithm');
     expect(site.descriptor).toBe('Indian IT services company');
   });
   it('builds WhatsApp links with a pre-filled message', () => {
@@ -63,6 +64,23 @@ describe('service catalogue', () => {
       for (const p of i.problems) expect(resolveRef(p.link, PREVIEW)).toBeTruthy();
     for (const g of glossary) expect(resolveRef(g.service, PREVIEW)).toBeTruthy();
     for (const p of problems) expect(hubs.some((h) => h.slug === p.link)).toBe(true);
+    for (const a of audiences)
+      for (const r of a.recommended) expect(resolveRef(r, PREVIEW)).toBeTruthy();
+  });
+  it('puts every hub in a menu segment, with exactly one "not sure" starting point', () => {
+    expect(hubs.filter((h) => h.segment === 'start').length).toBe(1);
+    expect(hubs.filter((h) => h.segment === 'everyday').length).toBeGreaterThan(3);
+    expect(hubs.filter((h) => h.segment === 'advanced').length).toBeGreaterThan(3);
+    for (const slug of ['ai-engineering', 'data-engineering', 'cybersecurity', 'blockchain'])
+      expect(hubs.find((h) => h.slug === slug)?.segment).toBe('advanced');
+  });
+  it('labels example scenarios by sector and keeps them short', () => {
+    for (const h of hubs)
+      for (const s of allSubs(h))
+        for (const u of s.uses ?? []) {
+          expect(u.sector.length).toBeGreaterThan(2);
+          expect(u.story.length).toBeLessThanOrEqual(320);
+        }
   });
   it('gives each guide a short answer and a comparison that matches its columns', () => {
     for (const h of hubs) {
@@ -81,6 +99,17 @@ describe('service catalogue', () => {
       expect(h.seo.description.length).toBeLessThanOrEqual(170);
     }
     for (const p of Object.values(corePages)) expect(p.description.length).toBeLessThanOrEqual(170);
+    for (const h of hubs)
+      for (const x of allSubs(h)) {
+        const t = `${x.title} in India`;
+        expect(titles.has(t)).toBe(false);
+        titles.add(t);
+      }
+    for (const x of [...audiences, ...industries]) {
+      expect(titles.has(x.seo.title)).toBe(false);
+      titles.add(x.seo.title);
+      expect(x.seo.description.length).toBeLessThanOrEqual(170);
+    }
   });
 });
 

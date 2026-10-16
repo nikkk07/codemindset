@@ -20,23 +20,23 @@ export type CorePageKey =
 export const corePages: Record<CorePageKey, CorePage> = {
   home: {
     path: '/',
-    title: 'CodeMindset — Website, App & Software Development Company in India',
+    title: 'CodeMindset — Website, App, AI & Software Development in India',
     description:
-      'Indian IT services company building websites, mobile apps, AI chatbots, automation, integrations and custom software. Fast delivery across India, fixed written quote.',
+      'Indian IT services company: websites, apps, AI chatbots and agents, automation, data, cybersecurity and custom software. Fast delivery, fixed written quote.',
     review: 'draft',
   },
   services: {
     path: '/services/',
-    title: 'IT Services — Websites, Apps, AI, Integrations & Software',
+    title: 'IT Services — Websites, Apps, AI, Data, Security & Software',
     description:
-      'Every CodeMindset service in one place: website and app development, AI chatbots and automation, CRM and WhatsApp integration, custom software, SEO and maintenance.',
+      'All CodeMindset services: websites, apps, AI chatbots, automation, integrations, SEO, custom software, AI agents, data engineering, security and blockchain.',
     review: 'draft',
   },
   industries: {
     path: '/industries/',
-    title: 'Industries — Education, B2B Services, Retail and Healthcare',
+    title: 'Industries — Retail, Healthcare, Finance, Logistics & More',
     description:
-      'Websites, apps and automation built around how education, B2B services, retail and healthcare businesses work.',
+      'Websites, apps, AI and automation built around how education, B2B services, retail, healthcare, finance, logistics and real-estate businesses work.',
     review: 'draft',
   },
   india: {
@@ -78,7 +78,7 @@ export const corePages: Record<CorePageKey, CorePage> = {
     path: '/about/',
     title: 'About CodeMindset — Indian IT Services Company',
     description:
-      'CodeMindset is an Indian IT services company with a team of designers, developers, AI engineers and specialists, delivering across India. Think in Algorithms.',
+      'CodeMindset is an Indian IT services company with a team of designers, developers, AI engineers and specialists, delivering across India. Think in Algorithm.',
     review: 'draft',
   },
   work: {

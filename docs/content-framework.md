@@ -6,7 +6,7 @@ Status: DRAFT v1 · 2026-10-15 · Rules and templates only. No public copy is wr
 
 - Clear, specific and calm. Write for a non-technical owner first, with technical depth one click or one section away.
 - Active voice, short sentences, Indian English spelling (organisation, optimise), ₹ for currency.
-- "Think in Algorithms" means: define the problem, the inputs, the steps, the checks and the result. Every service page follows that logic. Use it as a structural device, not a slogan to repeat.
+- "Think in Algorithm" means: define the problem, the inputs, the steps, the checks and the result. Every service page follows that logic. Use it as a structural device, not a slogan to repeat.
 - **Banned without evidence:** world-class, cutting-edge, leading, best, #1, guaranteed rankings or citations, "revolutionise", "unlock", "seamless", "end-to-end" (unless one team truly owns every stage), "AI-powered" as decoration.
 
 ## 2. Claims register (mandatory)
@@ -43,7 +43,7 @@ Engagement models (assessment, fixed-scope project, care retainer), what we need
 
 ### About (`/about/`)
 
-Who we are (real people only, with consent), what "Think in Algorithms" means in practice, how we work, and **Our brands**: the Social ScaleX disclosure, responsibility split and joint-project model (see the plan, §1).
+Who we are (real people only, with consent), what "Think in Algorithm" means in practice, how we work, and **Our brands**: the Social ScaleX disclosure, responsibility split and joint-project model (see the plan, §1).
 
 ### Case study (`/work/[slug]/`), only with permission
 

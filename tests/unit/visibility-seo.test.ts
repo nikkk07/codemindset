@@ -108,6 +108,9 @@ describe('indexing controls', () => {
     const subs = hubs.reduce((n, h) => n + allSubs(h).length, 0);
     expect(preview.length).toBeGreaterThan(subs + hubs.length);
     expect(preview).toContain(`${ORIGIN}/services/website-development/how-to-choose/`);
+    expect(preview).toContain(`${ORIGIN}/services/ai-engineering/`);
+    expect(preview).toContain(`${ORIGIN}/for/startups/`);
+    expect(preview).toContain(`${ORIGIN}/industries/logistics/`);
     expect(new Set(preview).size).toBe(preview.length);
   });
 });

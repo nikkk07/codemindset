@@ -5,6 +5,7 @@ import type { ReviewStatus } from '@/content/types';
 import { showDrafts } from './env';
 import {
   getVisibleArticles,
+  getVisibleAudiences,
   getVisibleGlossary,
   getVisibleHubs,
   getVisibleIndustries,
@@ -46,6 +47,7 @@ export function buildSitemap(env?: NodeJS.ProcessEnv): MetadataRoute.Sitemap {
     for (const s of getVisibleSubs(h, env)) paths.push(subHref(h.slug, s.slug));
     if (isGuideVisible(h, env)) paths.push(guideHref(h.slug));
   }
+  for (const a of getVisibleAudiences(env)) paths.push(`/for/${a.slug}/`);
   for (const i of getVisibleIndustries(env)) paths.push(`/industries/${i.slug}/`);
   for (const r of getVisibleRegions(env))
     if (drafts || isRegionPublishable(r)) paths.push(`/india/${r.slug}/`);

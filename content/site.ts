@@ -8,7 +8,7 @@ export const site = {
   name: 'CodeMindset',
   /** Confirmed 2026-10-16: an Indian company delivering across the whole country. */
   descriptor: 'Indian IT services company',
-  tagline: 'Think in Algorithms',
+  tagline: 'Think in Algorithm',
   description:
     'CodeMindset is an Indian IT services company. We build websites, mobile apps, AI chatbots, automation, integrations and custom software for businesses across India.',
   /** Canonical origin. Confirmed by owner 2026-10-15. */

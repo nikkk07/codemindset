@@ -14,6 +14,8 @@ test.describe('desktop', () => {
     await expect(mega.getByRole('link', { name: /Website development/ })).toBeVisible();
     await expect(mega.getByRole('link', { name: 'WordPress' })).toBeVisible();
     await expect(mega.getByRole('link', { name: 'WhatsApp chatbots' })).toBeVisible();
+    await expect(mega.getByRole('link', { name: 'Multi-agent AI systems' })).toBeVisible();
+    await expect(mega.getByRole('link', { name: 'Smart contract audit' })).toBeAttached();
     await page.keyboard.press('Escape');
     await expect(mega).toHaveCount(0);
     await expect(trigger).toBeFocused();
@@ -29,10 +31,10 @@ test.describe('desktop', () => {
     await expect(page.getByTestId('mega-menu')).toHaveCount(0);
   });
 
-  test('industries dropdown lists the four industries', async ({ page }) => {
+  test('industries dropdown lists every industry', async ({ page }) => {
     await page.goto('/');
     await page.getByRole('button', { name: 'Industries' }).click();
-    await expect(page.locator('#menu-industries a')).toHaveCount(4);
+    await expect(page.locator('#menu-industries a')).toHaveCount(7);
   });
 
   test('the phone action bar is hidden on desktop and the header shows Call us + Get a quote', async ({

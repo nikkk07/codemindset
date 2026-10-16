@@ -191,4 +191,147 @@ export const industries: Industry[] = [
     },
     review: 'draft',
   },
+  {
+    slug: 'finance-insurance',
+    icon: 'bank',
+    name: 'Finance & insurance',
+    h1: 'Technology for banks, NBFCs, fintechs and insurers',
+    intro:
+      'Applications, KYC, claims and customer queries need speed without cutting corners on security. We build secure portals, AI assistants with human approval, data platforms and modernised core systems.',
+    problems: [
+      {
+        problem: 'Loan and claim applications take days of manual checking.',
+        fix: 'AI agents that gather documents and checks, with a person making the final decision.',
+        link: 'ai-engineering/multi-agent-systems',
+      },
+      {
+        problem: 'Our customer chatbot could be tricked into giving out data.',
+        fix: 'AI security testing, input filters and response guardrails.',
+        link: 'cybersecurity/ai-security-testing',
+      },
+      {
+        problem: 'Our core system is old and risky to change.',
+        fix: 'Step-by-step modernisation with old and new systems running side by side.',
+        link: 'custom-software/legacy-modernisation',
+      },
+      {
+        problem: 'Staff use AI tools and we can’t see what data goes in.',
+        fix: 'An AI gateway with logging, data blocking and cost limits.',
+        link: 'ai-engineering/llm-guardrails-monitoring',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Can AI run inside our own cloud?',
+        answer:
+          'Yes — private deployments on AWS Bedrock, Azure OpenAI or your own servers keep data in your environment.',
+      },
+      {
+        question: 'Do you hold banking-specific certifications?',
+        answer:
+          'We build to your security and compliance requirements and support your audits; certifications themselves are issued by accredited bodies.',
+      },
+    ],
+    seo: {
+      title: 'Software, AI & Security for Banks, Fintechs and Insurers in India',
+      description:
+        'Secure portals, AI agents with human approval, chatbot security, data platforms and legacy modernisation for finance and insurance businesses in India.',
+    },
+    review: 'draft',
+  },
+  {
+    slug: 'logistics',
+    icon: 'truck',
+    name: 'Logistics & supply chain',
+    h1: 'Technology for logistics, transport and supply chains',
+    intro:
+      'Shipments, drivers, warehouses and customers all need up-to-date information. We build tracking apps, real-time data pipelines, route-optimisation models and WhatsApp updates.',
+    problems: [
+      {
+        problem: 'Customers keep calling to ask where their shipment is.',
+        fix: 'Automatic tracking updates on WhatsApp and a customer tracking page.',
+        link: 'integrations/whatsapp-business-api',
+      },
+      {
+        problem: 'We find out about delays too late.',
+        fix: 'Real-time data streaming with live dashboards and alerts.',
+        link: 'data-engineering/real-time-streaming',
+      },
+      {
+        problem: 'Routes are planned by hand every morning.',
+        fix: 'Route models that learn from traffic, weather and driver feedback.',
+        link: 'data-engineering/mlops',
+      },
+      {
+        problem: 'Drivers report on paper and WhatsApp.',
+        fix: 'A simple driver app for proof of delivery and updates.',
+        link: 'app-development/android-apps',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Can the driver app work with poor network?',
+        answer: 'Yes. The app saves updates offline and syncs when the connection returns.',
+      },
+      {
+        question: 'Can you connect to our existing ERP or TMS?',
+        answer:
+          'Yes, through their APIs or data exports, so information flows without double entry.',
+      },
+    ],
+    seo: {
+      title: 'Software, Apps & Real-Time Data for Logistics Companies in India',
+      description:
+        'Shipment tracking, WhatsApp delivery updates, driver apps, real-time data pipelines and route optimisation for logistics and supply-chain businesses in India.',
+    },
+    review: 'draft',
+  },
+  {
+    slug: 'real-estate',
+    icon: 'home',
+    name: 'Real estate',
+    h1: 'Technology for builders, brokers and property businesses',
+    intro:
+      'Property buyers expect fast answers, clear information and easy site visits. We build property websites, lead management with WhatsApp follow-up, CRM integrations and, where it fits, asset tokenization.',
+    problems: [
+      {
+        problem: 'Leads from portals and ads go cold before anyone calls back.',
+        fix: 'Every lead in one CRM with instant WhatsApp replies and follow-up reminders.',
+        link: 'integrations/crm-integration',
+      },
+      {
+        problem: 'Our project website doesn’t generate site visits.',
+        fix: 'A fast project website with floor plans, enquiry and booking built in.',
+        link: 'website-development/landing-pages',
+      },
+      {
+        problem: 'Buyers ask the same questions all day.',
+        fix: 'A WhatsApp assistant for prices, availability and site-visit booking.',
+        link: 'ai-automation/whatsapp-chatbots',
+      },
+      {
+        problem: 'We want to offer fractional ownership.',
+        fix: 'Compliant asset tokenization with transfer rules — subject to legal advice.',
+        link: 'blockchain/asset-tokenization',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Can leads from property portals go straight into our CRM?',
+        answer:
+          'Yes, where the portal offers an API, email or export, leads are captured and assigned automatically.',
+      },
+      {
+        question: 'Is property tokenization allowed in India?',
+        answer:
+          'Rules depend on the structure and investors. We build the technology; your legal advisors confirm the structure.',
+      },
+    ],
+    seo: {
+      title: 'Websites, CRM & WhatsApp Automation for Real Estate in India',
+      description:
+        'Property websites, lead management with WhatsApp follow-up, CRM integration and asset tokenization for builders, brokers and real-estate businesses in India.',
+    },
+    review: 'draft',
+  },
 ];

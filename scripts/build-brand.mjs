@@ -96,7 +96,7 @@ const og = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" vi
   <rect x="0" y="530" width="1200" height="100" fill="${C.purple800}"/>
   <g fill="${C.purple}" transform="translate(84 92) scale(0.36)">${MARK}</g>
   <text x="240" y="140" font-family="Inter Display, Inter" font-size="64" font-weight="600" fill="${C.ink}">CodeMindset</text>
-  <text x="242" y="180" font-family="Inter" font-size="20" font-weight="500" letter-spacing="5" fill="${C.text}">THINK IN ALGORITHMS</text>
+  <text x="242" y="180" font-family="Inter" font-size="20" font-weight="500" letter-spacing="5" fill="${C.text}">THINK IN ALGORITHM</text>
   <text x="84" y="330" font-family="Inter Display, Inter" font-size="66" font-weight="700" fill="${C.ink}">Websites, apps &amp; software</text>
   <text x="84" y="412" font-family="Inter Display, Inter" font-size="66" font-weight="700" fill="${C.purple600}">that grow your business.</text>
   <text x="84" y="590" font-family="Inter" font-size="28" font-weight="600" fill="${C.white}">Indian IT services company  ·  www.codemindset.in</text>

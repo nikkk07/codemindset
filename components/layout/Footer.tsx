@@ -5,7 +5,7 @@ import { corePages } from '@/content/pages';
 import { site } from '@/content/site';
 import { callHref, emailHref, whatsappHref } from '@/lib/contact';
 import { getKnowledgeNav } from '@/lib/nav';
-import { getVisibleHubs, isWorkEnabled, resolveRef } from '@/lib/visibility';
+import { getVisibleAudiences, getVisibleHubs, isWorkEnabled, resolveRef } from '@/lib/visibility';
 
 const YEAR = new Date().getFullYear();
 const POPULAR = [
@@ -21,6 +21,7 @@ export function Footer() {
   const hubs = getVisibleHubs();
   const popular = POPULAR.map((r) => resolveRef(r)).filter((x) => x !== null);
   const knowledge = getKnowledgeNav();
+  const audiences = getVisibleAudiences();
   return (
     <footer className="site-footer">
       <div className="container">
@@ -59,6 +60,11 @@ export function Footer() {
             {isWorkEnabled() ? <Link href={corePages.work.path}>Work</Link> : null}
             <Link href={corePages.india.path}>Across India</Link>
             <Link href={corePages.industries.path}>Industries</Link>
+            {audiences.map((a) => (
+              <Link key={a.slug} href={`/for/${a.slug}/`}>
+                For {a.name.toLowerCase()}
+              </Link>
+            ))}
             <Link href={corePages.knowledge.path}>Knowledge hub</Link>
             {knowledge.map((k) => (
               <Link key={k.href} href={k.href}>

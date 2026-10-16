@@ -18,7 +18,16 @@ export type IconName =
   | 'heart'
   | 'book'
   | 'map'
-  | 'users';
+  | 'users'
+  | 'brain'
+  | 'shield'
+  | 'database'
+  | 'blocks'
+  | 'rocket'
+  | 'building'
+  | 'truck'
+  | 'bank'
+  | 'home';
 
 export interface FAQ {
   question: string;
@@ -45,8 +54,15 @@ export interface SubService {
   /** What the client gets (3–5 items). */
   includes: string[];
   faqs?: FAQ[];
+  /** Example scenarios (never presented as client work). */
+  uses?: UseCase[];
   readiness: Readiness;
   review: ReviewStatus;
+}
+
+export interface UseCase {
+  sector: string;
+  story: string;
 }
 
 export interface GuideGoal {
@@ -68,8 +84,12 @@ export interface Guide {
   review: ReviewStatus;
 }
 
+/** How hubs are grouped in the Services menu: everyday needs first, advanced work second. */
+export type ServiceSegment = 'everyday' | 'advanced' | 'start';
+
 export interface ServiceHub {
   slug: string;
+  segment: ServiceSegment;
   icon: IconName;
   /** Technical name: "Website development". */
   title: string;
@@ -108,6 +128,24 @@ export interface Industry {
   intro: string;
   /** Problem in the client's words → what we build → service link. */
   problems: { problem: string; fix: string; link: string }[];
+  faqs: FAQ[];
+  seo: { title: string; description: string };
+  review: ReviewStatus;
+}
+
+/** Who the visitor is: startup, growing business or enterprise. */
+export interface Audience {
+  slug: string;
+  icon: IconName;
+  name: string;
+  short: string;
+  h1: string;
+  h1Accent: string;
+  intro: string;
+  priorities: PlainStep[];
+  /** Recommended services as "hub" or "hub/sub". */
+  recommended: string[];
+  howWeWork: PlainStep[];
   faqs: FAQ[];
   seo: { title: string; description: string };
   review: ReviewStatus;

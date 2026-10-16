@@ -8,6 +8,7 @@ import {
   FAQSection,
   SectionHead,
   Steps,
+  gridStyle,
 } from '@/components/ui/Blocks';
 import { ContactLink } from '@/components/ui/ContactLink';
 import { DraftNotice } from '@/components/ui/DraftNotice';
@@ -184,6 +185,27 @@ function SubServicePage({ hub, s }: { hub: ServiceHub; s: SubService }) {
           </dl>
         </div>
       </section>
+
+      {s.uses && s.uses.length > 0 ? (
+        <section className="section section--flush-top" aria-labelledby="uses-title">
+          <div className="container">
+            <SectionHead
+              eyebrow="Where it helps"
+              title={`How businesses use ${lcFirst(s.name)}`}
+              lead="Example scenarios to show what is possible — not client case studies."
+              id="uses-title"
+            />
+            <div className="grid" style={gridStyle(s.uses.length, 300)}>
+              {s.uses.map((u) => (
+                <article key={u.sector} className="use">
+                  <span className="use__sector">{u.sector}</span>
+                  <p>{u.story}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {isGuideVisible(hub) ? (
         <section className="section section--flush-top">

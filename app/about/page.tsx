@@ -34,8 +34,8 @@ export default function AboutPage() {
       <PageHero
         crumbs={[{ name: 'About', path: page.path }]}
         eyebrow="About CodeMindset"
-        title="An Indian IT services company that"
-        accent="thinks in algorithms."
+        title="An Indian IT services company built on one idea:"
+        accent="Think in Algorithm."
         lead={`${site.name} builds websites, mobile apps, AI chatbots, automation, integrations and custom software for businesses across India. Our team covers every skill a project needs — so you deal with one company, from first call to long-term support.`}
       />
 
@@ -43,7 +43,7 @@ export default function AboutPage() {
         <div className="container">
           <SectionHead
             eyebrow={site.tagline}
-            title="What “think in algorithms” means for you"
+            title={`What “${site.tagline}” means for you`}
             lead="An algorithm is simply a clear set of steps that reliably produces a result. We bring that thinking to every project."
             id="mindset-title"
           />

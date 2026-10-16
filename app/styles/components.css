@@ -284,6 +284,15 @@ a.card:hover {
   width: 22px;
   height: 22px;
 }
+.icon-box--sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+}
+.icon-box--sm svg {
+  width: 18px;
+  height: 18px;
+}
 
 /* Service tile: plain need first, technical name second. */
 .tile {

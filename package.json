@@ -2,7 +2,7 @@
   "name": "codemindset-website",
   "version": "0.1.0",
   "private": true,
-  "description": "CodeMindset website — Indian IT services company. Think in Algorithms.",
+  "description": "CodeMindset website — Indian IT services company. Think in Algorithm.",
   "engines": {
     "node": ">=20.9"
   },
