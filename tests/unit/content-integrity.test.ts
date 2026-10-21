@@ -2,13 +2,16 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { audiences } from '@/content/audiences';
+import { longGuides } from '@/content/guides';
 import { problems } from '@/content/home';
 import { industries } from '@/content/industries';
 import { glossary } from '@/content/knowledge';
 import { corePages } from '@/content/pages';
 import { regions } from '@/content/regions';
 import { GUIDE_SLUG, allSubs, hubs } from '@/content/services';
+import { servicePages } from '@/content/service-pages';
 import { site } from '@/content/site';
+import { projects } from '@/content/work';
 import { getServiceOptions } from '@/lib/enquiry/options';
 import { FIELD_ORDER, INTAKE_STEPS } from '@/lib/enquiry/schema';
 import { whatsappHref } from '@/lib/contact';
@@ -110,6 +113,65 @@ describe('service catalogue', () => {
       titles.add(x.seo.title);
       expect(x.seo.description.length).toBeLessThanOrEqual(170);
     }
+  });
+});
+
+describe('service pages and projects', () => {
+  it('gives every own-page service a real sub-service, a short answer-first intro and its own questions', () => {
+    for (const [key, copy] of Object.entries(servicePages)) {
+      const [hubSlug, subSlug] = key.split('/');
+      const hub = hubs.find((h) => h.slug === hubSlug);
+      const s = hub ? allSubs(hub).find((x) => x.slug === subSlug) : undefined;
+      expect(s?.page).toBe(true);
+      expect(copy.intro.length).toBeGreaterThan(120);
+      expect(copy.intro.length).toBeLessThanOrEqual(260);
+      expect(copy.faqs.length).toBeGreaterThanOrEqual(2);
+    }
+  });
+  it('keeps the catalogue focused: only a short list of services has a page of its own', () => {
+    const pages = hubs.flatMap((h) => allSubs(h).filter((x) => x.page));
+    expect(pages.length).toBe(Object.keys(servicePages).length);
+    expect(pages.length).toBeLessThanOrEqual(25);
+  });
+  it('lists the owner’s projects in order, with screenshots and resolvable service links', () => {
+    expect(projects.map((p) => p.slug)).toEqual([
+      'social-scalex',
+      'prago-outdoors',
+      'book-my-charter',
+      'we-one-aviation',
+    ]);
+    for (const p of projects) {
+      expect(fs.existsSync(path.join(ROOT, 'public', p.image))).toBe(true);
+      for (const r of p.services) expect(resolveRef(r, PREVIEW)).toBeTruthy();
+    }
+    expect(projects.find((p) => p.slug === 'social-scalex')?.relationship).toBe('own-brand');
+    expect(projects.find((p) => p.slug === 'we-one-aviation')?.featured).toBe(false);
+  });
+});
+
+describe('in-depth guides', () => {
+  it('are substantial, sourced, linked to real services and offer to do the work', () => {
+    const slugs = new Set<string>();
+    for (const g of longGuides) {
+      expect(slugs.has(g.slug)).toBe(false);
+      slugs.add(g.slug);
+      expect(hubs.some((h) => h.slug === g.service)).toBe(true);
+      expect(g.sections.length).toBeGreaterThanOrEqual(5);
+      expect(g.sources.length).toBeGreaterThanOrEqual(2);
+      for (const src of g.sources) expect(src.url.startsWith('https://')).toBe(true);
+      for (const r of g.related) expect(resolveRef(r, PREVIEW)).toBeTruthy();
+      const blocks = g.sections.flatMap((s) => s.blocks);
+      expect(blocks.filter((b) => b.type === 'hook').length).toBeGreaterThanOrEqual(2);
+      expect(blocks.some((b) => b.type === 'steps')).toBe(true);
+      expect(g.seoTitle.length).toBeLessThanOrEqual(75);
+      expect(g.description.length).toBeLessThanOrEqual(170);
+      expect(new Set(g.sections.map((s) => s.id)).size).toBe(g.sections.length);
+    }
+  });
+  it('gives AEO and GEO their own service pages', () => {
+    const seo = hubs.find((h) => h.slug === 'seo-services')!;
+    for (const slug of ['answer-engine-optimization', 'generative-engine-optimization'])
+      expect(allSubs(seo).find((s) => s.slug === slug)?.page).toBe(true);
   });
 });
 

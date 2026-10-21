@@ -25,10 +25,10 @@ export const audiences: Audience[] = [
     ],
     recommended: [
       'custom-software/saas-development',
-      'app-development/flutter',
+      'mobile-app-development/flutter',
       'website-development/landing-pages',
       'ai-engineering/rag-knowledge-assistants',
-      'integrations/payment-gateway-integration',
+      'crm-whatsapp-integration/payment-gateway-integration',
       'technical-assessment/tech-stack-review',
     ],
     howWeWork: [
@@ -46,7 +46,7 @@ export const audiences: Audience[] = [
       {
         question: 'Will we own the code?',
         answer:
-          'Yes. The code, accounts and documentation are yours — important for investors and future hires.',
+          'Yes. The code, accounts and documentation are yours, which matters to investors and future hires.',
       },
       {
         question: 'Can you work with our existing developers?',
@@ -76,11 +76,11 @@ export const audiences: Audience[] = [
     ],
     recommended: [
       'website-development/business-websites',
-      'ai-automation/whatsapp-chatbots',
-      'integrations/crm-integration',
-      'ai-automation/workflow-automation',
+      'ai-chatbots-automation/whatsapp-chatbots',
+      'crm-whatsapp-integration/crm-integration',
+      'ai-chatbots-automation/workflow-automation',
       'custom-software/dashboards',
-      'seo-performance/technical-seo',
+      'seo-services/technical-seo',
     ],
     howWeWork: [
       { title: 'Understand the business', text: 'A short call about how work happens today.' },
@@ -102,7 +102,7 @@ export const audiences: Audience[] = [
     seo: {
       title: 'Websites, Automation & CRM for Growing Businesses in India',
       description:
-        'Websites, WhatsApp automation, CRM and simple custom software for small and mid-sized businesses (SMEs) in India — more enquiries, less manual work.',
+        'Websites, WhatsApp automation, CRM and simple custom software for small and mid-sized businesses (SMEs) in India. More enquiries, less manual work.',
     },
     review: 'draft',
   },
@@ -129,7 +129,7 @@ export const audiences: Audience[] = [
       'data-engineering/data-warehouse',
       'custom-software/legacy-modernisation',
       'cybersecurity/zero-trust',
-      'integrations/api-development',
+      'crm-whatsapp-integration/api-development',
     ],
     howWeWork: [
       {
@@ -152,7 +152,7 @@ export const audiences: Audience[] = [
       {
         question: 'Can AI and data stay inside our cloud?',
         answer:
-          'Yes — we deploy in your AWS, Azure or Google Cloud account, or on your own servers.',
+          'Yes. We deploy in your AWS, Azure or Google Cloud account, or on your own servers.',
       },
       {
         question: 'Do you offer support agreements?',
@@ -162,7 +162,7 @@ export const audiences: Audience[] = [
     seo: {
       title: 'Enterprise Software, AI & Data Engineering Services in India',
       description:
-        'Private AI, LLM guardrails, data platforms, legacy modernisation, zero-trust security and integrations for enterprises — documented and delivered in milestones.',
+        'Private AI, LLM guardrails, data platforms, legacy modernisation, zero-trust security and integrations for enterprises, documented and delivered in milestones.',
     },
     review: 'draft',
   },

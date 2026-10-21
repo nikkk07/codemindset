@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { FAQ, PlainStep } from '@/content/types';
 import { callHref, quoteHref, whatsappHref } from '@/lib/contact';
 import { ContactLink } from './ContactLink';
+import { JsonLd } from './JsonLd';
 import { ArrowIcon, ChatIcon, CheckIcon, PhoneIcon } from './Icons';
 
 /**
@@ -91,6 +92,18 @@ export function FAQSection({
         </div>
         <FAQList items={items} />
       </div>
+      {/* Mirrors the visible questions for search engines and AI assistants (no rich-result reliance). */}
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: items.map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: { '@type': 'Answer', text: f.answer },
+          })),
+        }}
+      />
     </section>
   );
 }

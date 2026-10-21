@@ -105,8 +105,11 @@ describe('indexing controls', () => {
     for (const h of hubs.filter((x) => !isPublishable(x)))
       expect(prod).not.toContain(`${ORIGIN}/services/${h.slug}/`);
     const preview = buildSitemap(PREVIEW).map((e) => e.url);
-    const subs = hubs.reduce((n, h) => n + allSubs(h).length, 0);
-    expect(preview.length).toBeGreaterThan(subs + hubs.length);
+    const pages = hubs.reduce((n, h) => n + allSubs(h).filter((x) => x.page).length, 0);
+    expect(preview.length).toBeGreaterThan(pages + hubs.length);
+    // Sub-services without their own page are listed on the hub, not in the sitemap.
+    expect(preview).not.toContain(`${ORIGIN}/services/website-development/headless-cms/`);
+    expect(preview).toContain(`${ORIGIN}/how-we-work/`);
     expect(preview).toContain(`${ORIGIN}/services/website-development/how-to-choose/`);
     expect(preview).toContain(`${ORIGIN}/services/ai-engineering/`);
     expect(preview).toContain(`${ORIGIN}/for/startups/`);

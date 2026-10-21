@@ -3,38 +3,51 @@ import { expect, test } from '@playwright/test';
 test.describe('desktop', () => {
   test.use({ viewport: { width: 1280, height: 860 } });
 
-  test('services mega-menu opens on click, lists every service, and closes with Escape', async ({
+  test('services menu: the five everyday services first, bigger projects aside; Escape closes', async ({
     page,
   }) => {
     await page.goto('/');
     const trigger = page.getByRole('button', { name: 'Services' });
     await trigger.click();
-    const mega = page.getByTestId('mega-menu');
-    await expect(mega).toBeVisible();
-    await expect(mega.getByRole('link', { name: /Website development/ })).toBeVisible();
-    await expect(mega.getByRole('link', { name: 'WordPress' })).toBeVisible();
-    await expect(mega.getByRole('link', { name: 'WhatsApp chatbots' })).toBeVisible();
-    await expect(mega.getByRole('link', { name: 'Multi-agent AI systems' })).toBeVisible();
-    await expect(mega.getByRole('link', { name: 'Smart contract audit' })).toBeAttached();
+    const menu = page.getByTestId('services-menu');
+    await expect(menu).toBeVisible();
+    await expect(menu.getByRole('link', { name: /Website development/ })).toBeVisible();
+    await expect(menu.getByRole('link', { name: /AI chatbots/ })).toBeVisible();
+    await expect(menu.getByRole('link', { name: 'Custom software' })).toBeVisible();
+    await expect(menu.getByRole('link', { name: 'Free consultation' })).toBeVisible();
     await page.keyboard.press('Escape');
-    await expect(mega).toHaveCount(0);
+    await expect(menu).toHaveCount(0);
     await expect(trigger).toBeFocused();
   });
 
-  test('mega-menu opens on hover and links work', async ({ page }) => {
+  test('services menu opens on hover and its links work', async ({ page }) => {
     await page.goto('/');
-    await page.mouse.move(600, 600);
+    await page.mouse.move(600, 700);
     await page.getByRole('button', { name: 'Services' }).hover();
-    await expect(page.getByTestId('mega-menu')).toBeVisible();
-    await page.getByTestId('mega-menu').getByRole('link', { name: 'Shopify' }).click();
-    await expect(page).toHaveURL(/\/services\/website-development\/shopify\/$/);
-    await expect(page.getByTestId('mega-menu')).toHaveCount(0);
+    const menu = page.getByTestId('services-menu');
+    await expect(menu).toBeVisible();
+    await menu.getByRole('link', { name: /Mobile app development/ }).click();
+    await expect(page).toHaveURL(/\/services\/mobile-app-development\/$/);
+    await expect(menu).toHaveCount(0);
   });
 
-  test('industries dropdown lists every industry', async ({ page }) => {
+  test('home shows three featured projects, Social ScaleX first, We One Aviation only on /work/', async ({
+    page,
+  }) => {
     await page.goto('/');
-    await page.getByRole('button', { name: 'Industries' }).click();
-    await expect(page.locator('#menu-industries a')).toHaveCount(7);
+    const names = await page.locator('.proj h3').allTextContents();
+    expect(names).toEqual(['Social ScaleX', 'PraGo Outdoors', 'Book My Charter']);
+  });
+
+  test('live projects are shown in the owner’s order', async ({ page }) => {
+    await page.goto('/work/');
+    const names = await page.locator('.proj h3').allTextContents();
+    expect(names.slice(0, 4)).toEqual([
+      'Social ScaleX',
+      'PraGo Outdoors',
+      'Book My Charter',
+      'We One Aviation',
+    ]);
   });
 
   test('the phone action bar is hidden on desktop and the header shows Call us + Get a quote', async ({
@@ -42,7 +55,9 @@ test.describe('desktop', () => {
   }) => {
     await page.goto('/');
     await expect(page.getByRole('navigation', { name: 'Quick contact' })).toBeHidden();
-    await expect(page.locator('header').getByRole('link', { name: 'Get a quote' })).toBeVisible();
+    await expect(
+      page.locator('header').getByRole('link', { name: 'Get a free quote' }),
+    ).toBeVisible();
     await expect(page.locator('header').getByRole('link', { name: 'Call us' })).toBeVisible();
   });
 
@@ -85,7 +100,7 @@ test.describe('phone', () => {
   });
 
   test('a sticky action bar offers Call, WhatsApp and Get a quote', async ({ page }) => {
-    await page.goto('/services/ai-automation/');
+    await page.goto('/services/ai-chatbots-automation/');
     const bar = page.getByRole('navigation', { name: 'Quick contact' });
     await expect(bar).toBeVisible();
     await expect(bar.getByRole('link', { name: 'Call' })).toHaveAttribute(

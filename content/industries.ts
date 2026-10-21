@@ -12,14 +12,14 @@ export const industries: Industry[] = [
     problems: [
       {
         problem:
-          'Admission enquiries arrive by phone, walk-in and website — and some are never followed up.',
+          'Admission enquiries arrive by phone, walk-in and website, and some are never followed up.',
         fix: 'One enquiry system with an owner and reminders for every lead.',
-        link: 'integrations/crm-integration',
+        link: 'crm-whatsapp-integration/crm-integration',
       },
       {
         problem: 'Parents keep calling to ask the same questions.',
         fix: 'A WhatsApp assistant that answers common questions and sends updates.',
-        link: 'ai-automation/whatsapp-chatbots',
+        link: 'ai-chatbots-automation/whatsapp-chatbots',
       },
       {
         problem: 'Our website is outdated and hard to update.',
@@ -29,13 +29,13 @@ export const industries: Industry[] = [
       {
         problem: 'Fee reminders and receipts are done by hand.',
         fix: 'Online fee payment with automatic reminders and receipts.',
-        link: 'integrations/payment-gateway-integration',
+        link: 'crm-whatsapp-integration/payment-gateway-integration',
       },
     ],
     faqs: [
       {
         question: 'Can parents pay fees online?',
-        answer: 'Yes — UPI, cards and net banking, with automatic receipts and reminders.',
+        answer: 'Yes, UPI, cards and net banking, with automatic receipts and reminders.',
       },
       {
         question: 'Can you build a student or parent portal?',
@@ -60,7 +60,7 @@ export const industries: Industry[] = [
       {
         problem: 'Leads come from many places and nobody knows who is following up.',
         fix: 'Every lead in your CRM, assigned automatically, with reminders.',
-        link: 'integrations/crm-integration',
+        link: 'crm-whatsapp-integration/crm-integration',
       },
       {
         problem: 'Quotations take days and live in Word files.',
@@ -70,7 +70,7 @@ export const industries: Industry[] = [
       {
         problem: 'Clients keep emailing for status updates.',
         fix: 'A client portal with documents, invoices and progress.',
-        link: 'app-development/customer-portals',
+        link: 'mobile-app-development/customer-portals',
       },
       {
         problem: 'I can’t see sales and cash numbers in one place.',
@@ -86,7 +86,7 @@ export const industries: Industry[] = [
       },
       {
         question: 'Can quotations be approved before they are sent?',
-        answer: 'Yes — approval steps, version history and a log of every change.',
+        answer: 'Yes, approval steps, version history and a log of every change.',
       },
     ],
     seo: {
@@ -112,17 +112,17 @@ export const industries: Industry[] = [
       {
         problem: 'Stock doesn’t match between the shop and the website.',
         fix: 'Automatic stock sync between your systems.',
-        link: 'integrations/accounting-sync',
+        link: 'crm-whatsapp-integration/accounting-sync',
       },
       {
         problem: 'Customers keep asking “where is my order?”',
         fix: 'Automatic order and delivery updates on WhatsApp.',
-        link: 'integrations/whatsapp-business-api',
+        link: 'crm-whatsapp-integration/whatsapp-business-api',
       },
       {
         problem: 'Our store is slow on phones.',
         fix: 'Speed optimisation that makes pages load fast.',
-        link: 'seo-performance/website-speed',
+        link: 'seo-services/website-speed',
       },
     ],
     faqs: [
@@ -133,7 +133,7 @@ export const industries: Industry[] = [
       },
       {
         question: 'Can customers pay with UPI?',
-        answer: 'Yes — UPI, cards, wallets and net banking through Indian payment gateways.',
+        answer: 'Yes, UPI, cards, wallets and net banking through Indian payment gateways.',
       },
     ],
     seo: {
@@ -154,17 +154,17 @@ export const industries: Industry[] = [
       {
         problem: 'Reception is overloaded with appointment calls.',
         fix: 'Online booking with live slots and automatic reminders.',
-        link: 'app-development/booking-apps',
+        link: 'mobile-app-development/booking-apps',
       },
       {
         problem: 'Patients don’t find us on Google.',
         fix: 'A clear website and technical SEO for local searches.',
-        link: 'seo-performance/technical-seo',
+        link: 'seo-services/technical-seo',
       },
       {
         problem: 'The same questions come in on WhatsApp all day.',
-        fix: 'A WhatsApp assistant for timings, fees and directions — with hand-over to staff.',
-        link: 'ai-automation/whatsapp-chatbots',
+        fix: 'A WhatsApp assistant for timings, fees and directions, with hand-over to staff.',
+        link: 'ai-chatbots-automation/whatsapp-chatbots',
       },
       {
         problem: 'Patient enquiries are tracked on paper.',
@@ -224,7 +224,7 @@ export const industries: Industry[] = [
       {
         question: 'Can AI run inside our own cloud?',
         answer:
-          'Yes — private deployments on AWS Bedrock, Azure OpenAI or your own servers keep data in your environment.',
+          'Yes, private deployments on AWS Bedrock, Azure OpenAI or your own servers keep data in your environment.',
       },
       {
         question: 'Do you hold banking-specific certifications?',
@@ -250,7 +250,7 @@ export const industries: Industry[] = [
       {
         problem: 'Customers keep calling to ask where their shipment is.',
         fix: 'Automatic tracking updates on WhatsApp and a customer tracking page.',
-        link: 'integrations/whatsapp-business-api',
+        link: 'crm-whatsapp-integration/whatsapp-business-api',
       },
       {
         problem: 'We find out about delays too late.',
@@ -265,7 +265,7 @@ export const industries: Industry[] = [
       {
         problem: 'Drivers report on paper and WhatsApp.',
         fix: 'A simple driver app for proof of delivery and updates.',
-        link: 'app-development/android-apps',
+        link: 'mobile-app-development/android-apps',
       },
     ],
     faqs: [
@@ -297,7 +297,7 @@ export const industries: Industry[] = [
       {
         problem: 'Leads from portals and ads go cold before anyone calls back.',
         fix: 'Every lead in one CRM with instant WhatsApp replies and follow-up reminders.',
-        link: 'integrations/crm-integration',
+        link: 'crm-whatsapp-integration/crm-integration',
       },
       {
         problem: 'Our project website doesn’t generate site visits.',
@@ -307,11 +307,11 @@ export const industries: Industry[] = [
       {
         problem: 'Buyers ask the same questions all day.',
         fix: 'A WhatsApp assistant for prices, availability and site-visit booking.',
-        link: 'ai-automation/whatsapp-chatbots',
+        link: 'ai-chatbots-automation/whatsapp-chatbots',
       },
       {
         problem: 'We want to offer fractional ownership.',
-        fix: 'Compliant asset tokenization with transfer rules — subject to legal advice.',
+        fix: 'Compliant asset tokenization with transfer rules, subject to legal advice.',
         link: 'blockchain/asset-tokenization',
       },
     ],

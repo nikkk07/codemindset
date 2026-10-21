@@ -33,6 +33,10 @@ export const site = {
     linkedin: 'https://www.linkedin.com/company/codemindset-ai/',
     instagram: 'https://www.instagram.com/codemindset.ai/',
   },
+  /** Stated by the owner on 2026-10-20. Update as projects are added. */
+  proof: {
+    websitesLive: '20+',
+  },
   ownedBrands: {
     socialScalex: {
       name: 'Social ScaleX',
@@ -52,8 +56,9 @@ export const site = {
     /**
      * Owner decision on AI model-training crawlers (GPTBot, Google-Extended, …).
      * 'undecided' blocks them conservatively and fails the launch gate.
+     * Set to 'allow' on 2026-10-20: the owner's goal is maximum visibility in AI assistants.
      */
-    aiTraining: 'undecided' as 'allow' | 'block' | 'undecided',
+    aiTraining: 'allow' as 'allow' | 'block' | 'undecided',
   },
 } as const;
 

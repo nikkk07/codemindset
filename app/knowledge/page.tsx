@@ -2,11 +2,13 @@ import Link from 'next/link';
 import { CTABand, SectionHead } from '@/components/ui/Blocks';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
+import { GuideCard } from '@/components/guides/GuideCard';
 import { buildMetadata } from '@/lib/seo';
 import {
   getVisibleArticles,
   getVisibleGlossary,
   getVisibleHubs,
+  getVisibleLongGuides,
   guideHref,
   isGuideVisible,
 } from '@/lib/visibility';
@@ -17,6 +19,7 @@ export const metadata = buildMetadata(page);
 export default function KnowledgePage() {
   const guides = getVisibleHubs().filter((h) => isGuideVisible(h));
   const terms = getVisibleGlossary();
+  const long = getVisibleLongGuides();
   const articles = getVisibleArticles();
   return (
     <>
@@ -24,12 +27,25 @@ export default function KnowledgePage() {
         crumbs={[{ name: 'Knowledge', path: page.path }]}
         eyebrow="Knowledge hub"
         title="Technology, explained"
-        accent="in plain words."
-        lead="Simple guides to choosing the right technology, articles from our team, and a glossary of tech terms for business owners."
+        accent="for business owners."
+        lead="Fact-checked guides, quick help-me-choose guides and a glossary of tech terms, written without jargon."
       />
 
+      {long.length > 0 ? (
+        <section className="section" aria-labelledby="k-long">
+          <div className="container">
+            <SectionHead eyebrow="In-depth guides" title="Learn it properly" id="k-long" />
+            <div className="gcard-grid" style={{ marginTop: 24 }}>
+              {long.map((g) => (
+                <GuideCard key={g.slug} g={g} />
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       {guides.length > 0 ? (
-        <section className="section" aria-labelledby="k-guides">
+        <section className="section section--flush-top" aria-labelledby="k-guides">
           <div className="container">
             <SectionHead
               eyebrow="Guides"

@@ -15,10 +15,11 @@ import './styles/components.css';
 import './styles/home.css';
 import './styles/pages.css';
 import './styles/forms.css';
+import './styles/calm.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: `${site.name} — ${site.tagline}`, template: `%s | ${site.name}` },
+  title: { default: `${site.name}, ${site.tagline}`, template: `%s | ${site.name}` },
   description: site.description,
   applicationName: site.name,
   formatDetection: { telephone: false, email: false, address: false },

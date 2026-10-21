@@ -9,14 +9,16 @@ import {
   getVisibleGlossary,
   getVisibleHubs,
   getVisibleIndustries,
+  getVisibleLongGuides,
   getVisibleRegions,
-  getVisibleSubs,
+  getPageSubs,
   guideHref,
   hubHref,
   isGuideVisible,
   isPublishable,
   isRegionPublishable,
   isWorkEnabled,
+  longGuideHref,
   subHref,
 } from './visibility';
 
@@ -44,9 +46,10 @@ export function buildSitemap(env?: NodeJS.ProcessEnv): MetadataRoute.Sitemap {
   for (const h of getVisibleHubs(env)) {
     if (!drafts && !isPublishable(h)) continue;
     paths.push(hubHref(h.slug));
-    for (const s of getVisibleSubs(h, env)) paths.push(subHref(h.slug, s.slug));
+    for (const s of getPageSubs(h, env)) paths.push(subHref(h.slug, s.slug));
     if (isGuideVisible(h, env)) paths.push(guideHref(h.slug));
   }
+  for (const g of getVisibleLongGuides(env)) if (ok(g.review)) paths.push(longGuideHref(g.slug));
   for (const a of getVisibleAudiences(env)) paths.push(`/for/${a.slug}/`);
   for (const i of getVisibleIndustries(env)) paths.push(`/industries/${i.slug}/`);
   for (const r of getVisibleRegions(env))

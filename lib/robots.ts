@@ -12,7 +12,14 @@ export const AI_TRAINING_CRAWLERS = [
 ];
 
 /** Crawlers that power AI search answers with links back to sources. Allowed. */
-export const AI_SEARCH_CRAWLERS = ['OAI-SearchBot', 'Claude-SearchBot', 'PerplexityBot'];
+export const AI_SEARCH_CRAWLERS = [
+  'OAI-SearchBot',
+  'ChatGPT-User',
+  'Claude-SearchBot',
+  'Claude-User',
+  'PerplexityBot',
+  'Perplexity-User',
+];
 
 type RobotsRule = { userAgent: string | string[]; allow?: string; disallow?: string };
 

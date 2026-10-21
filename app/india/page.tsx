@@ -10,7 +10,7 @@ const page = corePages.india;
 export const metadata = buildMetadata(page);
 
 const remote = [
-  { title: 'Talk', text: 'Call, WhatsApp or video — whatever suits you.' },
+  { title: 'Talk', text: 'Call, WhatsApp or video, whatever suits you.' },
   { title: 'See progress', text: 'Shared preview links so you can review from anywhere.' },
   { title: 'Launch', text: 'We go live and hand everything over, wherever you are.' },
 ];
@@ -33,7 +33,7 @@ export default function IndiaPage() {
         eyebrow="Across India"
         title="An Indian company,"
         accent="delivering in every state."
-        lead="CodeMindset is an Indian IT services company. We build websites, apps, automation and software for businesses in all 28 states and 8 union territories — in big cities and small towns alike."
+        lead="CodeMindset is an Indian IT services company. We build websites, apps, automation and software for businesses in all 28 states and 8 union territories, in big cities and small towns alike."
       />
       <section className="section" aria-labelledby="remote-title">
         <div className="container">

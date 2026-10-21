@@ -16,12 +16,12 @@ const aiEngineering: ServiceHub = {
   plainTitle: 'Smart AI systems for my business',
   blurb: 'Multi-agent AI, RAG assistants and private LLMs',
   eyebrow: 'AI agent & generative AI development company in India',
-  h1: 'AI that does real work —',
-  h1Accent: 'safely and within budget.',
+  h1: 'AI agents & generative AI',
+  h1Accent: 'development',
   answer:
-    'Generative AI can read your documents, answer questions with sources, and even complete multi-step tasks across your systems. CodeMindset designs and builds these AI systems — multi-agent workflows, RAG knowledge assistants and private LLM deployments — with human checks, data protection and cost limits built in from day one.',
+    'We build AI agents, knowledge assistants (RAG) and private LLM systems with guardrails, monitoring and cost control, built for real business work.',
   simple: {
-    title: 'What a well-built AI system does for you',
+    title: 'What does a well-built AI system do?',
     steps: [
       {
         title: 'Knows your business',
@@ -29,7 +29,7 @@ const aiEngineering: ServiceHub = {
       },
       {
         title: 'Gets work done',
-        text: 'Takes steps across your tools — checks, drafts, updates — and asks a person before anything important.',
+        text: 'Takes steps across your tools (checks, drafts, updates) and asks a person before anything important.',
       },
       {
         title: 'Stays safe and affordable',
@@ -37,7 +37,7 @@ const aiEngineering: ServiceHub = {
       },
     ],
   },
-  platformsLabel: 'The technology behind it',
+  platformsLabel: 'Which technology do we use?',
   platforms: [
     P(
       'langgraph',
@@ -108,7 +108,7 @@ const aiEngineering: ServiceHub = {
       'neo4j',
       'Neo4j knowledge graphs',
       'Knowledge graph development with Neo4j',
-      'Stores how things are connected — people, cases, products — so AI can reason over relationships.',
+      'Stores how things are connected (people, cases, products) so AI can reason over relationships.',
       'Legal, medical, research and compliance data with many links.',
       [
         'Graph data model',
@@ -135,7 +135,7 @@ const aiEngineering: ServiceHub = {
         {
           question: 'Will AI agents act without anyone checking?',
           answer:
-            'Only where you allow it. Important decisions — money, approvals, customer messages — go to a person first, and every step is logged.',
+            'Only where you allow it. Important decisions (money, approvals, customer messages) go to a person first, and every step is logged.',
         },
       ],
       [
@@ -147,7 +147,7 @@ const aiEngineering: ServiceHub = {
         {
           sector: 'E-commerce',
           story:
-            'A support agent checks the order and shipping status, confirms stock and prepares a refund or return label — escalating to staff for anything outside the agreed rules.',
+            'A support agent checks the order and shipping status, confirms stock and prepares a refund or return label, escalating to staff for anything outside the agreed rules.',
         },
       ],
     ),
@@ -155,7 +155,7 @@ const aiEngineering: ServiceHub = {
       'rag-knowledge-assistants',
       'RAG & knowledge assistants',
       'RAG knowledge assistant development',
-      'An AI assistant that answers from your own documents — and shows where each answer came from.',
+      'An AI assistant that answers from your own documents, and shows where each answer came from.',
       'Policies, manuals, contracts, research and support content.',
       [
         'Document chunking and embeddings',
@@ -221,7 +221,7 @@ const aiEngineering: ServiceHub = {
       'model-fine-tuning',
       'Fine-tuning & optimisation',
       'LLM fine-tuning and model optimisation',
-      'Teach a model your tasks and tone — and make it smaller and cheaper to run.',
+      'Teach a model your tasks and tone, and make it smaller and cheaper to run.',
       'High-volume AI tasks where quality or cost matters.',
       [
         'Training data preparation',
@@ -234,7 +234,7 @@ const aiEngineering: ServiceHub = {
   guide: {
     question: 'Chatbot, RAG assistant or AI agents?',
     shortAnswer:
-      'A chatbot answers common questions. A RAG assistant answers from your own documents, with sources. AI agents take actions across your systems. Start with the simplest one that solves your problem — we’ll tell you which.',
+      'A chatbot answers common questions. A RAG assistant answers from your own documents, with sources. AI agents take actions across your systems. Start with the simplest one that solves your problem. We’ll tell you which.',
     goals: [
       {
         id: 'docs',
@@ -261,8 +261,8 @@ const aiEngineering: ServiceHub = {
         id: 'unsure',
         label: 'I’m not sure',
         pick: null,
-        title: 'Tell us — we’ll choose',
-        why: 'Describe the task. We recommend the simplest AI that will work reliably — or none at all.',
+        title: 'Not sure? We’ll choose for you',
+        why: 'Describe the task. We recommend the simplest AI that will work reliably, or none at all.',
       },
     ],
     table: {
@@ -313,7 +313,7 @@ const aiEngineering: ServiceHub = {
     },
   ],
   related: [
-    'ai-automation/whatsapp-chatbots',
+    'ai-chatbots-automation/whatsapp-chatbots',
     'data-engineering/data-pipelines',
     'cybersecurity/ai-security-testing',
     'technical-assessment/ai-readiness',
@@ -324,7 +324,7 @@ const aiEngineering: ServiceHub = {
   seo: {
     title: 'AI Agent & Generative AI Development Company in India',
     description:
-      'Multi-agent AI systems, RAG knowledge assistants, LLM guardrails and private AI deployment — built with human checks and cost control, across India.',
+      'Multi-agent AI systems, RAG knowledge assistants, LLM guardrails and private AI deployment, built with human checks and cost control, across India.',
   },
   readiness: 'ready',
   review: 'draft',
@@ -338,22 +338,22 @@ const data: ServiceHub = {
   plainTitle: 'Make sense of my business data',
   blurb: 'Data pipelines, warehouses, real-time data and MLOps',
   eyebrow: 'Data engineering services in India',
-  h1: 'All your data,',
-  h1Accent: 'in one place you can trust.',
+  h1: 'Data engineering & MLOps',
+  h1Accent: 'services',
   answer:
-    'When sales, stock, website and finance data sit in different systems, nobody sees the full picture. CodeMindset builds the pipelines that bring that data together, cleans it, keeps it up to date — even in real time — and puts machine-learning models into reliable production use.',
+    'We bring your data into one trusted place with pipelines, warehouses, dashboards and machine-learning operations, so every decision uses the right numbers.',
   simple: {
-    title: 'What good data engineering does for you',
+    title: 'What does data engineering fix?',
     steps: [
       { title: 'One source of truth', text: 'Every team sees the same, correct numbers.' },
       {
         title: 'Always up to date',
-        text: 'Data refreshes automatically — hourly or in real time.',
+        text: 'Data refreshes automatically, hourly or in real time.',
       },
       { title: 'Ready for AI', text: 'Clean, organised data that reports and AI models can use.' },
     ],
   },
-  platformsLabel: 'The technology behind it',
+  platformsLabel: 'Which technology do we use?',
   platforms: [
     P(
       'snowflake',
@@ -375,7 +375,7 @@ const data: ServiceHub = {
       'apache-kafka',
       'Apache Kafka',
       'Apache Kafka streaming development',
-      'Moves events — orders, clicks, sensor readings — between systems the moment they happen.',
+      'Moves events (orders, clicks, sensor readings) between systems the moment they happen.',
       'Real-time stock, tracking and alerts.',
       ['Topic and schema design', 'Producers and consumers', 'Stream processing', 'Monitoring'],
     ),
@@ -422,7 +422,7 @@ const data: ServiceHub = {
       'real-time-streaming',
       'Real-time data streaming',
       'Real-time data streaming solutions',
-      'Data that updates the moment something happens — not the next morning.',
+      'Data that updates the moment something happens, not the next morning.',
       'Live stock, delivery tracking, fraud alerts and dashboards.',
       ['Event streaming (Kafka)', 'Stream processing', 'Live dashboards', 'Alerting'],
       undefined,
@@ -459,7 +459,7 @@ const data: ServiceHub = {
       'mlops',
       'MLOps & model deployment',
       'MLOps and ML model deployment',
-      'Put machine-learning models into real use — and keep them accurate as data changes.',
+      'Put machine-learning models into real use, and keep them accurate as data changes.',
       'Forecasting, recommendations, routing and risk models.',
       [
         'Automated retraining pipelines',
@@ -478,7 +478,7 @@ const data: ServiceHub = {
     ),
   ],
   guide: {
-    question: 'Do I need a data warehouse — or just better dashboards?',
+    question: 'Do I need a data warehouse, or just better dashboards?',
     shortAnswer:
       'If your data lives in one or two systems, good dashboards are enough. If it’s spread across many tools, needs history, or feeds AI, you need a warehouse with automatic pipelines. Real-time streaming is only worth it when minutes matter.',
     goals: [
@@ -487,7 +487,7 @@ const data: ServiceHub = {
         label: 'Clear reports from 1–2 systems',
         pick: 'custom-software/dashboards',
         title: 'Dashboards',
-        why: 'Connect your existing tools to a clear dashboard — quickest and cheapest.',
+        why: 'Connect your existing tools to a clear dashboard. It’s the quickest and cheapest option.',
       },
       {
         id: 'many',
@@ -501,13 +501,13 @@ const data: ServiceHub = {
         label: 'Decisions in minutes, not days',
         pick: 'real-time-streaming',
         title: 'Real-time streaming',
-        why: 'Events flow as they happen — for live stock, tracking or alerts.',
+        why: 'Events flow as they happen, for live stock, tracking or alerts.',
       },
       {
         id: 'unsure',
         label: 'I’m not sure',
         pick: null,
-        title: 'Tell us — we’ll choose',
+        title: 'Not sure? We’ll choose for you',
         why: 'Tell us which systems you use and what you want to see. We recommend the simplest setup.',
       },
     ],
@@ -554,8 +554,8 @@ const data: ServiceHub = {
   related: [
     'custom-software/dashboards',
     'ai-engineering/rag-knowledge-assistants',
-    'seo-performance/cloud-devops',
-    'integrations/api-development',
+    'seo-services/cloud-devops',
+    'crm-whatsapp-integration/api-development',
   ],
   industries: ['retail-ecommerce', 'logistics'],
   cta: 'Discuss my data project',
@@ -563,7 +563,7 @@ const data: ServiceHub = {
   seo: {
     title: 'Data Engineering Services in India — Pipelines, Warehouses, MLOps',
     description:
-      'ETL pipelines, data warehouses and lakehouses, real-time streaming and MLOps on Snowflake, BigQuery, Databricks and Kafka — for businesses across India.',
+      'ETL pipelines, data warehouses and lakehouses, real-time streaming and MLOps on Snowflake, BigQuery, Databricks and Kafka, for businesses across India.',
   },
   readiness: 'ready',
   review: 'draft',
@@ -577,12 +577,12 @@ const security: ServiceHub = {
   plainTitle: 'Keep my systems and data safe',
   blurb: 'Security testing, AI defence, API and cloud security',
   eyebrow: 'Cybersecurity services in India',
-  h1: 'Find the weak spots',
-  h1Accent: 'before attackers do.',
+  h1: 'Cybersecurity & AI security',
+  h1Accent: 'services',
   answer:
-    'Websites, apps, APIs and AI chatbots all open doors into your business. CodeMindset tests them the way an attacker would, fixes what we find, protects personal data, and secures your cloud with a zero-trust approach — explained in plain words, with a clear priority list.',
+    'We find and fix weak spots before attackers do. That covers security audits (VAPT), AI and API security, data privacy and zero-trust access.',
   simple: {
-    title: 'What good security does for you',
+    title: 'What does good security give you?',
     steps: [
       {
         title: 'Know your risks',
@@ -592,7 +592,7 @@ const security: ServiceHub = {
       { title: 'Stay protected', text: 'Monitoring and checks so new gaps are caught early.' },
     ],
   },
-  platformsLabel: 'Where we secure',
+  platformsLabel: 'Where do we secure?',
   platforms: [
     P(
       'aws-security',
@@ -634,7 +634,7 @@ const security: ServiceHub = {
       'security-audit',
       'Website & app security testing',
       'Website and app security testing (VAPT)',
-      'We test your website or app the way a hacker would — then show you exactly what to fix.',
+      'We test your website or app the way a hacker would, then show you exactly what to fix.',
       'Before launch, after big changes, or when customers ask for proof.',
       [
         'OWASP Top 10 checks',
@@ -647,7 +647,7 @@ const security: ServiceHub = {
       'ai-security-testing',
       'AI & chatbot security',
       'AI and LLM security testing',
-      'Test your chatbot or AI agent against prompt injection, data leaks and misuse — and harden it.',
+      'Test your chatbot or AI agent against prompt injection, data leaks and misuse, and harden it.',
       'Any business with a public chatbot or AI assistant.',
       [
         'Prompt injection and jailbreak testing',
@@ -659,7 +659,7 @@ const security: ServiceHub = {
         {
           question: 'What is prompt injection?',
           answer:
-            'A trick where someone types instructions that make an AI ignore its rules — for example to reveal data or offer unauthorised discounts. Testing and guardrails reduce this risk.',
+            'A trick where someone types instructions that make an AI ignore its rules, for example to reveal data or offer unauthorised discounts. Testing and guardrails reduce this risk.',
         },
       ],
       [
@@ -700,7 +700,7 @@ const security: ServiceHub = {
       'zero-trust',
       'Zero-trust & cloud security',
       'Zero-trust and cloud security',
-      'Every user, device and service must prove who it is — every time.',
+      'Every user, device and service must prove who it is, every time.',
       'Growing teams and multi-cloud setups.',
       [
         'Identity-based access',
@@ -740,7 +740,7 @@ const security: ServiceHub = {
         id: 'unsure',
         label: 'I’m not sure',
         pick: null,
-        title: 'Tell us — we’ll check',
+        title: 'Not sure? We’ll check for you',
         why: 'Tell us what you run. We’ll suggest where the biggest risk is.',
       },
     ],
@@ -778,9 +778,9 @@ const security: ServiceHub = {
   ],
   related: [
     'ai-engineering/llm-guardrails-monitoring',
-    'seo-performance/cloudflare',
-    'integrations/api-development',
-    'seo-performance/website-maintenance',
+    'seo-services/cloudflare',
+    'crm-whatsapp-integration/api-development',
+    'seo-services/website-maintenance',
   ],
   industries: ['finance-insurance', 'healthcare'],
   cta: 'Check my security',
@@ -788,7 +788,7 @@ const security: ServiceHub = {
   seo: {
     title: 'Cybersecurity Services in India — VAPT, AI & Cloud Security',
     description:
-      'Website and app security testing, AI and chatbot security, API security, data privacy and zero-trust cloud security — with clear, prioritised fixes.',
+      'Website and app security testing, AI and chatbot security, API security, data privacy and zero-trust cloud security, with clear, prioritised fixes.',
   },
   readiness: 'ready',
   review: 'draft',
@@ -802,12 +802,12 @@ const blockchain: ServiceHub = {
   plainTitle: 'Build on blockchain',
   blurb: 'Smart contracts, audits and asset tokenization',
   eyebrow: 'Blockchain development company in India',
-  h1: 'Blockchain, used where it',
-  h1Accent: 'genuinely helps.',
+  h1: 'Blockchain development',
+  h1Accent: 'where it helps',
   answer:
-    'A blockchain is a shared record that several parties can trust without a middleman. CodeMindset builds smart contracts, audits them, tokenizes real-world assets and connects blockchains — and will tell you honestly if a normal database would serve you better.',
+    'We build and audit smart contracts, asset tokenisation and cross-chain apps. We will also tell you honestly when a normal database is the better choice.',
   simple: {
-    title: 'What blockchain can do for you',
+    title: 'What can blockchain actually do?',
     steps: [
       {
         title: 'One shared record',
@@ -823,7 +823,7 @@ const blockchain: ServiceHub = {
       },
     ],
   },
-  platformsLabel: 'The technology behind it',
+  platformsLabel: 'Which technology do we use?',
   platforms: [
     P(
       'ethereum',
@@ -886,7 +886,7 @@ const blockchain: ServiceHub = {
       'asset-tokenization',
       'Asset tokenization (RWA)',
       'Real-world asset tokenization',
-      'Turn ownership of a real asset — property, bonds, invoices — into digital tokens.',
+      'Turn ownership of a real asset (property, bonds, invoices) into digital tokens.',
       'Fractional ownership and digital transfer of assets.',
       [
         'Token design with transfer rules',
@@ -898,7 +898,7 @@ const blockchain: ServiceHub = {
         {
           question: 'Is asset tokenization legal in India?',
           answer:
-            'It depends on the asset and who can invest; regulators such as SEBI and RBI may apply. We build the technology — your legal advisors must confirm the structure.',
+            'It depends on the asset and who can invest; regulators such as SEBI and RBI may apply. We build the technology. Your legal advisors must confirm the structure.',
         },
       ],
       [
@@ -953,7 +953,7 @@ const blockchain: ServiceHub = {
         id: 'unsure',
         label: 'I’m not sure',
         pick: null,
-        title: 'Tell us — we’ll advise honestly',
+        title: 'Not sure? We’ll advise honestly',
         why: 'If a regular database is better for you, we’ll say so.',
       },
     ],
@@ -980,7 +980,7 @@ const blockchain: ServiceHub = {
     {
       question: 'Do you build cryptocurrencies or trading platforms?',
       answer:
-        'We focus on business uses — smart contracts, audits, tokenized assets and integrations — within applicable regulations.',
+        'We focus on business uses: smart contracts, audits, tokenized assets and integrations, within applicable regulations.',
     },
     {
       question: 'Which blockchain should we use?',
@@ -996,7 +996,7 @@ const blockchain: ServiceHub = {
   related: [
     'cybersecurity/security-audit',
     'custom-software/saas-development',
-    'integrations/api-development',
+    'crm-whatsapp-integration/api-development',
     'technical-assessment/tech-stack-review',
   ],
   industries: ['finance-insurance', 'real-estate'],
@@ -1005,7 +1005,7 @@ const blockchain: ServiceHub = {
   seo: {
     title: 'Blockchain Development in India — Smart Contracts & Tokenization',
     description:
-      'Smart contract development and audits, real-world asset tokenization and cross-chain integration on Ethereum, Polygon and Chainlink — honest advice first.',
+      'Smart contract development and audits, real-world asset tokenization and cross-chain integration on Ethereum, Polygon and Chainlink, with honest advice first.',
   },
   readiness: 'ready',
   review: 'draft',

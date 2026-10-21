@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { readEnquiry, validateEnquiry, type EnquiryInput } from '@/lib/enquiry/schema';
 
-const ctx = { serviceOptions: ['website-development', 'integrations', 'not-sure'] };
+const ctx = { serviceOptions: ['website-development', 'crm-whatsapp-integration', 'not-sure'] };
 const project: EnquiryInput = {
   kind: 'project',
   service: 'website-development',

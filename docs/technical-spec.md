@@ -85,7 +85,7 @@ interface Service {
   - `WebSite`.
   - `BreadcrumbList` on every page below the top level.
   - `Service` on service pages, only with fields that match the visible text.
-  - `FAQPage` markup is **not** used for rich-result purposes (Google restricts FAQ rich results); FAQs are plain HTML.
+  - `FAQPage` markup mirrors each page's visible questions (one per page). Google shows FAQ rich results only for government and health sites, so it is there for machine readability (Bing, AI assistants), not for rich results.
   - No `LocalBusiness` without a verified address. No Review/AggregateRating.
 - Infrastructure check before launch: firewall, bot protection and WAF must not block Googlebot, Bingbot or OAI-SearchBot (verify against logs and the providers' published IP lists).
 

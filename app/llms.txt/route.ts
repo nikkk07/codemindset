@@ -5,6 +5,9 @@ import {
   getVisibleGlossary,
   getVisibleHubs,
   getVisibleIndustries,
+  getVisibleLongGuides,
+  getPageSubs,
+  getVisibleProjects,
   getVisibleSubs,
   guideHref,
   hubHref,
@@ -31,8 +34,16 @@ export function GET() {
   ];
   for (const h of hubs) {
     lines.push(`- [${h.title}](${absoluteUrl(hubHref(h.slug))}): ${h.plainTitle}. ${h.blurb}.`);
-    for (const s of getVisibleSubs(h))
+    for (const s of getPageSubs(h))
       lines.push(`  - [${s.title}](${absoluteUrl(subHref(h.slug, s.slug))}): ${s.plain}`);
+    const rest = getVisibleSubs(h).filter((s) => !s.page);
+    if (rest.length > 0) lines.push(`  - Also: ${rest.map((s) => s.name).join(', ')}.`);
+  }
+  const work = getVisibleProjects();
+  if (work.length > 0) {
+    lines.push('', `## Live work (${site.proof.websitesLive} websites delivered)`);
+    for (const p of work)
+      lines.push(`- [${p.name}](${p.url}): ${p.kind}, ${p.industry}. ${p.summary}`);
   }
   const audiences = getVisibleAudiences();
   const industries = getVisibleIndustries();
@@ -44,6 +55,12 @@ export function GET() {
       lines.push(
         `- [${i.name}](${absoluteUrl(`/industries/${i.slug}/`)}): ${i.intro.split('. ')[0]}.`,
       );
+  }
+  const long = getVisibleLongGuides();
+  if (long.length > 0) {
+    lines.push('', '## In-depth guides');
+    for (const g of long)
+      lines.push(`- [${g.title}](${absoluteUrl(`/knowledge/guides/${g.slug}/`)}): ${g.answer}`);
   }
   const guides = hubs.filter((h) => isGuideVisible(h));
   if (guides.length > 0) {
@@ -63,6 +80,8 @@ export function GET() {
     '',
     '## Company',
     `- [About](${absoluteUrl(corePages.about.path)})`,
+    `- [How we work](${absoluteUrl(corePages.process.path)})`,
+    `- [Our work](${absoluteUrl(corePages.work.path)})`,
     `- [Across India](${absoluteUrl(corePages.india.path)})`,
     `- [Get a quote](${absoluteUrl(corePages.contact.path)})`,
     '',

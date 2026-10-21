@@ -11,6 +11,7 @@ export type CorePageKey =
   | 'glossary'
   | 'about'
   | 'work'
+  | 'process'
   | 'careers'
   | 'contact'
   | 'privacy'
@@ -20,16 +21,16 @@ export type CorePageKey =
 export const corePages: Record<CorePageKey, CorePage> = {
   home: {
     path: '/',
-    title: 'CodeMindset — Website, App, AI & Software Development in India',
+    title: 'Website & App Development Company in India — CodeMindset',
     description:
-      'Indian IT services company: websites, apps, AI chatbots and agents, automation, data, cybersecurity and custom software. Fast delivery, fixed written quote.',
+      'Websites, mobile apps, WhatsApp and AI chatbots, CRM integration and SEO for small and growing businesses in India. Fixed written quote, and you own everything.',
     review: 'draft',
   },
   services: {
     path: '/services/',
-    title: 'IT Services — Websites, Apps, AI, Data, Security & Software',
+    title: 'Services — Websites, Apps, Chatbots, CRM & SEO',
     description:
-      'All CodeMindset services: websites, apps, AI chatbots, automation, integrations, SEO, custom software, AI agents, data engineering, security and blockchain.',
+      'Website development, mobile apps, WhatsApp and AI chatbots, CRM and WhatsApp integration, and SEO for small businesses, plus custom software for big projects.',
     review: 'draft',
   },
   industries: {
@@ -62,9 +63,9 @@ export const corePages: Record<CorePageKey, CorePage> = {
   },
   guides: {
     path: '/knowledge/guides/',
-    title: 'How-to-Choose Guides — Pick the Right Technology',
+    title: 'Free Guides: Websites, Apps, WhatsApp Chatbots, CRM & SEO',
     description:
-      'Short, honest guides: WordPress vs Shopify vs custom code, web app vs mobile app, chatbot vs automation, which CRM, and more.',
+      'Fact-checked guides for business owners in India: getting a website, building an app, WhatsApp chatbots, choosing a CRM, and SEO, AEO and GEO.',
     review: 'draft',
   },
   glossary: {
@@ -76,15 +77,23 @@ export const corePages: Record<CorePageKey, CorePage> = {
   },
   about: {
     path: '/about/',
-    title: 'About CodeMindset — Indian IT Services Company',
+    title: 'About CodeMindset — Website & Software Development Company',
     description:
-      'CodeMindset is an Indian IT services company with a team of designers, developers, AI engineers and specialists, delivering across India. Think in Algorithm.',
+      'CodeMindset is an Indian website and software development company for small and growing businesses: fixed quotes, plain-language updates and full ownership.',
     review: 'draft',
   },
   work: {
     path: '/work/',
-    title: 'Our Work — Case Studies',
-    description: 'Client projects by CodeMindset, published with permission.',
+    title: 'Our Work — Websites We Have Built',
+    description:
+      'Live websites built by CodeMindset: booking platforms, online stores, education and agency websites. Visit them and see the work for yourself.',
+    review: 'draft',
+  },
+  process: {
+    path: '/how-we-work/',
+    title: 'How We Work — From First Call to Launch',
+    description:
+      'How a CodeMindset project works: a short call, a fixed written quote, reviews while we build, launch with full handover, and support after.',
     review: 'draft',
   },
   careers: {
@@ -96,9 +105,9 @@ export const corePages: Record<CorePageKey, CorePage> = {
   },
   contact: {
     path: '/contact/',
-    title: 'Get a Quote — Start Your Project',
+    title: 'Contact CodeMindset — Get a Free Quote',
     description:
-      'Tell us what you need in three short steps. Quick reply and a clear, written quote. Or call or WhatsApp us.',
+      'Tell us what you need in a few short steps, or call or WhatsApp us. Quick reply and a fixed written quote, with no obligation.',
     review: 'draft',
   },
   privacy: {

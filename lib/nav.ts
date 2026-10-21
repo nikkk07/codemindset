@@ -4,12 +4,10 @@ import {
   getVisibleArticles,
   getVisibleGlossary,
   getVisibleHubs,
-  getVisibleIndustries,
-  getVisibleSubs,
+  getVisibleLongGuides,
   hubHref,
   isGuideVisible,
   isWorkEnabled,
-  subHref,
 } from './visibility';
 
 export interface NavLink {
@@ -17,54 +15,36 @@ export interface NavLink {
   label: string;
 }
 
-export interface MegaGroup {
-  slug: string;
-  href: string;
-  title: string;
-  plainTitle: string;
-  blurb: string;
+export interface ServiceNavItem extends NavLink {
+  /** What a non-technical visitor would say: "A website for my business". */
+  plain: string;
   icon: IconName;
-  /** Need-based pages first (plain words). */
-  items: NavLink[];
-  /** Platform / technology pages, shown as a compact "Built with" row. */
-  tech: NavLink[];
 }
 
-/** Services mega-menu: every visible hub except the assessment, which gets its own card. */
-export function getMegaMenu(env?: NodeJS.ProcessEnv): {
-  groups: MegaGroup[];
-  assessment: MegaGroup | null;
+/**
+ * The Services menu, kept short on purpose: the five everyday services first (what most visitors
+ * need), bigger projects as plain links, and a "not sure" route for everyone else.
+ */
+export function getServicesNav(env?: NodeJS.ProcessEnv): {
+  main: ServiceNavItem[];
+  bigger: NavLink[];
+  help: NavLink | null;
 } {
-  const groups: MegaGroup[] = getVisibleHubs(env).map((h) => {
-    const subs = getVisibleSubs(h, env);
-    return {
-      slug: h.slug,
-      href: hubHref(h.slug),
-      title: h.title,
-      plainTitle: h.plainTitle,
-      blurb: h.blurb,
-      icon: h.icon,
-      items: subs
-        .filter((s) => s.kind === 'type')
-        .map((s) => ({ href: subHref(h.slug, s.slug), label: s.name })),
-      tech: subs
-        .filter((s) => s.kind === 'platform')
-        .map((s) => ({ href: subHref(h.slug, s.slug), label: s.name })),
-    };
+  const hubs = getVisibleHubs(env);
+  const item = (h: (typeof hubs)[number]): ServiceNavItem => ({
+    href: hubHref(h.slug),
+    label: h.title,
+    plain: h.plainTitle,
+    icon: h.icon,
   });
-  const assessment = groups.find((g) => g.slug === 'technical-assessment') ?? null;
-  return { groups: groups.filter((g) => g !== assessment), assessment };
-}
-
-export function getIndustryNav(
-  env?: NodeJS.ProcessEnv,
-): (NavLink & { icon: IconName; intro: string })[] {
-  return getVisibleIndustries(env).map((i) => ({
-    href: `/industries/${i.slug}/`,
-    label: i.name,
-    icon: i.icon,
-    intro: i.intro,
-  }));
+  const help = hubs.find((h) => h.segment === 'start');
+  return {
+    main: hubs.filter((h) => h.segment === 'everyday').map(item),
+    bigger: hubs
+      .filter((h) => h.segment === 'advanced')
+      .map((h) => ({ href: hubHref(h.slug), label: h.title })),
+    help: help ? { href: hubHref(help.slug), label: 'Free consultation' } : null,
+  };
 }
 
 export function getKnowledgeNav(env?: NodeJS.ProcessEnv): NavLink[] {
@@ -77,13 +57,18 @@ export function getKnowledgeNav(env?: NodeJS.ProcessEnv): NavLink[] {
   return items;
 }
 
-/** Simple top-level links after the Services and Industries menus. */
+/** Top-level links after Services. */
 export function getTopLinks(env?: NodeJS.ProcessEnv): NavLink[] {
   const links: NavLink[] = [];
-  if (isWorkEnabled(env)) links.push({ href: corePages.work.path, label: 'Work' });
-  links.push({ href: corePages.knowledge.path, label: 'Knowledge' });
+  if (isWorkEnabled(env)) links.push({ href: corePages.work.path, label: 'Our work' });
+  links.push({ href: corePages.process.path, label: 'How we work' });
+  if (
+    getVisibleLongGuides(env).length > 0 ||
+    getVisibleHubs(env).some((h) => isGuideVisible(h, env))
+  )
+    links.push({ href: corePages.guides.path, label: 'Guides' });
   links.push({ href: corePages.about.path, label: 'About' });
   return links;
 }
 
-export const quoteCta: NavLink = { href: corePages.contact.path, label: 'Get a quote' };
+export const quoteCta: NavLink = { href: corePages.contact.path, label: 'Get a free quote' };

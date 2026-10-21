@@ -9,12 +9,12 @@ import { getVisibleAudiences, getVisibleHubs, isWorkEnabled, resolveRef } from '
 
 const YEAR = new Date().getFullYear();
 const POPULAR = [
-  'ai-automation/whatsapp-chatbots',
-  'integrations/crm-integration',
+  'ai-chatbots-automation/whatsapp-chatbots',
+  'crm-whatsapp-integration/crm-integration',
   'website-development/shopify',
   'website-development/wordpress',
-  'app-development/flutter',
-  'seo-performance/website-maintenance',
+  'website-development/ecommerce-websites',
+  'seo-services/local-seo',
 ];
 
 export function Footer() {
@@ -30,8 +30,7 @@ export function Footer() {
             <Logo />
             <span className="footer__tagline">{site.tagline}</span>
             <p>
-              {site.descriptor}. Websites, apps, AI automation, integrations and custom software —
-              delivered across India.
+              Website, app and chatbot development for small and growing businesses across India.
             </p>
           </div>
           {hubs.length > 0 ? (
@@ -57,7 +56,8 @@ export function Footer() {
           <div className="footer__col">
             <h2>Company</h2>
             <Link href={corePages.about.path}>About</Link>
-            {isWorkEnabled() ? <Link href={corePages.work.path}>Work</Link> : null}
+            {isWorkEnabled() ? <Link href={corePages.work.path}>Our work</Link> : null}
+            <Link href={corePages.process.path}>How we work</Link>
             <Link href={corePages.india.path}>Across India</Link>
             <Link href={corePages.industries.path}>Industries</Link>
             {audiences.map((a) => (
@@ -65,7 +65,6 @@ export function Footer() {
                 For {a.name.toLowerCase()}
               </Link>
             ))}
-            <Link href={corePages.knowledge.path}>Knowledge hub</Link>
             {knowledge.map((k) => (
               <Link key={k.href} href={k.href}>
                 {k.label}

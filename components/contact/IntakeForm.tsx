@@ -182,7 +182,7 @@ export function IntakeForm({ serviceOptions }: { serviceOptions: Option[] }) {
           <h2>Enquiry sent</h2>
         </div>
         <p style={{ marginTop: 12 }}>
-          Thank you — your enquiry has reached our team. We’ll reply shortly, the way you asked us
+          Thank you, your enquiry has reached our team. We’ll reply shortly, the way you asked us
           to.
         </p>
         <p style={{ marginTop: 8 }}>
@@ -488,7 +488,7 @@ export function IntakeForm({ serviceOptions }: { serviceOptions: Option[] }) {
           </div>
         </div>
         <span id="contact-hint" className="field__hint">
-          A phone number or an email is enough — whichever you prefer.
+          A phone number or an email is enough, whichever you prefer.
         </span>
         <div className="field">
           <span className="field__label" id="pref-label">

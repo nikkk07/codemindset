@@ -1,6 +1,8 @@
 import { P, T } from './service-helpers';
+import { serviceDetails } from './service-details';
+import { servicePages } from './service-pages';
 import { advancedHubs } from './services-advanced';
-import type { ServiceHub } from './types';
+import type { ServiceHub, SubService } from './types';
 
 /**
  * Service catalogue: hubs → platform and need pages → one "how to choose" guide each.
@@ -19,18 +21,18 @@ const website: ServiceHub = {
   icon: 'website',
   title: 'Website development',
   plainTitle: 'A website for my business',
-  blurb: 'Sites that turn visitors into enquiries',
+  blurb: 'Business websites and online stores',
   eyebrow: 'Website development company in India',
-  h1: 'Get a website that',
-  h1Accent: 'brings you customers.',
+  h1: 'Website development',
+  h1Accent: 'for small businesses',
   answer:
-    'Your website is your shop that never closes. CodeMindset designs it, builds it and puts it online — no technical knowledge needed. Our team picks the right technology for you (WordPress, Shopify or custom code), delivers fast, and the website is fully yours. We serve businesses across India.',
+    'We design and build business websites and online stores that bring in enquiries. Every site is made for mobile, set up for Google and has WhatsApp built in. You get a fixed quote and full ownership.',
   simple: {
-    title: 'What a good website does for you',
+    title: 'Why does a business need a website?',
     steps: [
       {
         title: 'People find you',
-        text: 'On Google, Google Maps and AI assistants like ChatGPT — when they search for what you sell.',
+        text: 'On Google, Google Maps and AI assistants like ChatGPT, when they search for what you sell.',
       },
       {
         title: 'They trust you',
@@ -38,11 +40,11 @@ const website: ServiceHub = {
       },
       {
         title: 'They contact you',
-        text: 'Call, WhatsApp, enquire or buy — in one tap, from any phone.',
+        text: 'Call, WhatsApp, enquire or buy in one tap, from any phone.',
       },
     ],
   },
-  platformsLabel: 'The technology behind it',
+  platformsLabel: 'Which technology do we use?',
   platforms: [
     P(
       'wordpress',
@@ -174,7 +176,7 @@ const website: ServiceHub = {
       'website-redesign',
       'Website redesign',
       'Website redesign services',
-      'A fresh, faster version of your current site — without losing your Google rankings.',
+      'A fresh, faster version of your current site, without losing your Google rankings.',
       'Outdated, slow or hard-to-edit websites.',
       [
         'Review of what works today',
@@ -187,7 +189,7 @@ const website: ServiceHub = {
   guide: {
     question: 'WordPress, Shopify or custom code?',
     shortAnswer:
-      'Choose Shopify to sell products, WordPress to publish and edit content yourself, and custom code for unique features or top speed. Still unsure? Tell us your goal — we’ll choose.',
+      'Choose Shopify to sell products, WordPress to publish and edit content yourself, and custom code for unique features or top speed. Still unsure? Tell us your goal. We’ll choose.',
     goals: [
       {
         id: 'sell',
@@ -208,13 +210,13 @@ const website: ServiceHub = {
         label: 'Unique features or top speed',
         pick: 'custom-coded',
         title: 'Custom-coded',
-        why: 'Built exactly for your needs — portals, logins, integrations and the fastest load times.',
+        why: 'Built exactly for your needs: portals, logins, integrations and the fastest load times.',
       },
       {
         id: 'unsure',
         label: 'I’m not sure',
         pick: null,
-        title: 'Tell us — we’ll choose',
+        title: 'Not sure? We’ll choose for you',
         why: 'Share your goal in two minutes. We recommend the right platform in your quote, with the reason.',
       },
     ],
@@ -249,7 +251,7 @@ const website: ServiceHub = {
     {
       question: 'I’m not technical. Is that a problem?',
       answer:
-        'Not at all. Tell us about your business — we handle the technology and explain everything simply.',
+        'Not at all. Tell us about your business. We handle the technology and explain everything simply.',
     },
     {
       question: 'How much does website development cost?',
@@ -269,45 +271,45 @@ const website: ServiceHub = {
     {
       question: 'Will my website work on mobile and rank on Google?',
       answer:
-        'Every site is mobile-first and SEO-ready at launch. Rankings also depend on content and competition — we tell you honestly what to expect.',
+        'Every site is mobile-first and SEO-ready at launch. Rankings also depend on content and competition. We tell you honestly what to expect.',
     },
     {
       question: 'Do I own the website?',
-      answer: 'Yes — the domain, hosting account, code and logins are yours.',
+      answer: 'Yes, the domain, hosting account, code and logins are yours.',
     },
   ],
   related: [
-    'ai-automation/whatsapp-chatbots',
-    'integrations/crm-integration',
-    'seo-performance/technical-seo',
-    'seo-performance/website-maintenance',
+    'ai-chatbots-automation/whatsapp-chatbots',
+    'crm-whatsapp-integration/crm-integration',
+    'seo-services/technical-seo',
+    'seo-services/website-maintenance',
   ],
   industries: ['retail-ecommerce', 'education'],
   cta: 'Get a website quote',
   whatsapp: 'Hi CodeMindset, I need a website for my business.',
   seo: {
-    title: 'Website Development Company in India — WordPress, Shopify & Custom',
+    title: 'Website Development Company for Small Businesses in India',
     description:
-      'Business websites, online stores and landing pages on WordPress, Shopify or custom code. Fast delivery across India, fixed written quote, full ownership.',
+      'Business websites and online stores on WordPress, Shopify or custom code. Mobile-first, SEO-ready, WhatsApp enquiries built in. Fixed quote, and you own it.',
   },
   readiness: 'ready',
   review: 'draft',
 };
 
 const apps: ServiceHub = {
-  slug: 'app-development',
+  slug: 'mobile-app-development',
   segment: 'everyday',
   icon: 'app',
-  title: 'App development',
+  title: 'Mobile app development',
   plainTitle: 'A mobile app for my customers',
-  blurb: 'Android, iOS and web apps people use',
-  eyebrow: 'App development company in India',
-  h1: 'An app your customers',
-  h1Accent: 'actually use.',
+  blurb: 'Android and iPhone apps',
+  eyebrow: 'Mobile app development company in India',
+  h1: 'Mobile app development',
+  h1Accent: 'for Android & iPhone',
   answer:
-    'An app puts your business on your customer’s phone — for ordering, booking, tracking or staying in touch. CodeMindset plans, designs and builds Android, iOS and web apps, publishes them on the app stores and keeps them running. No technical knowledge needed: tell us what your customers should be able to do.',
+    'We build Android and iPhone apps for booking, ordering and customer accounts. Most clients need one app that runs on both, published under their own name. Fixed quote, full ownership.',
   simple: {
-    title: 'What an app does for you',
+    title: 'Why build a mobile app?',
     steps: [
       {
         title: 'Always in their pocket',
@@ -323,7 +325,7 @@ const apps: ServiceHub = {
       },
     ],
   },
-  platformsLabel: 'The technology behind it',
+  platformsLabel: 'Which technology do we use?',
   platforms: [
     P(
       'android-apps',
@@ -381,7 +383,7 @@ const apps: ServiceHub = {
       'progressive-web-apps',
       'Progressive web apps',
       'Progressive web app (PWA) development',
-      'A website that installs and works like an app — no app store needed.',
+      'A website that installs and works like an app, no app store needed.',
       'Quick launches and low-cost reach.',
       [
         'Install from the browser',
@@ -451,7 +453,7 @@ const apps: ServiceHub = {
   guide: {
     question: 'Web app, mobile app or both?',
     shortAnswer:
-      'Start with a web app or progressive web app if customers use it occasionally or on computers. Choose a mobile app (Flutter for both platforms) if they use it often on phones. Not sure? Tell us how customers will use it — we’ll recommend.',
+      'Start with a web app or progressive web app if customers use it occasionally or on computers. Choose a mobile app (Flutter for both platforms) if they use it often on phones. Not sure? Tell us how customers will use it. We’ll recommend.',
     goals: [
       {
         id: 'often',
@@ -465,7 +467,7 @@ const apps: ServiceHub = {
         label: 'Staff use it on computers',
         pick: 'web-applications',
         title: 'Web application',
-        why: 'Runs in any browser with nothing to install — ideal for dashboards and admin work.',
+        why: 'Runs in any browser with nothing to install, ideal for dashboards and admin work.',
       },
       {
         id: 'quick',
@@ -478,7 +480,7 @@ const apps: ServiceHub = {
         id: 'unsure',
         label: 'I’m not sure',
         pick: null,
-        title: 'Tell us — we’ll choose',
+        title: 'Not sure? We’ll choose for you',
         why: 'Describe what customers should do in the app. We recommend the right approach in your quote.',
       },
     ],
@@ -509,7 +511,7 @@ const apps: ServiceHub = {
     {
       question: 'Do I need an app or is a website enough?',
       answer:
-        'If customers visit occasionally, a good website is enough. If they use your service often — ordering, booking, tracking — an app is worth it. We’ll tell you honestly.',
+        'If customers visit occasionally, a good website is enough. If they use your service often (ordering, booking, tracking), an app is worth it. We’ll tell you honestly.',
     },
     {
       question: 'Can one app work on both Android and iPhone?',
@@ -529,36 +531,36 @@ const apps: ServiceHub = {
   ],
   related: [
     'website-development/custom-coded',
-    'integrations/payment-gateway-integration',
+    'crm-whatsapp-integration/payment-gateway-integration',
     'custom-software/saas-development',
-    'ai-automation/ai-agents',
+    'ai-chatbots-automation/ai-agents',
   ],
   industries: ['healthcare', 'retail-ecommerce'],
   cta: 'Get an app quote',
   whatsapp: 'Hi CodeMindset, I need a mobile app for my business.',
   seo: {
-    title: 'App Development Company in India — Android, iOS, Flutter',
+    title: 'Mobile App Development Company in India — Android & iOS',
     description:
-      'Android, iOS, Flutter and web app development for businesses across India. Clear quote, fast delivery, app store release and support.',
+      'Android and iPhone apps for businesses: booking, ordering, delivery and customer apps. Flutter or native, app store release, fixed quote and support.',
   },
   readiness: 'ready',
   review: 'draft',
 };
 
 const ai: ServiceHub = {
-  slug: 'ai-automation',
+  slug: 'ai-chatbots-automation',
   segment: 'everyday',
   icon: 'spark',
   title: 'AI chatbots & automation',
   plainTitle: 'Reply to customers automatically',
-  blurb: 'Chatbots, WhatsApp bots and workflows that save hours',
-  eyebrow: 'AI chatbot & automation company in India',
-  h1: 'Let your business',
-  h1Accent: 'reply and run on its own.',
+  blurb: 'WhatsApp and website chatbots, automated follow-ups',
+  eyebrow: 'AI chatbot development in India',
+  h1: 'WhatsApp & AI chatbots',
+  h1Accent: 'for business',
   answer:
-    'Many daily tasks — answering the same questions, following up enquiries, copying data, sending reminders — can run automatically. CodeMindset builds AI chatbots for your website and WhatsApp, and automations that connect your tools, with a person checking anything important. You explain the work in plain words; we build the system.',
+    'We build chatbots for WhatsApp and your website that answer customers 24×7, capture every lead and hand the chat to your team when needed. Follow-ups can run automatically too.',
   simple: {
-    title: 'What automation does for you',
+    title: 'What can a chatbot do for my business?',
     steps: [
       {
         title: 'Customers get instant answers',
@@ -574,7 +576,7 @@ const ai: ServiceHub = {
       },
     ],
   },
-  platformsLabel: 'The technology behind it',
+  platformsLabel: 'Which technology do we use?',
   platforms: [
     P(
       'chatgpt-openai',
@@ -686,7 +688,7 @@ const ai: ServiceHub = {
       'ai-agents',
       'AI agents',
       'AI agent development',
-      'AI that completes multi-step tasks — with checks and limits you set.',
+      'AI that completes multi-step tasks, with checks and limits you set.',
       'Research, triage, data entry and support tasks.',
       [
         'Clear task boundaries',
@@ -726,7 +728,7 @@ const ai: ServiceHub = {
         label: 'Stop repeating office tasks',
         pick: 'workflow-automation',
         title: 'Workflow automation',
-        why: 'Fixed, repeatable steps between your apps run on their own — reliable and low cost.',
+        why: 'Fixed, repeatable steps between your apps run on their own, reliable and low cost.',
       },
       {
         id: 'judge',
@@ -739,7 +741,7 @@ const ai: ServiceHub = {
         id: 'unsure',
         label: 'I’m not sure',
         pick: null,
-        title: 'Tell us — we’ll choose',
+        title: 'Not sure? We’ll choose for you',
         why: 'Describe the task in your own words. We recommend the simplest thing that works.',
       },
     ],
@@ -790,8 +792,8 @@ const ai: ServiceHub = {
     },
   ],
   related: [
-    'integrations/whatsapp-business-api',
-    'integrations/crm-integration',
+    'crm-whatsapp-integration/whatsapp-business-api',
+    'crm-whatsapp-integration/crm-integration',
     'website-development/business-websites',
     'technical-assessment/ai-readiness',
   ],
@@ -799,28 +801,28 @@ const ai: ServiceHub = {
   cta: 'Automate my work',
   whatsapp: 'Hi CodeMindset, I want to automate replies or work in my business.',
   seo: {
-    title: 'AI Chatbot & Business Automation Company in India',
+    title: 'WhatsApp Chatbot & AI Chatbot Development in India',
     description:
-      'AI chatbots for websites and WhatsApp, workflow automation and AI agents — with human checks. Built fast for businesses across India.',
+      'AI chatbots for WhatsApp and websites that answer customers 24×7, capture leads and hand over to your team, plus automated follow-ups. Official WhatsApp API.',
   },
   readiness: 'ready',
   review: 'draft',
 };
 
 const integrations: ServiceHub = {
-  slug: 'integrations',
+  slug: 'crm-whatsapp-integration',
   segment: 'everyday',
   icon: 'link',
   title: 'CRM & WhatsApp integration',
   plainTitle: 'Make my tools work together',
-  blurb: 'CRM, WhatsApp, payments and APIs in sync',
-  eyebrow: 'CRM, WhatsApp & API integration in India',
-  h1: 'Make your tools',
-  h1Accent: 'work together.',
+  blurb: 'Leads from website and WhatsApp into one CRM',
+  eyebrow: 'CRM & WhatsApp integration in India',
+  h1: 'CRM & WhatsApp integration',
+  h1Accent: 'for small businesses',
   answer:
-    'When your website, WhatsApp, CRM, payments and accounts don’t talk to each other, your team types the same data again and again. CodeMindset connects them, so information is entered once and appears everywhere it’s needed — correctly and automatically.',
+    'We connect your website, WhatsApp, CRM, payments and accounts, so every lead lands in one place and nothing is typed twice.',
   simple: {
-    title: 'What integration does for you',
+    title: 'Why connect your tools?',
     steps: [
       {
         title: 'Enter it once',
@@ -830,7 +832,7 @@ const integrations: ServiceHub = {
       { title: 'See everything', text: 'One accurate picture of customers, sales and payments.' },
     ],
   },
-  platformsLabel: 'Tools we connect',
+  platformsLabel: 'Which tools do we connect?',
   platforms: [
     P(
       'zoho',
@@ -870,7 +872,7 @@ const integrations: ServiceHub = {
       'razorpay',
       'Razorpay',
       'Razorpay payment gateway integration',
-      'Accept UPI, cards and wallets — and record every payment correctly.',
+      'Accept UPI, cards and wallets, and record every payment correctly.',
       'Indian businesses taking online payments.',
       [
         'Checkout and payment links',
@@ -988,8 +990,8 @@ const integrations: ServiceHub = {
         id: 'unsure',
         label: 'I’m not sure',
         pick: null,
-        title: 'Tell us — we’ll choose',
-        why: 'Tell us your team size and process. We recommend a CRM — or connect the one you already have.',
+        title: 'Not sure? We’ll choose for you',
+        why: 'Tell us your team size and process. We recommend a CRM, or connect the one you already have.',
       },
     ],
     table: {
@@ -1023,7 +1025,7 @@ const integrations: ServiceHub = {
     {
       question: 'Do you work with the official WhatsApp Business API?',
       answer:
-        'Yes — we set up the official API, approved message templates and connect it to your CRM, orders or bookings.',
+        'Yes. We set up the official API, approved message templates and connect it to your CRM, orders or bookings.',
     },
     {
       question: 'What if a connection fails?',
@@ -1036,8 +1038,8 @@ const integrations: ServiceHub = {
     },
   ],
   related: [
-    'ai-automation/whatsapp-chatbots',
-    'ai-automation/workflow-automation',
+    'ai-chatbots-automation/whatsapp-chatbots',
+    'ai-chatbots-automation/workflow-automation',
     'custom-software/dashboards',
     'website-development/ecommerce-websites',
   ],
@@ -1045,9 +1047,9 @@ const integrations: ServiceHub = {
   cta: 'Connect my tools',
   whatsapp: 'Hi CodeMindset, I want to connect my CRM / WhatsApp / payments.',
   seo: {
-    title: 'CRM, WhatsApp API & Payment Integration Services in India',
+    title: 'CRM & WhatsApp Integration for Small Businesses in India',
     description:
-      'Connect your website, CRM (Zoho, HubSpot, Salesforce), WhatsApp Business API, Razorpay and accounting — data entered once, everywhere.',
+      'Connect website forms, the WhatsApp Business API, Zoho or HubSpot CRM, Razorpay and Tally. Leads and orders are entered once, and follow-ups are never missed.',
   },
   readiness: 'ready',
   review: 'draft',
@@ -1061,12 +1063,12 @@ const software: ServiceHub = {
   plainTitle: 'Software made for my business',
   blurb: 'Tools, dashboards and SaaS built around you',
   eyebrow: 'Custom software development company in India',
-  h1: 'Software shaped',
-  h1Accent: 'around how you work.',
+  h1: 'Custom software development',
+  h1Accent: 'for your business',
   answer:
-    'Ready-made software makes you change the way you work. Custom software follows your process instead. CodeMindset builds internal tools, dashboards, custom CRMs and ERPs, and SaaS products — starting small, launching fast, and growing with your business.',
+    'We build software around how your business actually works: CRMs, dashboards, portals and SaaS products. We also modernise old systems. Fixed scope, and you own the code.',
   simple: {
-    title: 'What custom software does for you',
+    title: 'When does custom software make sense?',
     steps: [
       {
         title: 'Fits your process',
@@ -1079,7 +1081,7 @@ const software: ServiceHub = {
       { title: 'Grows with you', text: 'Add users, features and branches as the business grows.' },
     ],
   },
-  platformsLabel: 'The technology behind it',
+  platformsLabel: 'Which technology do we use?',
   platforms: [
     P(
       'nodejs',
@@ -1171,7 +1173,7 @@ const software: ServiceHub = {
       'legacy-modernisation',
       'Legacy modernisation',
       'Legacy software modernisation',
-      'Move old software (COBOL, old PHP, desktop apps) to modern, cloud-ready code — without stopping the business.',
+      'Move old software (COBOL, old PHP, desktop apps) to modern, cloud-ready code, without stopping the business.',
       'Businesses held back by old systems few people can maintain.',
       [
         'Code and risk assessment',
@@ -1211,7 +1213,7 @@ const software: ServiceHub = {
       'database-migration',
       'Database migration',
       'Database migration and modernisation',
-      'Move your data to a modern database or cloud — checked, cleaned and without losing a record.',
+      'Move your data to a modern database or cloud: checked, cleaned and without losing a record.',
       'Slow, outdated or costly databases.',
       [
         'Schema review and redesign',
@@ -1251,8 +1253,8 @@ const software: ServiceHub = {
         id: 'unsure',
         label: 'I’m not sure',
         pick: null,
-        title: 'Tell us — we’ll choose',
-        why: 'Walk us through your process. We recommend buy, build or connect — with reasons.',
+        title: 'Not sure? We’ll choose for you',
+        why: 'Walk us through your process. We recommend buy, build or connect, with reasons.',
       },
     ],
     table: {
@@ -1295,9 +1297,9 @@ const software: ServiceHub = {
     },
   ],
   related: [
-    'integrations/api-development',
-    'app-development/web-applications',
-    'ai-automation/document-ai',
+    'crm-whatsapp-integration/api-development',
+    'mobile-app-development/web-applications',
+    'ai-chatbots-automation/document-ai',
     'technical-assessment/tech-stack-review',
   ],
   industries: ['b2b-services', 'education'],
@@ -1313,26 +1315,26 @@ const software: ServiceHub = {
 };
 
 const seo: ServiceHub = {
-  slug: 'seo-performance',
+  slug: 'seo-services',
   segment: 'everyday',
   icon: 'chart',
-  title: 'SEO, speed & maintenance',
-  plainTitle: 'Get found on Google, load faster',
-  blurb: 'Rank, load fast and stay up to date',
-  eyebrow: 'Technical SEO & website maintenance in India',
-  h1: 'Get found, load fast,',
-  h1Accent: 'stay up and running.',
+  title: 'SEO, AEO & GEO',
+  plainTitle: 'Get found on Google & AI',
+  blurb: 'Google, Maps and AI assistant visibility',
+  eyebrow: 'SEO, AEO & GEO services in India',
+  h1: 'SEO, AEO & GEO services',
+  h1Accent: 'for Google and AI search',
   answer:
-    'A website only helps if people can find it and it works smoothly. CodeMindset fixes the technical side of SEO, makes your pages load fast, prepares your content for AI search, and keeps your site and servers updated, backed up and secure.',
+    'We help small businesses get found on Google, Google Maps and AI assistants like ChatGPT and Gemini. That means classic SEO, answer engine optimisation (AEO) and generative engine optimisation (GEO), with honest reports and no fake guarantees.',
   simple: {
-    title: 'What this does for you',
+    title: 'What does SEO do for my business?',
     steps: [
       { title: 'Show up in search', text: 'On Google and in AI answers when customers search.' },
       { title: 'Load in a blink', text: 'Fast pages keep visitors from leaving.' },
       { title: 'Never break', text: 'Updates, backups and monitoring handled for you.' },
     ],
   },
-  platformsLabel: 'The technology behind it',
+  platformsLabel: 'Which technology do we use?',
   platforms: [
     P(
       'aws',
@@ -1379,6 +1381,19 @@ const seo: ServiceHub = {
   ],
   types: [
     T(
+      'local-seo',
+      'Local SEO',
+      'Local SEO services',
+      'Show up on Google and Google Maps when people nearby search for what you do.',
+      'Shops, clinics, institutes and service businesses that serve an area.',
+      [
+        'Google Business Profile setup and fixes',
+        'Service and area pages',
+        'Consistent business listings',
+        'A simple way to ask for genuine reviews',
+      ],
+    ),
+    T(
       'technical-seo',
       'Technical SEO',
       'Technical SEO services',
@@ -1392,16 +1407,29 @@ const seo: ServiceHub = {
       ],
     ),
     T(
-      'ai-search-optimization',
-      'AI search visibility (AEO)',
-      'AI search optimisation (AEO)',
-      'Help ChatGPT, Gemini and other AI assistants understand and cite your business.',
-      'Businesses that want to appear in AI answers.',
+      'answer-engine-optimization',
+      'AEO (answer engine optimisation)',
+      'Answer engine optimisation (AEO) services',
+      'Get your answers chosen for Google’s AI Overviews, featured snippets and voice assistants.',
+      'Businesses whose customers ask questions before they buy.',
       [
-        'Clear answer-first content',
-        'Consistent business details',
-        'Structured data',
-        'AI crawler access setup',
+        'Question research from real searches',
+        'Answer-first rewrites of key pages',
+        'FAQ and how-to content that matches intent',
+        'Structured data that matches visible content',
+      ],
+    ),
+    T(
+      'generative-engine-optimization',
+      'GEO (generative engine optimisation)',
+      'Generative engine optimisation (GEO) services',
+      'Make ChatGPT, Gemini, Perplexity and Copilot understand, trust and recommend your business.',
+      'Businesses that want to be named in AI assistant answers.',
+      [
+        'AI visibility check across major assistants',
+        'Evidence-rich content: facts, sources, quotes',
+        'Consistent brand details across the web',
+        'AI search crawler access and Bing setup',
       ],
     ),
     T(
@@ -1429,7 +1457,7 @@ const seo: ServiceHub = {
       'website-maintenance',
       'Website maintenance',
       'Website maintenance services',
-      'Updates, backups, fixes and small changes — handled for you.',
+      'Updates, backups, fixes and small changes, handled for you.',
       'Any business that relies on its website.',
       ['Regular updates', 'Daily backups', 'Security monitoring', 'Small content changes'],
     ),
@@ -1443,7 +1471,7 @@ const seo: ServiceHub = {
     ),
   ],
   guide: {
-    question: 'Why is my website slow — and what should I fix first?',
+    question: 'Why is my website slow, and what should I fix first?',
     shortAnswer:
       'Most slow sites are held back by large images, too many add-ons or plugins, and cheap hosting. Fix images first, then remove unused add-ons, then upgrade hosting or add a CDN. A speed audit tells you exactly which applies.',
     goals: [
@@ -1472,7 +1500,7 @@ const seo: ServiceHub = {
         id: 'unsure',
         label: 'I’m not sure',
         pick: null,
-        title: 'Tell us — we’ll check',
+        title: 'Not sure? We’ll check for you',
         why: 'Send your website address. We’ll tell you what to fix first.',
       },
     ],
@@ -1511,15 +1539,15 @@ const seo: ServiceHub = {
     'website-development/website-redesign',
     'website-development/custom-coded',
     'technical-assessment/website-audit',
-    'integrations/crm-integration',
+    'crm-whatsapp-integration/crm-integration',
   ],
   industries: ['retail-ecommerce', 'healthcare'],
-  cta: 'Check my website',
+  cta: 'Check my visibility',
   whatsapp: 'Hi CodeMindset, I want to improve my website’s Google ranking / speed.',
   seo: {
-    title: 'Technical SEO, Website Speed & Maintenance Services in India',
+    title: 'SEO, AEO & GEO Services for Small Businesses in India',
     description:
-      'Technical SEO, AI search visibility, speed optimisation, cloud and website maintenance. Audits with real fixes and measured results.',
+      'Get found on Google, Google Maps and AI assistants. Local SEO, answer engine optimisation (AEO) and generative engine optimisation (GEO) for Indian businesses.',
   },
   readiness: 'ready',
   review: 'draft',
@@ -1531,17 +1559,17 @@ const assessment: ServiceHub = {
   icon: 'search',
   title: 'Technical assessment',
   plainTitle: 'Not sure what I need',
-  blurb: 'Tell us the problem — we suggest the solution',
+  blurb: 'Tell us the problem. We suggest the solution',
   eyebrow: 'IT consulting for businesses in India',
-  h1: 'Not sure what you need?',
-  h1Accent: 'Start here.',
+  h1: 'Free IT consultation',
+  h1Accent: '— not sure what you need?',
   answer:
-    'You don’t need to know the technology — just the problem. CodeMindset looks at how your business works today, what tools you use and where time or money is lost, then recommends what to build, buy or fix — or whether you need anything at all.',
+    'Tell us the problem, not the technology. We review how you work today and recommend what to build, buy or fix. Sometimes the answer is that you need nothing new.',
   simple: {
-    title: 'What an assessment gives you',
+    title: 'What do you get from a consultation?',
     steps: [
       { title: 'A clear picture', text: 'How things work today and where the problems are.' },
-      { title: 'Honest options', text: 'Build, buy, connect or change nothing — with reasons.' },
+      { title: 'Honest options', text: 'Build, buy, connect or change nothing, with reasons.' },
       { title: 'A first step', text: 'The smallest change that makes the biggest difference.' },
     ],
   },
@@ -1565,7 +1593,7 @@ const assessment: ServiceHub = {
       'ai-readiness',
       'AI readiness check',
       'AI readiness assessment',
-      'Find out where AI can genuinely help your business — and where it can’t.',
+      'Find out where AI can genuinely help your business, and where it can’t.',
       'Businesses curious about AI.',
       [
         'Tasks suited to AI',
@@ -1591,14 +1619,14 @@ const assessment: ServiceHub = {
   guide: {
     question: 'What should I build first?',
     shortAnswer:
-      'Start where the business loses the most time or money each week — usually missed enquiries, manual data entry or a website that doesn’t convert. Fix that one thing first, measure, then move to the next.',
+      'Start where the business loses the most time or money each week. Usually it’s missed enquiries, manual data entry or a website that doesn’t convert. Fix that one thing first, measure, then move to the next.',
     goals: [
       {
         id: 'leads',
         label: 'We miss enquiries',
-        pick: 'integrations/crm-integration',
+        pick: 'crm-whatsapp-integration/crm-integration',
         title: 'Lead capture + CRM',
-        why: 'Capture every enquiry and follow it up — usually the fastest win.',
+        why: 'Capture every enquiry and follow it up, usually the fastest win.',
       },
       {
         id: 'site',
@@ -1618,7 +1646,7 @@ const assessment: ServiceHub = {
         id: 'unsure',
         label: 'I’m not sure',
         pick: null,
-        title: 'Tell us — we’ll work it out',
+        title: 'Not sure? We’ll work it out',
         why: 'Describe your day-to-day problems. We suggest where to start.',
       },
     ],
@@ -1650,17 +1678,17 @@ const assessment: ServiceHub = {
   ],
   related: [
     'website-development/business-websites',
-    'ai-automation/workflow-automation',
-    'integrations/crm-integration',
-    'seo-performance/technical-seo',
+    'ai-chatbots-automation/workflow-automation',
+    'crm-whatsapp-integration/crm-integration',
+    'seo-services/technical-seo',
   ],
   industries: ['b2b-services', 'education', 'healthcare', 'retail-ecommerce'],
   cta: 'Tell us the problem',
-  whatsapp: 'Hi CodeMindset, I’m not sure what I need — can you help?',
+  whatsapp: 'Hi CodeMindset, I’m not sure what I need. Can you help?',
   seo: {
     title: 'IT Consulting & Technical Assessment for Businesses in India',
     description:
-      'Not sure what technology you need? We review your business and tools, then recommend what to build, buy or fix — in plain words.',
+      'Not sure what technology you need? We review your business and tools, then recommend what to build, buy or fix, in plain words.',
   },
   readiness: 'ready',
   review: 'draft',
@@ -1669,7 +1697,7 @@ const assessment: ServiceHub = {
 const [aiEngineering, data, security, blockchain] = advancedHubs;
 
 /** Menu and page order: everyday needs first, then custom and advanced work, then "not sure". */
-export const hubs: ServiceHub[] = [
+const catalogue: ServiceHub[] = [
   website,
   apps,
   ai,
@@ -1682,6 +1710,26 @@ export const hubs: ServiceHub[] = [
   blockchain!,
   assessment,
 ];
+
+/** Sub-services listed in servicePages get their own page and copy; the rest are listed on the hub. */
+export const hubs: ServiceHub[] = catalogue.map((h) => {
+  const withPage = (s: SubService): SubService => {
+    const key = `${h.slug}/${s.slug}`;
+    const copy = servicePages[key];
+    const detail = serviceDetails[key];
+    return copy
+      ? {
+          ...s,
+          page: true,
+          intro: copy.intro,
+          faqs: copy.faqs,
+          process: detail?.process,
+          deep: detail?.deep,
+        }
+      : s;
+  };
+  return { ...h, platforms: h.platforms.map(withPage), types: h.types.map(withPage) };
+});
 
 export const GUIDE_SLUG = 'how-to-choose';
 

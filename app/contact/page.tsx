@@ -15,13 +15,13 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
-        crumbs={[{ name: 'Get a quote', path: page.path }]}
-        eyebrow="Get a quote"
+        crumbs={[{ name: 'Contact', path: page.path }]}
+        eyebrow="Get a free quote"
         title="Tell us what you need."
         accent="We’ll take it from there."
-        lead="Three short steps, no technical words needed. You get a quick reply and a clear, written quote."
+        lead="Three short steps. Quick reply and a fixed, written quote."
       >
-        <CheckList items={['Quick reply', 'Fixed written quote', 'Serving all of India']} />
+        <CheckList items={['Quick reply', 'Fixed written quote', 'No obligation']} />
       </PageHero>
       <section className="section">
         <div className="container contact-grid">
@@ -29,7 +29,7 @@ export default function ContactPage() {
           <aside className="contact-aside" aria-label="Other ways to reach us">
             <div className="card card--tint">
               <span className="card__title">Prefer to talk?</span>
-              <span className="card__text">Call or message us — whichever is easier for you.</span>
+              <span className="card__text">Call or message us, whichever is easier for you.</span>
               <ContactLink
                 kind="call"
                 where="contact-aside"
@@ -59,7 +59,7 @@ export default function ContactPage() {
               <span className="card__title">What happens next</span>
               <ol className="steps" style={{ '--min': '100%' } as React.CSSProperties}>
                 {[
-                  ['We reply quickly', 'By call, WhatsApp or email — your choice.'],
+                  ['We reply quickly', 'By call, WhatsApp or email, your choice.'],
                   ['A short conversation', 'We understand the goal and ask the right questions.'],
                   ['Your written quote', 'What’s included, what isn’t, the price and the date.'],
                 ].map(([t, d], i) => (

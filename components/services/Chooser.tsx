@@ -48,7 +48,7 @@ export function Chooser({
         <ul className="chooser__static">
           {goals.map((g) => (
             <li key={g.id}>
-              <em>{g.label}</em> → <strong>{g.title}</strong> — {g.why}{' '}
+              <em>{g.label}</em> → <strong>{g.title}</strong>, {g.why}{' '}
               {g.href ? <Link href={g.href}>Learn more</Link> : null}
             </li>
           ))}

@@ -4,116 +4,111 @@ import { ServiceIcon } from '@/components/ui/Icons';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
 import { buildMetadata } from '@/lib/seo';
-import { lcFirst } from '@/lib/text';
-import {
-  getVisibleHubs,
-  getVisibleSubs,
-  guideHref,
-  hubHref,
-  isGuideVisible,
-  subHref,
-} from '@/lib/visibility';
+import { getVisibleHubs, getVisibleSubs, hubHref, subHref } from '@/lib/visibility';
 
 const page = corePages.services;
 export const metadata = buildMetadata(page);
 
 export default function ServicesPage() {
   const hubs = getVisibleHubs();
+  const everyday = hubs.filter((h) => h.segment === 'everyday');
+  const bigger = hubs.filter((h) => h.segment === 'advanced');
+  const help = hubs.find((h) => h.segment === 'start');
+
   return (
     <>
       <PageHero
         crumbs={[{ name: 'Services', path: page.path }]}
         eyebrow="Services"
-        title="Everything your business needs,"
-        accent="built by one team."
-        lead="Start with what you need in plain words. Each service then goes deeper — platforms, technologies and simple guides to help you choose."
+        title="Everything we build,"
+        accent="in plain words."
+        lead="Websites, apps, chatbots, CRM and SEO for small businesses, plus custom software and AI for bigger projects."
       />
 
-      <section className="section" aria-labelledby="needs-title">
+      <section className="section" aria-labelledby="everyday-title" id="everyday">
         <div className="container">
-          <SectionHead eyebrow="Start here" title="What do you need?" id="needs-title" />
-          <div className="grid" style={{ '--min': '280px' } as React.CSSProperties}>
-            {hubs.map((h) => (
-              <Link key={h.slug} href={hubHref(h.slug)} className="card">
+          <SectionHead
+            eyebrow="Most asked for"
+            title="For small and growing businesses"
+            id="everyday-title"
+          />
+          <div className="svc-grid" style={{ marginTop: 24 }}>
+            {everyday.map((h) => (
+              <Link key={h.slug} href={hubHref(h.slug)} className="svc">
                 <span className="icon-box">
                   <ServiceIcon name={h.icon} />
                 </span>
-                <span className="card__title">{h.plainTitle}</span>
-                <span className="card__text">
-                  {h.title} — {lcFirst(h.blurb)}.
-                </span>
-                <span className="card__more">Explore →</span>
+                <span className="svc__title">{h.title}</span>
+                <span className="svc__tech">{h.plainTitle}</span>
+                <span className="svc__text">{h.blurb}.</span>
+                <span className="svc__more">Explore →</span>
               </Link>
             ))}
+            {help ? (
+              <Link href={hubHref(help.slug)} className="svc svc--help">
+                <span className="svc__title">Not sure what you need?</span>
+                <span className="svc__text">
+                  Tell us the problem and we will suggest the simplest fix.
+                </span>
+                <span className="svc__more">Free consultation →</span>
+              </Link>
+            ) : null}
           </div>
         </div>
       </section>
 
-      {hubs.map((h, i) => {
-        const subs = getVisibleSubs(h);
-        if (subs.length === 0) return null;
-        const types = subs.filter((s) => s.kind === 'type');
-        const tech = subs.filter((s) => s.kind === 'platform');
-        return (
-          <section
-            key={h.slug}
-            className={`section${i % 2 === 0 ? ' section--tint' : ''}`}
-            aria-labelledby={`h-${h.slug}`}
-          >
-            <div className="container">
-              <SectionHead
-                eyebrow={h.plainTitle}
-                title={h.title}
-                id={`h-${h.slug}`}
-                action={
-                  <Link href={hubHref(h.slug)} className="link-arrow">
-                    Overview
-                  </Link>
-                }
-              />
-              {types.length > 0 ? (
-                <>
-                  <p className="eyebrow" style={{ marginBottom: 10 }}>
-                    By need
-                  </p>
-                  <ul className="chips" style={{ marginBottom: 20 }}>
-                    {types.map((s) => (
-                      <li key={s.slug}>
-                        <Link href={subHref(h.slug, s.slug)} className="chip">
-                          {s.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : null}
-              {tech.length > 0 ? (
-                <>
-                  <p className="eyebrow" style={{ marginBottom: 10 }}>
-                    By platform / technology
-                  </p>
-                  <ul className="chips" style={{ marginBottom: 20 }}>
-                    {tech.map((s) => (
-                      <li key={s.slug}>
-                        <Link href={subHref(h.slug, s.slug)} className="chip">
-                          {s.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              ) : null}
-              {isGuideVisible(h) ? (
-                <Link href={guideHref(h.slug)} className="btn btn--outline btn--sm">
-                  Guide: {h.guide.question}
+      {bigger.length > 0 ? (
+        <section className="section section--alt" aria-labelledby="bigger-title" id="advanced">
+          <div className="container">
+            <SectionHead
+              eyebrow="For bigger projects"
+              title="Custom software, AI and data"
+              lead="When ready-made tools are not enough."
+              id="bigger-title"
+            />
+            <div className="svc-grid" style={{ marginTop: 24 }}>
+              {bigger.map((h) => (
+                <Link key={h.slug} href={hubHref(h.slug)} className="svc">
+                  <span className="icon-box">
+                    <ServiceIcon name={h.icon} />
+                  </span>
+                  <span className="svc__title">{h.title}</span>
+                  <span className="svc__text">{h.blurb}.</span>
+                  <span className="svc__more">Explore →</span>
                 </Link>
-              ) : null}
+              ))}
             </div>
-          </section>
-        );
-      })}
+          </div>
+        </section>
+      ) : null}
 
-      <div style={{ height: 'var(--section-y)' }} />
+      {/* Every option on one page: a crawlable index of the whole catalogue */}
+      <section className="section" aria-labelledby="all-title">
+        <div className="container">
+          <SectionHead eyebrow="A to Z" title="Every option, by service" id="all-title" />
+          <div className="svc-grid" style={{ marginTop: 24 }}>
+            {[...everyday, ...bigger].map((h) => {
+              const subs = getVisibleSubs(h);
+              if (subs.length === 0) return null;
+              return (
+                <div key={h.slug} className="offer">
+                  <h3>
+                    <Link href={hubHref(h.slug)}>{h.title}</Link>
+                  </h3>
+                  <ul className="dir-list">
+                    {subs.map((s) => (
+                      <li key={s.slug}>
+                        <Link href={subHref(h.slug, s.slug)}>{s.name}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       <CTABand
         title="Not sure where to start? Tell us."
         where="services-index"

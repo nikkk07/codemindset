@@ -1,25 +1,25 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { GuideBlock } from '@/components/services/GuideBlock';
-import {
-  CTABand,
-  ContactBand,
-  FAQSection,
-  Includes,
-  SectionHead,
-  gridStyle,
-} from '@/components/ui/Blocks';
+import { GuideCard } from '@/components/guides/GuideCard';
+import { CTABand, FAQSection, SectionHead } from '@/components/ui/Blocks';
+import { SkipHook } from '@/components/ui/SkipHook';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { ContactLink } from '@/components/ui/ContactLink';
 import { ArrowIcon, ChatIcon, CheckIcon } from '@/components/ui/Icons';
 import { JsonLd } from '@/components/ui/JsonLd';
+import { ProjectCard } from '@/components/work/ProjectCard';
+import { steps } from '@/content/home';
+import type { SubService } from '@/content/types';
 import { quoteHref, whatsappHref } from '@/lib/contact';
 import { buildMetadata, graph, serviceJsonLd } from '@/lib/seo';
 import {
   getHub,
   getIndustry,
   getVisibleHubs,
+  getVisibleProjects,
   getVisibleSubs,
+  guidesForHub,
   hubHref,
   isGuideVisible,
   resolveRef,
@@ -43,22 +43,41 @@ export async function generateMetadata({ params }: { params: Promise<{ hub: stri
   });
 }
 
+function Offer({ hub, s }: { hub: string; s: SubService }) {
+  const href = s.page ? subHref(hub, s.slug) : null;
+  return (
+    <li className="offer" id={s.slug}>
+      <h3>{href ? <Link href={href}>{s.name}</Link> : s.name}</h3>
+      <p>{s.plain}</p>
+      <p className="offer__best">Best for: {s.best}</p>
+      {href ? (
+        <Link href={href} className="offer__more">
+          Read more →
+        </Link>
+      ) : null}
+    </li>
+  );
+}
+
 export default async function HubPage({ params }: { params: Promise<{ hub: string }> }) {
   const hub = getHub((await params).hub);
   if (!hub) notFound();
 
   const subs = getVisibleSubs(hub);
-  const platforms = subs.filter((s) => s.kind === 'platform');
   const types = subs.filter((s) => s.kind === 'type');
+  const platforms = subs.filter((s) => s.kind === 'platform');
   const guide = isGuideVisible(hub);
   const related = hub.related.map((r) => resolveRef(r)).filter((x) => x !== null);
   const industries = hub.industries.map((s) => getIndustry(s)).filter((x) => x !== undefined);
-  const heroTiles = platforms.length > 0 ? platforms.slice(0, 4) : types.slice(0, 4);
+  const work = getVisibleProjects()
+    .filter((p) => p.services.some((r) => r === hub.slug || r.startsWith(`${hub.slug}/`)))
+    .slice(0, 2);
   const path = hubHref(hub.slug);
+  const guides = guidesForHub(hub.slug);
 
   return (
     <>
-      <section className="hero hero--tint" aria-labelledby="hub-title">
+      <section className="hero2 hero2--inner" aria-labelledby="hub-title">
         <div className="container">
           <Breadcrumbs
             items={[
@@ -66,9 +85,12 @@ export default async function HubPage({ params }: { params: Promise<{ hub: strin
               { name: hub.title, path },
             ]}
           />
-          <div className="hero__grid">
-            <div className="hero__copy">
-              <span className="pill pill--white">{hub.eyebrow}</span>
+          <div className="hero2__grid" style={{ marginTop: 20 }}>
+            <div className="hero2__copy">
+              <p className="hero2__badge">
+                <span className="hero2__dot" aria-hidden="true" />
+                {hub.eyebrow}
+              </p>
               <h1 id="hub-title">
                 {hub.h1} <span>{hub.h1Accent}</span>
               </h1>
@@ -86,65 +108,55 @@ export default async function HubPage({ params }: { params: Promise<{ hub: strin
                   <ChatIcon /> WhatsApp us
                 </ContactLink>
               </div>
-              <ul className="check-list">
-                {[
-                  'No tech knowledge needed',
-                  'Fast turnaround',
-                  'Fixed written quote',
-                  'You own it',
-                ].map((t) => (
-                  <li key={t}>
-                    <CheckIcon />
-                    {t}
-                  </li>
-                ))}
-              </ul>
             </div>
-            <div className="panel">
-              <div className="panel__head">
-                <h2>How would you like to start?</h2>
-              </div>
-              <Link href={guide ? '#choose' : quoteHref(hub.slug)} className="tile tile--amber">
-                <span className="tile__text">
-                  <strong>Just tell us what you need</strong>
-                  <span>We choose the right technology for you</span>
-                </span>
-                <ArrowIcon />
-              </Link>
-              {heroTiles.length > 0 ? (
-                <>
-                  <span className="panel__label">
-                    {platforms.length > 0 ? 'Already know the platform?' : 'Or pick what you need'}
-                  </span>
-                  {heroTiles.map((s) => (
-                    <Link key={s.slug} href={subHref(hub.slug, s.slug)} className="tile tile--row">
-                      <span className="tile__text">
-                        <strong>{s.name}</strong>
-                        <span>{s.plain}</span>
-                      </span>
-                      <ArrowIcon />
-                    </Link>
-                  ))}
-                </>
+            {/* Key facts in one card: quick to scan, easy for search engines and AI to quote */}
+            <dl className="glance" aria-label={`${hub.title} at a glance`}>
+              {types.length > 0 ? (
+                <div>
+                  <dt>What we build</dt>
+                  <dd>
+                    {types
+                      .slice(0, 4)
+                      .map((t) => t.name)
+                      .join(', ')}
+                  </dd>
+                </div>
               ) : null}
-            </div>
+              {platforms.length > 0 ? (
+                <div>
+                  <dt>Built with</dt>
+                  <dd>
+                    {platforms
+                      .slice(0, 4)
+                      .map((t) => t.name)
+                      .join(', ')}
+                  </dd>
+                </div>
+              ) : null}
+              <div>
+                <dt>Price</dt>
+                <dd>Fixed, written quote before work starts</dd>
+              </div>
+              <div>
+                <dt>Ownership</dt>
+                <dd>Code, domain and logins in your name</dd>
+              </div>
+              <div>
+                <dt>Where</dt>
+                <dd>Anywhere in India, by call, WhatsApp and video</dd>
+              </div>
+            </dl>
           </div>
         </div>
       </section>
 
-      {/* Explained simply — for everyone */}
-      <section className="section" aria-labelledby="simple-title">
+      {/* In plain words: why it matters */}
+      <section className="section section--alt" aria-labelledby="simple-title">
         <div className="container">
-          <SectionHead eyebrow="Explained simply" title={hub.simple.title} id="simple-title" />
-          <ol className="steps">
-            {hub.simple.steps.map((s, i) => (
-              <li
-                key={s.title}
-                className={`step${i === hub.simple.steps.length - 1 ? ' step--accent' : ''}`}
-              >
-                <span className="step__n" aria-hidden="true">
-                  {i + 1}
-                </span>
+          <SectionHead eyebrow="In plain words" title={hub.simple.title} id="simple-title" />
+          <ol className="flow">
+            {hub.simple.steps.map((s) => (
+              <li key={s.title}>
                 <strong>{s.title}</strong>
                 <span>{s.text}</span>
               </li>
@@ -153,90 +165,118 @@ export default async function HubPage({ params }: { params: Promise<{ hub: strin
         </div>
       </section>
 
-      {/* Going deeper — platforms */}
+      {/* Everything this service covers; the most-searched get their own page */}
+      {types.length > 0 ? (
+        <section className="section" aria-labelledby="types-title">
+          <div className="container">
+            <SectionHead
+              eyebrow="What we offer"
+              title={`What ${hub.title.toLowerCase()} services do you offer?`}
+              id="types-title"
+            />
+            <ul className="offer-list">
+              {types.map((s) => (
+                <Offer key={s.slug} hub={hub.slug} s={s} />
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : null}
+
       {platforms.length > 0 ? (
         <section className="section section--flush-top" aria-labelledby="platforms-title">
           <div className="container">
             <SectionHead
-              eyebrow="Going deeper"
+              eyebrow="For the technically curious"
               title={hub.platformsLabel}
-              lead="Don’t know these names? That’s fine — skip ahead and we’ll choose for you."
+              lead="Don’t know these names? Tell us your goal and we’ll choose."
               id="platforms-title"
             />
-            <div className="grid" style={gridStyle(platforms.length, 300)}>
-              {platforms.map((p, i) => (
-                <article
-                  key={p.slug}
-                  id={p.slug}
-                  className={`platform${i === 0 ? ' platform--bold' : ''}`}
-                >
-                  <h3>
-                    <Link href={subHref(hub.slug, p.slug)}>{p.name}</Link>
-                  </h3>
-                  <p className="platform__plain">In simple words: {p.plain}</p>
-                  <p className="platform__best">Best for: {p.best}</p>
-                  <ul>
-                    {p.includes.slice(0, 4).map((x) => (
-                      <li key={x}>{x}</li>
-                    ))}
-                  </ul>
-                  <Link
-                    href={subHref(hub.slug, p.slug)}
-                    className={`btn ${i === 0 ? 'btn--white' : 'btn--outline'}`}
-                  >
-                    Explore {p.name}
-                  </Link>
-                </article>
+            <ul className="offer-list">
+              {platforms.map((s) => (
+                <Offer key={s.slug} hub={hub.slug} s={s} />
               ))}
-            </div>
+            </ul>
           </div>
         </section>
       ) : null}
 
-      {/* By need */}
-      {types.length > 0 ? (
-        <section className="section section--flush-top" aria-labelledby="types-title">
+      {work.length > 0 ? (
+        <section className="section section--alt" aria-labelledby="work-title">
           <div className="container">
-            <SectionHead
-              eyebrow="By what you need"
-              title="Choose by what you need"
-              id="types-title"
-            />
-            <div className="grid" style={gridStyle(types.length)}>
-              {types.map((t) => (
-                <Link key={t.slug} href={subHref(hub.slug, t.slug)} className="card">
-                  <span className="card__title">{t.name}</span>
-                  <span className="card__text">{t.plain}</span>
-                  <span className="card__more">Learn more →</span>
-                </Link>
+            <SectionHead eyebrow="Our work" title="Live projects like this" id="work-title" />
+            <div className="proj-grid proj-grid--2">
+              {work.map((p) => (
+                <ProjectCard key={p.slug} p={p} detailed />
               ))}
             </div>
           </div>
         </section>
       ) : null}
-
-      <section className="section section--flush-top">
-        <div className="container">
-          <ContactBand
-            where={`hub-${hub.slug}`}
-            service={hub.slug}
-            whatsapp={hub.whatsapp}
-            title="Have a project in mind?"
-          />
-        </div>
-      </section>
 
       {guide ? <GuideBlock hub={hub} showGuideLink /> : null}
 
       <section className="section" aria-labelledby="includes-title">
-        <div className="container">
-          <SectionHead eyebrow="What you get" title="Every project includes" id="includes-title" />
-          <Includes items={hub.includes} />
+        <div className="container split">
+          <div>
+            <SectionHead eyebrow="Included" title="What’s included?" id="includes-title" />
+            <ul className="reasons" style={{ marginTop: 24 }}>
+              {hub.includes.map((i) => (
+                <li key={i.title}>
+                  <CheckIcon />
+                  <strong>{i.title}</strong>
+                  <span>{i.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <SectionHead eyebrow="How it works" title="How does it work?" id="steps-title" />
+            <ol className="flow" style={{ marginTop: 24, gridTemplateColumns: '1fr' }}>
+              {steps.map((s) => (
+                <li key={s.title}>
+                  <strong>{s.title}</strong>
+                  <span>{s.text}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 
+      <section className="section section--flush-top">
+        <div className="container">
+          <SkipHook
+            title={`Skip the research. We’ll handle your ${hub.title.toLowerCase()} for you.`}
+            text="Tell us what you need in a few lines. You get a quick reply, a fixed written quote, and a team that does the work end to end."
+            cta={hub.cta}
+            service={hub.slug}
+            whatsapp={hub.whatsapp}
+            where={`hub-${hub.slug}-hook`}
+          />
+        </div>
+      </section>
+
+      {guides.length > 0 ? (
+        <section className="section section--flush-top" aria-labelledby="guides-title">
+          <div className="container">
+            <SectionHead
+              eyebrow="Free guides"
+              title="Want to understand it first?"
+              lead="In-depth, fact-checked guides that explain every step."
+              id="guides-title"
+            />
+            <div className="gcard-grid" style={{ marginTop: 24 }}>
+              {guides.map((g) => (
+                <GuideCard key={g.slug} g={g} />
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <FAQSection
-        title={`${hub.title}: common questions`}
+        title={`${hub.title}: FAQs`}
         items={hub.faqs}
         where={hub.slug}
         whatsapp={hub.whatsapp}
@@ -245,26 +285,19 @@ export default async function HubPage({ params }: { params: Promise<{ hub: strin
       {related.length > 0 || industries.length > 0 ? (
         <section className="section section--flush-top" aria-labelledby="related-title">
           <div className="container">
-            <SectionHead title="Often added to this" id="related-title" />
-            <div className="grid" style={gridStyle(related.length, 240)}>
+            <SectionHead title="Often needed together" id="related-title" />
+            <ul className="inline-links" style={{ marginTop: 16 }}>
               {related.map((r) => (
-                <Link key={r.href} href={r.href} className="card card--tint">
-                  <span className="card__title">{r.label}</span>
-                  <span className="card__text">{r.plain}</span>
-                </Link>
+                <li key={r.href}>
+                  <Link href={r.href}>{r.label}</Link>
+                </li>
               ))}
-            </div>
-            {industries.length > 0 ? (
-              <p style={{ marginTop: 20 }} className="lead">
-                Popular with:{' '}
-                {industries.map((i, n) => (
-                  <span key={i.slug}>
-                    {n > 0 ? ' · ' : ''}
-                    <Link href={`/industries/${i.slug}/`}>{i.name}</Link>
-                  </span>
-                ))}
-              </p>
-            ) : null}
+              {industries.map((i) => (
+                <li key={i.slug}>
+                  <Link href={`/industries/${i.slug}/`}>For {i.name.toLowerCase()}</Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       ) : null}

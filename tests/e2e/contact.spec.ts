@@ -83,7 +83,7 @@ test.describe('project form (3 steps)', () => {
   });
 
   test('pre-selects the service when arriving from a service page', async ({ page }) => {
-    await page.goto('/services/integrations/');
+    await page.goto('/services/crm-whatsapp-integration/');
     await page.getByRole('link', { name: 'Connect my tools' }).first().click();
     await expect(page.getByRole('radio', { name: /Make my tools work together/ })).toBeChecked();
   });

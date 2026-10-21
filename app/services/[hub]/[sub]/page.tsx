@@ -1,19 +1,15 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { GuideBlock, chooserGoals } from '@/components/services/GuideBlock';
-import {
-  CTABand,
-  CheckList,
-  ContactBand,
-  FAQSection,
-  SectionHead,
-  Steps,
-  gridStyle,
-} from '@/components/ui/Blocks';
+import { GuideCard } from '@/components/guides/GuideCard';
+import { ProcessMap } from '@/components/guides/ProcessMap';
+import { CTABand, FAQSection, SectionHead, gridStyle } from '@/components/ui/Blocks';
+import { SkipHook } from '@/components/ui/SkipHook';
 import { ContactLink } from '@/components/ui/ContactLink';
-import { ArrowIcon, ChatIcon } from '@/components/ui/Icons';
+import { ArrowIcon, ChatIcon, CheckIcon } from '@/components/ui/Icons';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
+import { ProjectCard } from '@/components/work/ProjectCard';
 import { steps } from '@/content/home';
 import { GUIDE_SLUG } from '@/content/services';
 import type { FAQ, ServiceHub, SubService } from '@/content/types';
@@ -23,9 +19,12 @@ import { lcFirst } from '@/lib/text';
 import {
   getHub,
   getSub,
+  getPageSubs,
   getVisibleHubs,
+  getVisibleProjects,
   getVisibleSubs,
   guideHref,
+  guidesForHub,
   hubHref,
   isGuideVisible,
   subHref,
@@ -37,13 +36,16 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return getVisibleHubs().flatMap((h) => [
-    ...getVisibleSubs(h).map((s) => ({ hub: h.slug, sub: s.slug })),
+    ...getPageSubs(h).map((s) => ({ hub: h.slug, sub: s.slug })),
     ...(isGuideVisible(h) ? [{ hub: h.slug, sub: GUIDE_SLUG }] : []),
   ]);
 }
 
-const subDescription = (hub: ServiceHub, s: SubService) =>
-  `${s.title} by CodeMindset: ${s.plain} Best for ${lcFirst(s.best)} Fast delivery across India, fixed written quote.`;
+/** Meta description: the plain line plus the reasons to choose us, within ~160 characters. */
+const subDescription = (_hub: ServiceHub, s: SubService) => {
+  const text = `${s.title} by CodeMindset: ${s.plain} Fixed written quote, and you own everything.`;
+  return text.length <= 160 ? text : `${s.title} by CodeMindset: ${s.plain}`;
+};
 
 export async function generateMetadata({ params }: Params) {
   const { hub: h, sub: x } = await params;
@@ -82,25 +84,23 @@ export default async function SubPage({ params }: Params) {
 
 function SubServicePage({ hub, s }: { hub: ServiceHub; s: SubService }) {
   const path = subHref(hub.slug, s.slug);
-  const siblings = getVisibleSubs(hub).filter((o) => o.slug !== s.slug && o.kind === s.kind);
-  const others = getVisibleSubs(hub).filter((o) => o.kind !== s.kind);
-  const whatsapp = `Hi CodeMindset, I’m interested in ${s.title}.`;
+  const more = getVisibleSubs(hub).filter((o) => o.slug !== s.slug && o.page);
+  const work = getVisibleProjects()
+    .filter((p) => p.services.includes(`${hub.slug}/${s.slug}`))
+    .slice(0, 2);
+  const whatsapp = `Hi CodeMindset, I’m interested in ${lcFirst(s.title)}.`;
+  const guides = guidesForHub(hub.slug);
   const faqs: FAQ[] = [
     ...(s.faqs ?? []),
     {
       question: `How much does ${lcFirst(s.title)} cost?`,
       answer:
-        'It depends on what you need. Share your goal and we send a fixed, written quote quickly — so you know the cost before any work starts.',
+        'It depends on what you need. Share your goal and we send a fixed, written quote, so you know the full cost before any work starts.',
     },
     {
-      question: 'How fast can you deliver?',
+      question: 'How long will it take?',
       answer:
-        'Fast. We work in short stages so you see progress early, and the delivery date is written into your quote.',
-    },
-    {
-      question: 'I’m not technical. Is that a problem?',
-      answer:
-        'Not at all. Tell us your goal in everyday words — we handle the technology and explain everything simply.',
+        'The delivery date is written into your quote. We work in short stages, so you see working progress early.',
     },
   ];
 
@@ -114,16 +114,11 @@ function SubServicePage({ hub, s }: { hub: ServiceHub; s: SubService }) {
         ]}
         eyebrow={hub.title}
         title={s.title}
-        lead={
-          <>
-            <strong>In simple words:</strong> {s.plain} CodeMindset provides {lcFirst(s.title)} for
-            businesses across India — quick replies, a fixed written quote and fast delivery.
-          </>
-        }
+        lead={s.intro ?? s.plain}
       >
         <div className="btn-row btn-row--grow">
           <Link href={quoteHref(hub.slug)} className="btn btn--primary btn--lg">
-            Get a quote <ArrowIcon />
+            Get a free quote <ArrowIcon />
           </Link>
           <ContactLink
             kind="whatsapp"
@@ -137,18 +132,22 @@ function SubServicePage({ hub, s }: { hub: ServiceHub; s: SubService }) {
       </PageHero>
 
       <section className="section" aria-labelledby="get-title">
-        <div className="container sub-grid">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            <SectionHead eyebrow="What you get" title={`${s.name}, done properly`} id="get-title" />
-            <ul className="includes" style={{ gridTemplateColumns: '1fr' }}>
+        <div className="container split">
+          <div>
+            <SectionHead eyebrow="What you get" title="What’s included?" id="get-title" />
+            <ul className="reasons" style={{ marginTop: 24, gridTemplateColumns: '1fr' }}>
               {s.includes.map((i) => (
                 <li key={i}>
-                  <span className="includes__tick" aria-hidden="true">
-                    ✓
-                  </span>
-                  <span>
-                    <strong>{i}</strong>
-                  </span>
+                  <CheckIcon />
+                  <strong>{i}</strong>
+                  <span />
+                </li>
+              ))}
+              {['A fixed, written quote', 'You own the code and every login'].map((i) => (
+                <li key={i}>
+                  <CheckIcon />
+                  <strong>{i}</strong>
+                  <span />
                 </li>
               ))}
             </ul>
@@ -168,15 +167,22 @@ function SubServicePage({ hub, s }: { hub: ServiceHub; s: SubService }) {
                 <Link href={hubHref(hub.slug)}>{hub.title}</Link>
               </dd>
             </div>
-            <div>
-              <dt>Always included</dt>
-              <dd>
-                <CheckList items={['Fixed written quote', 'Fast delivery', 'Full ownership']} />
-              </dd>
-            </div>
           </dl>
         </div>
       </section>
+
+      {work.length > 0 ? (
+        <section className="section section--alt" aria-labelledby="work-title">
+          <div className="container">
+            <SectionHead eyebrow="Our work" title="Live projects like this" id="work-title" />
+            <div className="proj-grid proj-grid--2">
+              {work.map((p) => (
+                <ProjectCard key={p.slug} p={p} detailed />
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {s.uses && s.uses.length > 0 ? (
         <section className="section section--flush-top" aria-labelledby="uses-title">
@@ -184,7 +190,7 @@ function SubServicePage({ hub, s }: { hub: ServiceHub; s: SubService }) {
             <SectionHead
               eyebrow="Where it helps"
               title={`How businesses use ${lcFirst(s.name)}`}
-              lead="Example scenarios to show what is possible — not client case studies."
+              lead="Example scenarios to show what is possible, not client case studies."
               id="uses-title"
             />
             <div className="grid" style={gridStyle(s.uses.length, 300)}>
@@ -199,67 +205,98 @@ function SubServicePage({ hub, s }: { hub: ServiceHub; s: SubService }) {
         </section>
       ) : null}
 
-      {isGuideVisible(hub) ? (
-        <section className="section section--flush-top">
+      <section className="section" aria-labelledby="how-title">
+        <div className="container split">
+          <div>
+            <SectionHead
+              eyebrow="Our process"
+              title="How we do it, step by step"
+              lead="Every step is agreed with you before we start it."
+              id="how-title"
+            />
+            <ProcessMap items={s.process ?? steps} label={`${s.name}: our process`} />
+          </div>
+          <div>
+            <SkipHook
+              title="Skip the steps. We’ll do all of it for you."
+              text={`Tell us what you need from ${lcFirst(s.name)}. You get a quick reply and a fixed, written quote.`}
+              cta="Get a free quote"
+              service={hub.slug}
+              whatsapp={whatsapp}
+              where={`sub-${s.slug}-hook`}
+            />
+          </div>
+        </div>
+      </section>
+
+      {s.deep && s.deep.length > 0 ? (
+        <section className="section section--alt" aria-labelledby="deep-title">
           <div className="container">
-            <div className="answer-box answer-box--light">
-              <strong>Not sure {s.name} is right for you?</strong> {hub.guide.shortAnswer}{' '}
-              <Link href={guideHref(hub.slug)}>Read the guide: {hub.guide.question}</Link>
+            <SectionHead eyebrow="In depth" title="What you should know" id="deep-title" />
+            <div className="deep" style={{ marginTop: 24 }}>
+              {s.deep.map((d) => (
+                <div key={d.heading} className="deep__item">
+                  <h3>{d.heading}</h3>
+                  <p>{d.text}</p>
+                  {d.points ? (
+                    <ul>
+                      {d.points.map((pt) => (
+                        <li key={pt}>{pt}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
+              ))}
             </div>
           </div>
         </section>
       ) : null}
 
-      <section className="section section--tint" aria-labelledby="how-title">
-        <div className="container">
-          <SectionHead
-            eyebrow="How it works"
-            title="Simple, from first message to launch"
-            id="how-title"
-          />
-          <Steps items={steps} />
-        </div>
-      </section>
-
-      <FAQSection
-        title={`${s.title}: common questions`}
-        items={faqs}
-        where={s.slug}
-        whatsapp={whatsapp}
-      />
-
-      {siblings.length > 0 || others.length > 0 ? (
-        <section className="section section--flush-top" aria-labelledby="more-title">
+      {guides.length > 0 || isGuideVisible(hub) ? (
+        <section className="section" aria-labelledby="learn-title">
           <div className="container">
-            <SectionHead title={`More in ${hub.title}`} id="more-title" />
-            <ul className="chips">
-              {[...siblings, ...others].map((o) => (
-                <li key={o.slug}>
-                  <Link href={subHref(hub.slug, o.slug)} className="chip">
-                    {o.name}
-                  </Link>
-                </li>
+            <SectionHead eyebrow="Free guides" title="Learn before you decide" id="learn-title" />
+            <div className="gcard-grid" style={{ marginTop: 24 }}>
+              {guides.map((g) => (
+                <GuideCard key={g.slug} g={g} />
               ))}
-              <li>
-                <Link href={hubHref(hub.slug)} className="chip chip--solid">
-                  All of {hub.title} →
+              {isGuideVisible(hub) ? (
+                <Link href={guideHref(hub.slug)} className="gcard">
+                  <span className="gcard__meta">Quick guide · 2 min</span>
+                  <strong>{hub.guide.question}</strong>
+                  <span className="gcard__text">{hub.guide.shortAnswer.split('. ')[0]}.</span>
+                  <span className="gcard__more">Help me choose →</span>
                 </Link>
-              </li>
-            </ul>
+              ) : null}
+            </div>
           </div>
         </section>
       ) : null}
 
-      <section className="section section--flush-top">
+      <FAQSection title={`${s.title}: FAQs`} items={faqs} where={s.slug} whatsapp={whatsapp} />
+
+      <section className="section section--flush-top" aria-labelledby="more-title">
         <div className="container">
-          <ContactBand
-            where={`sub-${s.slug}`}
-            service={hub.slug}
-            whatsapp={whatsapp}
-            title="Talk to our team today."
-          />
+          <SectionHead title={`More in ${hub.title}`} id="more-title" />
+          <ul className="inline-links" style={{ marginTop: 16 }}>
+            {more.map((o) => (
+              <li key={o.slug}>
+                <Link href={subHref(hub.slug, o.slug)}>{o.name}</Link>
+              </li>
+            ))}
+            <li>
+              <Link href={hubHref(hub.slug)}>All of {hub.title.toLowerCase()} →</Link>
+            </li>
+          </ul>
         </div>
       </section>
+
+      <CTABand
+        where={`sub-${s.slug}-end`}
+        service={hub.slug}
+        whatsapp={whatsapp}
+        quoteLabel="Get a free quote"
+      />
 
       <JsonLd
         data={graph(
@@ -330,7 +367,7 @@ function GuidePage({ hub }: { hub: ServiceHub }) {
         </div>
       </section>
       <CTABand
-        title="Still unsure? Tell us — we’ll choose."
+        title="Still unsure? Tell us and we’ll choose."
         where={`guide-${hub.slug}`}
         service={hub.slug}
         whatsapp={hub.whatsapp}

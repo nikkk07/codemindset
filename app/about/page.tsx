@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import { CTABand, SectionHead, Steps } from '@/components/ui/Blocks';
+import { BrandDuo } from '@/components/brand/BrandDuo';
+import { CTABand, SectionHead } from '@/components/ui/Blocks';
+import { CheckIcon } from '@/components/ui/Icons';
 import { PageHero } from '@/components/ui/PageHero';
-import { commitments, steps, teamRoles } from '@/content/home';
+import { reasons, teamRoles } from '@/content/home';
 import { corePages } from '@/content/pages';
 import { site } from '@/content/site';
 import { buildMetadata } from '@/lib/seo';
@@ -10,15 +12,9 @@ const page = corePages.about;
 export const metadata = buildMetadata(page);
 
 const mindset = [
-  {
-    title: 'Understand',
-    text: 'The business problem first, in your words — and what a good result looks like.',
-  },
-  {
-    title: 'Design the logic',
-    text: 'Map the process, people and data before choosing any technology.',
-  },
-  { title: 'Build in steps', text: 'Working software early, checked at every stage.' },
+  { title: 'Understand', text: 'Your business and the problem first, in your words.' },
+  { title: 'Plan the steps', text: 'Map the process, people and data before choosing technology.' },
+  { title: 'Build in stages', text: 'Working versions early, checked with you at every stage.' },
   { title: 'Measure', text: 'Compare the result with how things worked before.' },
 ];
 
@@ -27,101 +23,99 @@ export default function AboutPage() {
     <>
       <PageHero
         crumbs={[{ name: 'About', path: page.path }]}
-        eyebrow="About CodeMindset"
-        title="An Indian IT services company built on one idea:"
-        accent="Think in Algorithm."
-        lead={`${site.name} builds websites, mobile apps, AI chatbots, automation, integrations and custom software for businesses across India. Our team covers every skill a project needs — so you deal with one company, from first call to long-term support.`}
+        eyebrow={`About ${site.name}`}
+        title="A website and software company"
+        accent="for growing businesses."
+        lead={`${site.name} is an Indian website, app and chatbot development company for small and mid-sized businesses. ${site.proof.websitesLive} websites live, fixed quotes, plain words.`}
       />
 
-      <section className="section" aria-labelledby="mindset-title">
+      <section className="section" aria-labelledby="brands-title">
         <div className="container">
-          <SectionHead
-            eyebrow={site.tagline}
-            title={`What “${site.tagline}” means for you`}
-            lead="An algorithm is simply a clear set of steps that reliably produces a result. We bring that thinking to every project."
-            id="mindset-title"
-          />
-          <Steps items={mindset} />
+          <BrandDuo />
         </div>
       </section>
 
-      <section className="section section--flush-top" aria-label="Team and coverage">
-        <div className="container duo">
-          <div className="duo__card duo__card--dark">
-            <p className="eyebrow">Our team</p>
-            <h2>Professionals across every major technology</h2>
-            <ul className="chips">
-              {teamRoles.map((r) => (
-                <li key={r} className="chip chip--dark">
-                  {r}
+      <section className="section section--alt" aria-labelledby="facts-title">
+        <div className="container split">
+          <div>
+            <SectionHead eyebrow="In short" title="Who we are" id="facts-title" />
+            <dl className="facts" style={{ marginTop: 24 }}>
+              <div>
+                <dt>What we do</dt>
+                <dd>
+                  Websites, mobile apps, chatbots, CRM and WhatsApp integration, SEO and custom
+                  software.
+                </dd>
+              </div>
+              <div>
+                <dt>Who we work with</dt>
+                <dd>Small and mid-sized businesses, startups and agencies, anywhere in India.</dd>
+              </div>
+              <div>
+                <dt>Delivered so far</dt>
+                <dd>
+                  {site.proof.websitesLive} websites live —{' '}
+                  <Link href={corePages.work.path}>see some of them</Link>.
+                </dd>
+              </div>
+              <div>
+                <dt>How we work</dt>
+                <dd>
+                  Remotely, by call, WhatsApp and video. Fixed written quotes.{' '}
+                  <Link href={corePages.process.path}>Our process</Link>.
+                </dd>
+              </div>
+            </dl>
+          </div>
+          <div>
+            <SectionHead
+              eyebrow={site.tagline}
+              title={`What “${site.tagline}” means`}
+              lead="Clear steps that reliably produce a result, on every project."
+              id="mindset-title"
+            />
+            <ol className="flow" style={{ marginTop: 24, gridTemplateColumns: '1fr 1fr' }}>
+              {mindset.map((m) => (
+                <li key={m.title}>
+                  <strong>{m.title}</strong>
+                  <span>{m.text}</span>
                 </li>
               ))}
-            </ul>
-          </div>
-          <div className="duo__card duo__card--tint">
-            <p className="eyebrow">Across India</p>
-            <h2>Serving every state and union territory</h2>
-            <p>We work remotely by call, WhatsApp and video, so location is never a barrier.</p>
-            <Link
-              href={corePages.india.path}
-              className="btn btn--primary"
-              style={{ alignSelf: 'flex-start' }}
-            >
-              See where we work
-            </Link>
+            </ol>
           </div>
         </div>
       </section>
 
-      <section className="section section--tint" aria-labelledby="values-title">
+      <section className="section" aria-labelledby="team-title">
         <div className="container">
-          <SectionHead eyebrow="How we work with you" title="Our commitments" id="values-title" />
-          <ul className="values">
-            {commitments.map((c) => (
-              <li key={c.title}>
-                <strong>{c.title}</strong>
-                <span>{c.text}</span>
+          <SectionHead
+            eyebrow="Our team"
+            title="One team for the whole job"
+            lead="Designers, developers and specialists under one roof."
+            id="team-title"
+          />
+          <ul className="inline-links" style={{ marginTop: 20 }}>
+            {teamRoles.map((r) => (
+              <li key={r}>
+                <span className="chip">{r}</span>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className="section" aria-labelledby="process-title">
+      <section className="section section--alt" aria-labelledby="values-title">
         <div className="container">
-          <SectionHead eyebrow="Process" title="From first message to launch" id="process-title" />
-          <Steps items={steps} />
-        </div>
-      </section>
-
-      <section className="section section--flush-top" aria-labelledby="ssx-title">
-        <div className="container">
-          <div className="honest">
-            <div>
-              <p className="eyebrow">Our family of brands</p>
-              <h2 id="ssx-title">Need marketing too?</h2>
-              <p className="lead">
-                <a href={site.ownedBrands.socialScalex.url} rel="noopener" target="_blank">
-                  {site.ownedBrands.socialScalex.name}
-                </a>{' '}
-                is a {site.name}-owned brand for marketing and advertising. On joint projects,
-                Social ScaleX owns the marketing strategy; {site.name} owns the engineering and
-                integrations.
-              </p>
-            </div>
-            <ul className="honest__list">
-              <li>
-                <strong>{site.ownedBrands.socialScalex.name}</strong>
-                <span>Campaigns, content and social media that bring the right people in.</span>
+          <SectionHead eyebrow="Our promises" title="What you can count on" id="values-title" />
+          <ul className="reasons" style={{ marginTop: 24 }}>
+            {reasons.map((r) => (
+              <li key={r.title}>
+                <CheckIcon />
+                <strong>{r.title}</strong>
+                <span>{r.text}</span>
               </li>
-              <li>
-                <strong>{site.name}</strong>
-                <span>
-                  Websites, CRM, automation and software that turn enquiries into handled work.
-                </span>
-              </li>
-            </ul>
-          </div>
+            ))}
+          </ul>
         </div>
       </section>
 

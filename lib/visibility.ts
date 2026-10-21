@@ -1,10 +1,11 @@
 import { audiences } from '@/content/audiences';
+import { longGuides } from '@/content/guides';
 import { articles, glossary } from '@/content/knowledge';
 import { industries } from '@/content/industries';
 import { regions } from '@/content/regions';
 import { GUIDE_SLUG, allSubs, hubs } from '@/content/services';
 import type { Readiness, Region, ReviewStatus, ServiceHub, SubService } from '@/content/types';
-import { caseStudies } from '@/content/work';
+import { projects } from '@/content/work';
 import { showDrafts } from './env';
 
 /**
@@ -32,16 +33,31 @@ export const getHub = (slug: string, env?: NodeJS.ProcessEnv) =>
 export const getVisibleSubs = (hub: ServiceHub, env?: NodeJS.ProcessEnv): SubService[] =>
   visible(hub, env) ? allSubs(hub).filter((s) => visible(s, env)) : [];
 
+/** Sub-services with a page of their own (the rest are listed on their hub page). */
+export const getPageSubs = (hub: ServiceHub, env?: NodeJS.ProcessEnv): SubService[] =>
+  getVisibleSubs(hub, env).filter((s) => s.page === true);
+
 export const getSub = (hubSlug: string, subSlug: string, env?: NodeJS.ProcessEnv) => {
   const hub = getHub(hubSlug, env);
-  return hub ? getVisibleSubs(hub, env).find((s) => s.slug === subSlug) : undefined;
+  return hub ? getPageSubs(hub, env).find((s) => s.slug === subSlug) : undefined;
 };
 
+/** "How to choose" guides are kept for the everyday services, where buyers compare options. */
 export const isGuideVisible = (hub: ServiceHub, env?: NodeJS.ProcessEnv) =>
-  visible(hub, env) && visible(hub.guide, env);
+  hub.segment === 'everyday' && visible(hub, env) && visible(hub.guide, env);
+
+const PAGE_KEYS = new Set(
+  hubs.flatMap((h) =>
+    allSubs(h)
+      .filter((s) => s.page === true)
+      .map((s) => `${h.slug}/${s.slug}`),
+  ),
+);
 
 export const hubHref = (hub: string) => `/services/${hub}/`;
-export const subHref = (hub: string, sub: string) => `/services/${hub}/${sub}/`;
+/** A sub-service's own page, or its entry on the hub page when it has no page. */
+export const subHref = (hub: string, sub: string) =>
+  PAGE_KEYS.has(`${hub}/${sub}`) ? `/services/${hub}/${sub}/` : `/services/${hub}/#${sub}`;
 export const guideHref = (hub: string) => `/services/${hub}/${GUIDE_SLUG}/`;
 
 export interface ResolvedLink {
@@ -70,6 +86,17 @@ export function resolveRef(
   const s = getVisibleSubs(hub, env).find((x) => x.slug === subSlug);
   return s ? { href: subHref(hub.slug, s.slug), label: s.title, plain: s.plain } : null;
 }
+
+/* ---------- in-depth guides ---------- */
+
+export const getVisibleLongGuides = (env?: NodeJS.ProcessEnv) =>
+  longGuides.filter((g) => visible(g, env) && getHub(g.service, env) !== undefined);
+export const getLongGuide = (slug: string, env?: NodeJS.ProcessEnv) =>
+  getVisibleLongGuides(env).find((g) => g.slug === slug);
+export const longGuideHref = (slug: string) => `/knowledge/guides/${slug}/`;
+/** Guides that support a service hub (shown on its pages). */
+export const guidesForHub = (hub: string, env?: NodeJS.ProcessEnv) =>
+  getVisibleLongGuides(env).filter((g) => g.service === hub);
 
 /* ---------- other collections ---------- */
 
@@ -102,6 +129,9 @@ export function isIndexable(review: ReviewStatus, env?: NodeJS.ProcessEnv): bool
 }
 
 /** /work/ is enabled in production only when approved case studies exist. */
+export const getVisibleProjects = (env?: NodeJS.ProcessEnv) =>
+  projects.filter((p) => showDrafts(env) || p.review === 'approved');
+
 export function isWorkEnabled(env?: NodeJS.ProcessEnv): boolean {
-  return showDrafts(env) || caseStudies.some((c) => c.review === 'approved' && c.clientPermission);
+  return getVisibleProjects(env).length > 0;
 }

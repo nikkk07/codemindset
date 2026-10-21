@@ -22,7 +22,7 @@ export default function GlossaryPage() {
         eyebrow="Glossary"
         title="Tech terms,"
         accent="made simple."
-        lead="What the words mean, with everyday examples — and why each one matters for your business."
+        lead="What the words mean, with everyday examples, and why each one matters for your business."
       />
       <section className="section">
         <div className="container grid" style={{ '--min': '280px' } as React.CSSProperties}>

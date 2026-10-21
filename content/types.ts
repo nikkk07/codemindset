@@ -54,6 +54,14 @@ export interface SubService {
   /** What the client gets (3–5 items). */
   includes: string[];
   faqs?: FAQ[];
+  /** True when the sub-service has its own page (see content/service-pages.ts). */
+  page?: boolean;
+  /** Answer-first intro for pages that have one. */
+  intro?: string;
+  /** How we deliver this service, shown as a step-by-step visual. */
+  process?: PlainStep[];
+  /** Deeper explanations (question headings) for pages that need them. */
+  deep?: { heading: string; text: string; points?: string[] }[];
   /** Example scenarios (never presented as client work). */
   uses?: UseCase[];
   readiness: Readiness;

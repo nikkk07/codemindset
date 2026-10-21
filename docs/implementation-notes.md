@@ -20,6 +20,32 @@ Updated 2026-10-16 (redesign v3: purple brand, plain-first services, pan-India).
 | WhatsApp            | `wa.me` links with page-specific pre-filled text                                                                  | Fewer steps for the visitor; tells the team which page they came from.                                                     |
 | Tracking            | `contact_click` events via `@vercel/analytics` `track()`                                                          | Measures which pages create enquiries; cookie-free.                                                                        |
 
+## v2 — "calm and clear" redesign (2026-10-20)
+
+Why: the owner found v1 too complex. Phase-1 buyers are small and mid-sized Indian businesses, so the
+site now leads with the five most-searched services and real, live work.
+
+- **Navigation:** Services (a short dropdown: five everyday services, "for bigger projects" links, a free
+  consultation) · Our work · How we work · About · Contact. Industries, guides and the glossary are in the footer.
+- **Services first:** website development, mobile apps, AI chatbots & automation, CRM & WhatsApp
+  integration, SEO & website care. Custom software, AI agents, data, security and blockchain are secondary.
+- **Hub slugs renamed to match searches:** `mobile-app-development`, `ai-chatbots-automation`,
+  `crm-whatsapp-integration`, `seo-services` (nothing was indexed yet, so no redirects needed).
+- **Fewer, stronger pages:** only the sub-services in `content/service-pages.ts` (18) get their own page,
+  each with an answer-first intro and its own questions. Everything else is listed on its hub with an
+  anchor (`subHref` returns `/services/<hub>/#<sub>`). This removes about 90 thin template pages,
+  which Google's spam policies treat as scaled content.
+- **Guides** only for the five everyday hubs.
+- **Real work:** `content/work.ts`, in the owner's order (Social ScaleX, PraGo Outdoors, Book My Charter,
+  We One Aviation), with screenshots captured from the live sites on 2026-10-20 (`public/work/`).
+  "20+ websites live" is owner-stated (`site.proof`).
+- **Not published:** superlatives ("best", "most trusted") and "SEO score always 100" — unproven
+  claims; ASCI requires substantiation and they read as hype. The PageSpeed API quota was exhausted on
+  2026-10-20, so the scores could not be checked.
+- **Design layer:** `app/styles/calm.css`, loaded last — warm-grey surfaces, ink text, one accent
+  (`#6D28D9`), lighter headings, thin borders instead of purple blocks.
+- **New page:** `/how-we-work/` (process, promises, FAQs).
+
 ## Visibility model
 
 - `lib/env.ts` decides the environment: `SITE_ENV`, then `VERCEL_ENV`, else development.

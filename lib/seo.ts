@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { hubs } from '@/content/services';
 import { absoluteUrl, site } from '@/content/site';
+import type { LongGuide } from '@/content/guides';
 import type { Article, GlossaryTerm, ReviewStatus } from '@/content/types';
 import { isIndexable } from './visibility';
 
@@ -70,7 +71,27 @@ export function organizationJsonLd() {
     email: site.email,
     telephone: site.phone.schema,
     areaServed: INDIA,
-    knowsAbout: hubs.map((h) => h.title),
+    knowsAbout: [
+      ...hubs.map((h) => h.title),
+      ...hubs.flatMap((h) => [...h.platforms, ...h.types].filter((x) => x.page).map((x) => x.name)),
+    ],
+    // The services buyers search for most, as an offer catalogue (entity signal for search and AI).
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: `${site.name} services`,
+      itemListElement: hubs
+        .filter((h) => h.segment === 'everyday')
+        .map((h) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: h.title,
+            description: h.seo.description,
+            url: absoluteUrl(`/services/${h.slug}/`),
+            areaServed: INDIA,
+          },
+        })),
+    },
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
@@ -150,6 +171,22 @@ export function articleJsonLd(a: Article, path: string) {
   };
 }
 
+/** In-depth guide as an Article, with its sources as citations. */
+export function guideJsonLd(g: LongGuide, path: string) {
+  return {
+    '@type': 'Article',
+    headline: g.title,
+    description: g.description,
+    dateModified: g.updated,
+    mainEntityOfPage: absoluteUrl(path),
+    author: { '@id': ORG_ID },
+    publisher: { '@id': ORG_ID },
+    image: absoluteUrl(OG_IMAGE.url),
+    inLanguage: site.language,
+    citation: g.sources.map((src) => ({ '@type': 'CreativeWork', name: src.title, url: src.url })),
+  };
+}
+
 export function definedTermJsonLd(t: GlossaryTerm, path: string) {
   return {
     '@type': 'DefinedTerm',
@@ -157,6 +194,19 @@ export function definedTermJsonLd(t: GlossaryTerm, path: string) {
     description: t.short,
     url: absoluteUrl(path),
     inDefinedTermSet: absoluteUrl('/knowledge/glossary/'),
+  };
+}
+
+/** A list of things (e.g. live projects) as schema.org ItemList. */
+export function itemListJsonLd(name: string, items: { name: string; url: string }[]) {
+  return {
+    '@type': 'ItemList',
+    name,
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: { '@type': 'WebSite', name: it.name, url: it.url, creator: { '@id': ORG_ID } },
+    })),
   };
 }
 
