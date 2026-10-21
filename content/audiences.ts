@@ -68,7 +68,7 @@ export const audiences: Audience[] = [
     h1: 'Grow without adding',
     h1Accent: 'more manual work.',
     intro:
-      'Small and mid-sized businesses grow fastest when enquiries are never missed and repetitive work runs itself. CodeMindset builds the website, WhatsApp automation, CRM and simple software that let your team handle more without hiring more.',
+      'Growing businesses grow fastest when enquiries are never missed and repetitive work runs itself. CodeMindset builds the website, WhatsApp automation, CRM and simple software that let your team handle more without hiring more.',
     priorities: [
       { title: 'More enquiries', text: 'A website and WhatsApp that turn visitors into leads.' },
       { title: 'Less repetition', text: 'Automations that remove copy-paste and reminders.' },
@@ -90,7 +90,7 @@ export const audiences: Audience[] = [
     ],
     faqs: [
       {
-        question: 'We have a small budget. Where should we start?',
+        question: 'Our budget is tight. Where should we start?',
         answer:
           'Usually with lead capture: a clear website plus WhatsApp follow-up and a simple CRM. It pays for itself fastest.',
       },
@@ -102,7 +102,7 @@ export const audiences: Audience[] = [
     seo: {
       title: 'Websites, Automation & CRM for Growing Businesses in India',
       description:
-        'Websites, WhatsApp automation, CRM and simple custom software for small and mid-sized businesses (SMEs) in India. More enquiries, less manual work.',
+        'Websites, WhatsApp automation, CRM and simple custom software for growing businesses in India. More enquiries, less manual work.',
     },
     review: 'draft',
   },

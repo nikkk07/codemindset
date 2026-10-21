@@ -22,14 +22,14 @@ export default function ServicesPage() {
         eyebrow="Services"
         title="Everything we build,"
         accent="in plain words."
-        lead="Websites, apps, chatbots, CRM and SEO for small businesses, plus custom software and AI for bigger projects."
+        lead="Websites, apps, chatbots, CRM and SEO for growing businesses, plus custom software and AI for bigger projects."
       />
 
       <section className="section" aria-labelledby="everyday-title" id="everyday">
         <div className="container">
           <SectionHead
             eyebrow="Most asked for"
-            title="For small and growing businesses"
+            title="For growing businesses"
             id="everyday-title"
           />
           <div className="svc-grid" style={{ marginTop: 24 }}>

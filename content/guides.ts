@@ -689,7 +689,7 @@ const searchGuide: LongGuide = {
   title: 'SEO, AEO and GEO: how to get found on Google and AI assistants',
   seoTitle: 'SEO vs AEO vs GEO: Get Found on Google & AI Assistants (2026 Guide)',
   description:
-    'What SEO, AEO and GEO mean, how Google and AI assistants choose sources, what research shows works, and a step-by-step plan for small businesses. No myths.',
+    'What SEO, AEO and GEO mean, how Google and AI assistants choose sources, what research shows works, and a step-by-step plan for any business. No myths.',
   updated: '2026-10-21',
   readMinutes: 16,
   service: 'seo-services',
@@ -794,7 +794,7 @@ const searchGuide: LongGuide = {
     },
     {
       id: 'plan',
-      heading: 'What is the step-by-step plan for a small business?',
+      heading: 'What is the step-by-step plan for a growing business?',
       blocks: [
         {
           type: 'steps',
@@ -1227,8 +1227,8 @@ const appGuide: LongGuide = {
 
 const crmGuide: LongGuide = {
   slug: 'crm-guide',
-  title: 'CRM for a small business in India: how to choose it and connect WhatsApp',
-  seoTitle: 'CRM for Small Business in India: How to Choose & Connect WhatsApp',
+  title: 'CRM for a growing business in India: how to choose it and connect WhatsApp',
+  seoTitle: 'How to Choose a CRM in India & Connect WhatsApp (2026 Guide)',
   description:
     'What a CRM does, signs you need one, how to choose between Zoho, HubSpot and others, free plans, and how to connect your website and WhatsApp step by step.',
   updated: '2026-10-21',
@@ -1236,7 +1236,7 @@ const crmGuide: LongGuide = {
   service: 'crm-whatsapp-integration',
   whatsapp: 'Hi CodeMindset, I read your CRM guide and want help setting one up.',
   answer:
-    'A CRM keeps every lead and customer in one place, with reminders so nobody is forgotten. Small businesses usually do well with Zoho CRM or HubSpot, both of which have free plans. The real value comes from connecting it to your website forms and WhatsApp, so leads arrive automatically.',
+    'A CRM keeps every lead and customer in one place, with reminders so nobody is forgotten. Most growing businesses do well with Zoho CRM or HubSpot, both of which have free plans. The real value comes from connecting it to your website forms and WhatsApp, so leads arrive automatically.',
   keyPoints: [
     'Zoho CRM’s free edition supports up to 3 users.',
     'HubSpot’s free CRM allows up to 2 users and 1,000 contacts.',
@@ -1282,11 +1282,11 @@ const crmGuide: LongGuide = {
     },
     {
       id: 'choosing',
-      heading: 'Which CRM should a small business choose?',
+      heading: 'Which CRM should a growing business choose?',
       blocks: [
         {
           type: 'table',
-          caption: 'Common CRM options for small businesses (free plans as stated by the vendors)',
+          caption: 'Common CRM options (free plans as stated by the vendors)',
           columns: ['', 'Zoho CRM', 'HubSpot CRM', 'Custom CRM'],
           rows: [
             [
@@ -1379,7 +1379,7 @@ const crmGuide: LongGuide = {
   ],
   faqs: [
     {
-      question: 'Is a free CRM enough for a small business?',
+      question: 'Is a free CRM enough for a growing business?',
       answer:
         'Often, at the start. Zoho CRM’s free edition (3 users) and HubSpot’s free CRM (2 users, 1,000 contacts) cover basic lead tracking. Paid plans add automation and more users.',
     },

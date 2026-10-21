@@ -24,7 +24,7 @@ const website: ServiceHub = {
   blurb: 'Business websites and online stores',
   eyebrow: 'Website development company in India',
   h1: 'Website development',
-  h1Accent: 'for small businesses',
+  h1Accent: 'that grows your business',
   answer:
     'We design and build business websites and online stores that bring in enquiries. Every site is made for mobile, set up for Google and has WhatsApp built in. You get a fixed quote and full ownership.',
   simple: {
@@ -288,7 +288,7 @@ const website: ServiceHub = {
   cta: 'Get a website quote',
   whatsapp: 'Hi CodeMindset, I need a website for my business.',
   seo: {
-    title: 'Website Development Company for Small Businesses in India',
+    title: 'Website Development Company in India for Growing Businesses',
     description:
       'Business websites and online stores on WordPress, Shopify or custom code. Mobile-first, SEO-ready, WhatsApp enquiries built in. Fixed quote, and you own it.',
   },
@@ -635,7 +635,7 @@ const ai: ServiceHub = {
       'Zapier',
       'Zapier automation services',
       'Simple “when this happens, do that” automations.',
-      'Small teams starting with automation.',
+      'Teams starting with automation.',
       [
         'Zap design and setup',
         'Multi-step workflows',
@@ -818,7 +818,7 @@ const integrations: ServiceHub = {
   blurb: 'Leads from website and WhatsApp into one CRM',
   eyebrow: 'CRM & WhatsApp integration in India',
   h1: 'CRM & WhatsApp integration',
-  h1Accent: 'for small businesses',
+  h1Accent: 'for growing businesses',
   answer:
     'We connect your website, WhatsApp, CRM, payments and accounts, so every lead lands in one place and nothing is typed twice.',
   simple: {
@@ -963,7 +963,7 @@ const integrations: ServiceHub = {
   guide: {
     question: 'Which CRM fits your business?',
     shortAnswer:
-      'Zoho suits most Indian small and mid-sized businesses on value. HubSpot suits marketing-led teams that want ease of use. Salesforce suits larger sales teams with complex processes. Already have a CRM? We connect that one.',
+      'Zoho suits most growing Indian businesses on value. HubSpot suits marketing-led teams that want ease of use. Salesforce suits larger sales teams with complex processes. Already have a CRM? We connect that one.',
     goals: [
       {
         id: 'value',
@@ -1047,7 +1047,7 @@ const integrations: ServiceHub = {
   cta: 'Connect my tools',
   whatsapp: 'Hi CodeMindset, I want to connect my CRM / WhatsApp / payments.',
   seo: {
-    title: 'CRM & WhatsApp Integration for Small Businesses in India',
+    title: 'CRM & WhatsApp Integration Services in India',
     description:
       'Connect website forms, the WhatsApp Business API, Zoho or HubSpot CRM, Razorpay and Tally. Leads and orders are entered once, and follow-ups are never missed.',
   },
@@ -1325,7 +1325,7 @@ const seo: ServiceHub = {
   h1: 'SEO, AEO & GEO services',
   h1Accent: 'for Google and AI search',
   answer:
-    'We help small businesses get found on Google, Google Maps and AI assistants like ChatGPT and Gemini. That means classic SEO, answer engine optimisation (AEO) and generative engine optimisation (GEO), with honest reports and no fake guarantees.',
+    'We help businesses get found on Google, Google Maps and AI assistants like ChatGPT and Gemini. That means classic SEO, answer engine optimisation (AEO) and generative engine optimisation (GEO), with honest reports and no fake guarantees.',
   simple: {
     title: 'What does SEO do for my business?',
     steps: [
@@ -1545,7 +1545,7 @@ const seo: ServiceHub = {
   cta: 'Check my visibility',
   whatsapp: 'Hi CodeMindset, I want to improve my website’s Google ranking / speed.',
   seo: {
-    title: 'SEO, AEO & GEO Services for Small Businesses in India',
+    title: 'SEO, AEO & GEO Services in India | Google & AI Search',
     description:
       'Get found on Google, Google Maps and AI assistants. Local SEO, answer engine optimisation (AEO) and generative engine optimisation (GEO) for Indian businesses.',
   },

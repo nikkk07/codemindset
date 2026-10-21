@@ -29,7 +29,7 @@ export const problems: { problem: string; fix: string; link: string; linkLabel: 
     problem: 'People nearby search for what we do, but find our competitors on Google.',
     fix: 'Local SEO: a complete Google Business Profile and pages for the searches that matter.',
     link: 'seo-services',
-    linkLabel: 'SEO for small businesses',
+    linkLabel: 'SEO, AEO & GEO',
   },
 ];
 

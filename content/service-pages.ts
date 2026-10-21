@@ -21,7 +21,7 @@ export const servicePages: Record<string, ServicePageCopy> = {
       'A business website shows who you are, what you offer and how to reach you. We build 5–15 page sites, mobile-first and Google-ready, with call, WhatsApp and enquiry buttons on every page.',
     faqs: [
       {
-        question: 'What pages does a small business website need?',
+        question: 'What pages does a business website need?',
         answer:
           'Most need a home page, a page for each main service, an about page, a contact page with a map and enquiry form, and simple pages for privacy and terms. We add a blog or FAQ only when it helps people find you.',
       },
@@ -230,12 +230,12 @@ export const servicePages: Record<string, ServicePageCopy> = {
   /* ---------- CRM & integrations ---------- */
   'crm-whatsapp-integration/crm-integration': {
     intro:
-      'CRM integration puts every lead from your website, WhatsApp and calls into one customer database. We set up and connect Zoho CRM, HubSpot or Salesforce for small and mid-sized businesses.',
+      'CRM integration puts every lead from your website, WhatsApp and calls into one customer database. We set up and connect Zoho CRM, HubSpot or Salesforce for growing businesses.',
     faqs: [
       {
-        question: 'Which CRM is best for a small business in India?',
+        question: 'Which CRM is best for a growing business in India?',
         answer:
-          'Zoho CRM and HubSpot suit most small businesses; the right one depends on your team size, budget and which tools you already use. We recommend one after a short call.',
+          'Zoho CRM and HubSpot suit most growing businesses; the right one depends on your team size, budget and which tools you already use. We recommend one after a short call.',
       },
       {
         question: 'Can you connect WhatsApp to my CRM?',

@@ -23,14 +23,14 @@ export const corePages: Record<CorePageKey, CorePage> = {
     path: '/',
     title: 'Website & App Development Company in India — CodeMindset',
     description:
-      'Websites, mobile apps, WhatsApp and AI chatbots, CRM integration and SEO for small and growing businesses in India. Fixed written quote, and you own everything.',
+      'Websites, mobile apps, WhatsApp and AI chatbots, CRM integration and SEO for growing businesses in India. Fixed written quote, and you own everything.',
     review: 'draft',
   },
   services: {
     path: '/services/',
     title: 'Services — Websites, Apps, Chatbots, CRM & SEO',
     description:
-      'Website development, mobile apps, WhatsApp and AI chatbots, CRM and WhatsApp integration, and SEO for small businesses, plus custom software for big projects.',
+      'Website development, mobile apps, WhatsApp and AI chatbots, CRM and WhatsApp integration, and SEO for growing businesses, plus custom software for big projects.',
     review: 'draft',
   },
   industries: {
@@ -79,7 +79,7 @@ export const corePages: Record<CorePageKey, CorePage> = {
     path: '/about/',
     title: 'About CodeMindset — Website & Software Development Company',
     description:
-      'CodeMindset is an Indian website and software development company for small and growing businesses: fixed quotes, plain-language updates and full ownership.',
+      'CodeMindset is an Indian website and software development company for growing businesses: fixed quotes, plain-language updates and full ownership.',
     review: 'draft',
   },
   work: {

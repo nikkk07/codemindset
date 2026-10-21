@@ -26,7 +26,7 @@ export default function AboutPage() {
         eyebrow={`About ${site.name}`}
         title="A website and software company"
         accent="for growing businesses."
-        lead={`${site.name} is an Indian website, app and chatbot development company for small and mid-sized businesses. ${site.proof.websitesLive} websites live, fixed quotes, plain words.`}
+        lead={`${site.name} is an Indian website, app and chatbot development company for growing businesses. ${site.proof.websitesLive} websites live, fixed quotes, plain words.`}
       />
 
       <section className="section" aria-labelledby="brands-title">
@@ -49,7 +49,7 @@ export default function AboutPage() {
               </div>
               <div>
                 <dt>Who we work with</dt>
-                <dd>Small and mid-sized businesses, startups and agencies, anywhere in India.</dd>
+                <dd>Growing businesses, startups and agencies, anywhere in India.</dd>
               </div>
               <div>
                 <dt>Delivered so far</dt>

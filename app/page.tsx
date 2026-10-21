@@ -68,8 +68,8 @@ export default function HomePage() {
               Websites, apps and chatbots that bring in <span>more customers.</span>
             </h1>
             <p className="lead">
-              Website, app and WhatsApp chatbot development for small and growing businesses across
-              India. Fixed quote. Fast delivery. You own everything.
+              Website, app and WhatsApp chatbot development for growing businesses across India.
+              Fixed quote. Fast delivery. You own everything.
             </p>
             <div className="btn-row btn-row--grow">
               <Link href="/contact/" className="btn btn--primary btn--lg">

@@ -29,9 +29,7 @@ export function Footer() {
           <div className="footer__brand">
             <Logo />
             <span className="footer__tagline">{site.tagline}</span>
-            <p>
-              Website, app and chatbot development for small and growing businesses across India.
-            </p>
+            <p>Website, app and chatbot development for growing businesses across India.</p>
           </div>
           {hubs.length > 0 ? (
             <div className="footer__col">
