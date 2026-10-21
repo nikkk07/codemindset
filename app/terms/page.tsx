@@ -7,8 +7,6 @@ import { buildMetadata } from '@/lib/seo';
 const page = corePages.terms;
 export const metadata = buildMetadata(page);
 
-const TBC = (what: string) => <mark className="tbc">[{what}: to be confirmed]</mark>;
-
 export default function TermsPage() {
   return (
     <>
@@ -22,14 +20,9 @@ export default function TermsPage() {
 
           <h2>About this website</h2>
           <p>
-            The website is operated by{' '}
-            {site.legal.entityName ?? (
-              <>
-                {site.name} {TBC('registered legal name')}
-              </>
-            )}
-            . Its content describes our services in general terms. It is not an offer, a quotation
-            or professional advice for your specific situation.
+            The website is operated by {site.legal.entityName ?? site.name}. Its content describes
+            our services in general terms. It is not an offer, a quotation or professional advice
+            for your specific situation.
           </p>
 
           <h2>Accuracy and availability</h2>
@@ -76,8 +69,11 @@ export default function TermsPage() {
 
           <h2>Governing law</h2>
           <p>
-            These terms are governed by the laws of India. The courts at{' '}
-            {site.legal.governingJurisdiction ?? TBC('city')} have jurisdiction.
+            These terms are governed by the laws of India, and{' '}
+            {site.legal.governingJurisdiction
+              ? `the courts at ${site.legal.governingJurisdiction}`
+              : 'the courts of India'}{' '}
+            have jurisdiction.
           </p>
 
           <h2>Contact</h2>

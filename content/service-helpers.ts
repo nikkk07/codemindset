@@ -26,7 +26,7 @@ export const sub = (
   faqs,
   uses,
   readiness: 'ready',
-  review: 'draft',
+  review: 'approved',
 });
 
 type SubArgs = Parameters<typeof sub> extends [unknown, ...infer R] ? R : never;

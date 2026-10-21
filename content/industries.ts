@@ -47,7 +47,7 @@ export const industries: Industry[] = [
       description:
         'Admission enquiry systems, school websites, parent portals, fee payments and WhatsApp automation for education businesses across India.',
     },
-    review: 'draft',
+    review: 'approved',
   },
   {
     slug: 'b2b-services',
@@ -94,7 +94,7 @@ export const industries: Industry[] = [
       description:
         'Lead management, quotation tools, client portals and dashboards for B2B and professional service firms across India.',
     },
-    review: 'draft',
+    review: 'approved',
   },
   {
     slug: 'retail-ecommerce',
@@ -141,7 +141,7 @@ export const industries: Industry[] = [
       description:
         'Shopify and WooCommerce stores, e-commerce apps, payments, stock sync and WhatsApp order updates for retailers across India.',
     },
-    review: 'draft',
+    review: 'approved',
   },
   {
     slug: 'healthcare',
@@ -189,7 +189,7 @@ export const industries: Industry[] = [
       description:
         'Appointment booking, clinic websites, patient enquiry systems and WhatsApp reminders for healthcare providers across India.',
     },
-    review: 'draft',
+    review: 'approved',
   },
   {
     slug: 'finance-insurance',
@@ -237,7 +237,7 @@ export const industries: Industry[] = [
       description:
         'Secure portals, AI agents with human approval, chatbot security, data platforms and legacy modernisation for finance and insurance businesses in India.',
     },
-    review: 'draft',
+    review: 'approved',
   },
   {
     slug: 'logistics',
@@ -284,7 +284,7 @@ export const industries: Industry[] = [
       description:
         'Shipment tracking, WhatsApp delivery updates, driver apps, real-time data pipelines and route optimisation for logistics and supply-chain businesses in India.',
     },
-    review: 'draft',
+    review: 'approved',
   },
   {
     slug: 'real-estate',
@@ -332,6 +332,6 @@ export const industries: Industry[] = [
       description:
         'Property websites, lead management with WhatsApp follow-up, CRM integration and asset tokenization for builders, brokers and real-estate businesses in India.',
     },
-    review: 'draft',
+    review: 'approved',
   },
 ];

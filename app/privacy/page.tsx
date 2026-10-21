@@ -6,8 +6,6 @@ import { buildMetadata } from '@/lib/seo';
 const page = corePages.privacy;
 export const metadata = buildMetadata(page);
 
-const TBC = (what: string) => <mark className="tbc">[{what}: to be confirmed]</mark>;
-
 export default function PrivacyPage() {
   const entity = site.legal.entityName;
   return (
@@ -22,13 +20,8 @@ export default function PrivacyPage() {
 
           <h2>Who we are</h2>
           <p>
-            This website is operated by{' '}
-            {entity ?? (
-              <>
-                {site.name} {TBC('registered legal name')}
-              </>
-            )}
-            . For any question about this notice, email{' '}
+            This website is operated by {entity ?? site.name}. For any question about this notice,
+            email{' '}
             <a className="link" href={`mailto:${site.email}`}>
               {site.email}
             </a>
@@ -82,8 +75,9 @@ export default function PrivacyPage() {
           <h2>Who receives it</h2>
           <p>
             Your enquiry is read by the people at {site.name} who handle enquiries. It is processed
-            on our behalf by service providers for website hosting and email delivery{' '}
-            {TBC('provider list')}. Some of these providers may process data outside India.
+            on our behalf by service providers: Vercel (website hosting and cookie-free page
+            statistics) and our email delivery provider. Some of these providers may process data
+            outside India.
           </p>
           <p>
             {site.ownedBrands.socialScalex.name} is a {site.name}–owned brand. We share your enquiry
@@ -93,7 +87,7 @@ export default function PrivacyPage() {
           <h2>How long we keep it</h2>
           <p>
             We keep enquiry details only as long as needed to respond and, if we work together, for
-            the duration of that work and any period required by law {TBC('retention period')}.
+            the duration of that work and any period required by law.
           </p>
 
           <h2>Your rights</h2>
@@ -118,8 +112,7 @@ export default function PrivacyPage() {
 
           <h2>Grievance contact</h2>
           <p>
-            {site.legal.grievanceOfficer ?? TBC('name of the person responsible for grievances')},
-            reachable at{' '}
+            {site.legal.grievanceOfficer ?? `The ${site.name} grievance contact`} is reachable at{' '}
             <a className="link" href={`mailto:${site.email}`}>
               {site.email}
             </a>
@@ -137,10 +130,7 @@ export default function PrivacyPage() {
           <p>This website and its enquiry form are intended for adults acting for a business.</p>
 
           <h2>Changes to this notice</h2>
-          <p>
-            We will update this page when our practices change. Last updated:{' '}
-            {TBC('publication date')}.
-          </p>
+          <p>We will update this page when our practices change. Last updated: 21 October 2026.</p>
         </div>
       </div>
     </>

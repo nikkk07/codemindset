@@ -237,7 +237,7 @@ const website: ServiceHub = {
         { label: 'Monthly platform fee', cells: ['Hosting only', 'Shopify plan', 'Hosting only'] },
       ],
     },
-    review: 'draft',
+    review: 'approved',
   },
   includes: [
     { title: 'Mobile-first design', text: 'Looks right on every phone, tablet and screen.' },
@@ -293,7 +293,7 @@ const website: ServiceHub = {
       'Business websites and online stores on WordPress, Shopify or custom code. Mobile-first, SEO-ready, WhatsApp enquiries built in. Fixed quote, and you own it.',
   },
   readiness: 'ready',
-  review: 'draft',
+  review: 'approved',
 };
 
 const apps: ServiceHub = {
@@ -497,7 +497,7 @@ const apps: ServiceHub = {
         },
       ],
     },
-    review: 'draft',
+    review: 'approved',
   },
   includes: [
     { title: 'Screen design', text: 'Clickable designs you approve before building.' },
@@ -544,7 +544,7 @@ const apps: ServiceHub = {
       'Android and iPhone apps for businesses: booking, ordering, delivery and customer apps. Flutter or native, app store release, fixed quote and support.',
   },
   readiness: 'ready',
-  review: 'draft',
+  review: 'approved',
 };
 
 const ai: ServiceHub = {
@@ -760,7 +760,7 @@ const ai: ServiceHub = {
         { label: 'Good first project?', cells: ['Yes', 'Yes', 'After the basics'] },
       ],
     },
-    review: 'draft',
+    review: 'approved',
   },
   includes: [
     { title: 'Process mapping', text: 'We write down how the work happens today.' },
@@ -806,7 +806,7 @@ const ai: ServiceHub = {
       'AI chatbots for WhatsApp and websites that answer customers 24×7, capture leads and hand over to your team, plus automated follow-ups. Official WhatsApp API.',
   },
   readiness: 'ready',
-  review: 'draft',
+  review: 'approved',
 };
 
 const integrations: ServiceHub = {
@@ -1006,7 +1006,7 @@ const integrations: ServiceHub = {
         { label: 'Cost', cells: ['Lower', 'Free tier, rises fast', 'Higher'] },
       ],
     },
-    review: 'draft',
+    review: 'approved',
   },
   includes: [
     { title: 'Data map', text: 'What moves where, written down simply.' },
@@ -1052,7 +1052,7 @@ const integrations: ServiceHub = {
       'Connect website forms, the WhatsApp Business API, Zoho or HubSpot CRM, Razorpay and Tally. Leads and orders are entered once, and follow-ups are never missed.',
   },
   readiness: 'ready',
-  review: 'draft',
+  review: 'approved',
 };
 
 const software: ServiceHub = {
@@ -1266,7 +1266,7 @@ const software: ServiceHub = {
         { label: 'Ownership', cells: ['Vendor’s', 'Yours'] },
       ],
     },
-    review: 'draft',
+    review: 'approved',
   },
   includes: [
     { title: 'Process workshop', text: 'We map your process before writing code.' },
@@ -1311,7 +1311,7 @@ const software: ServiceHub = {
       'Internal tools, dashboards, custom CRM and ERP, and SaaS products built around your process. Fast, staged delivery across India.',
   },
   readiness: 'ready',
-  review: 'draft',
+  review: 'approved',
 };
 
 const seo: ServiceHub = {
@@ -1504,7 +1504,7 @@ const seo: ServiceHub = {
         why: 'Send your website address. We’ll tell you what to fix first.',
       },
     ],
-    review: 'draft',
+    review: 'approved',
   },
   includes: [
     { title: 'Audit first', text: 'Clear list of issues, by priority.' },
@@ -1550,7 +1550,7 @@ const seo: ServiceHub = {
       'Get found on Google, Google Maps and AI assistants. Local SEO, answer engine optimisation (AEO) and generative engine optimisation (GEO) for Indian businesses.',
   },
   readiness: 'ready',
-  review: 'draft',
+  review: 'approved',
 };
 
 const assessment: ServiceHub = {
@@ -1650,7 +1650,7 @@ const assessment: ServiceHub = {
         why: 'Describe your day-to-day problems. We suggest where to start.',
       },
     ],
-    review: 'draft',
+    review: 'approved',
   },
   includes: [
     { title: 'Short call', text: 'We listen to how your business runs.' },
@@ -1691,7 +1691,7 @@ const assessment: ServiceHub = {
       'Not sure what technology you need? We review your business and tools, then recommend what to build, buy or fix, in plain words.',
   },
   readiness: 'ready',
-  review: 'draft',
+  review: 'approved',
 };
 
 const [aiEngineering, data, security, blockchain] = advancedHubs;

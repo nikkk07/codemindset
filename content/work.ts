@@ -47,7 +47,7 @@ export const projects: Project[] = [
     image: '/work/social-scalex.webp',
     featured: true,
     relationship: 'own-brand',
-    review: 'draft',
+    review: 'approved',
   },
   {
     slug: 'prago-outdoors',
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     image: '/work/prago-outdoors.webp',
     featured: true,
     relationship: 'client',
-    review: 'draft',
+    review: 'approved',
   },
   {
     slug: 'book-my-charter',
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     image: '/work/book-my-charter.webp',
     featured: true,
     relationship: 'client',
-    review: 'draft',
+    review: 'approved',
   },
   {
     slug: 'we-one-aviation',
@@ -108,6 +108,6 @@ export const projects: Project[] = [
     image: '/work/we-one-aviation.webp',
     featured: false,
     relationship: 'client',
-    review: 'draft',
+    review: 'approved',
   },
 ];

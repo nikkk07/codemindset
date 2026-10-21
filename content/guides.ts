@@ -421,7 +421,7 @@ const websiteGuide: LongGuide = {
     'seo-services/local-seo',
     'seo-services/website-maintenance',
   ],
-  review: 'draft',
+  review: 'approved',
 };
 
 /* ------------------------------------------------------------------ */
@@ -679,7 +679,7 @@ const whatsappGuide: LongGuide = {
     'crm-whatsapp-integration/crm-integration',
     'ai-chatbots-automation/website-chatbots',
   ],
-  review: 'draft',
+  review: 'approved',
 };
 
 /* ------------------------------------------------------------------ */
@@ -1000,7 +1000,7 @@ const searchGuide: LongGuide = {
     'seo-services/website-speed',
     'website-development/website-redesign',
   ],
-  review: 'draft',
+  review: 'approved',
 };
 
 /* ------------------------------------------------------------------ */
@@ -1220,7 +1220,7 @@ const appGuide: LongGuide = {
     'mobile-app-development/ios-apps',
     'crm-whatsapp-integration/payment-gateway-integration',
   ],
-  review: 'draft',
+  review: 'approved',
 };
 
 /* ------------------------------------------------------------------ */
@@ -1407,7 +1407,7 @@ const crmGuide: LongGuide = {
     'ai-chatbots-automation/workflow-automation',
     'ai-chatbots-automation/whatsapp-chatbots',
   ],
-  review: 'draft',
+  review: 'approved',
 };
 
 export const longGuides: LongGuide[] = [

@@ -13,7 +13,7 @@ const g = (
   explain: string,
   matters: string,
   service: string,
-): GlossaryTerm => ({ slug, term, short, explain, matters, service, review: 'draft' });
+): GlossaryTerm => ({ slug, term, short, explain, matters, service, review: 'approved' });
 
 export const glossary: GlossaryTerm[] = [
   g(

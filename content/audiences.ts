@@ -58,7 +58,7 @@ export const audiences: Audience[] = [
       description:
         'Fast, lean MVP, SaaS, app and AI development for startups in India. Managed cloud to keep costs low, code you own, delivered in short stages.',
     },
-    review: 'draft',
+    review: 'approved',
   },
   {
     slug: 'growing-businesses',
@@ -104,7 +104,7 @@ export const audiences: Audience[] = [
       description:
         'Websites, WhatsApp automation, CRM and simple custom software for growing businesses in India. More enquiries, less manual work.',
     },
-    review: 'draft',
+    review: 'approved',
   },
   {
     slug: 'enterprises',
@@ -164,6 +164,6 @@ export const audiences: Audience[] = [
       description:
         'Private AI, LLM guardrails, data platforms, legacy modernisation, zero-trust security and integrations for enterprises, documented and delivered in milestones.',
     },
-    review: 'draft',
+    review: 'approved',
   },
 ];

@@ -280,7 +280,7 @@ const aiEngineering: ServiceHub = {
         },
       ],
     },
-    review: 'draft',
+    review: 'approved',
   },
   includes: [
     { title: 'Use-case check first', text: 'We confirm AI is the right tool before building.' },
@@ -327,7 +327,7 @@ const aiEngineering: ServiceHub = {
       'Multi-agent AI systems, RAG knowledge assistants, LLM guardrails and private AI deployment, built with human checks and cost control, across India.',
   },
   readiness: 'ready',
-  review: 'draft',
+  review: 'approved',
 };
 
 const data: ServiceHub = {
@@ -520,7 +520,7 @@ const data: ServiceHub = {
         { label: 'Effort', cells: ['Low', 'Medium', 'Higher'] },
       ],
     },
-    review: 'draft',
+    review: 'approved',
   },
   includes: [
     { title: 'Data audit', text: 'What you have, where, and how good it is.' },
@@ -566,7 +566,7 @@ const data: ServiceHub = {
       'ETL pipelines, data warehouses and lakehouses, real-time streaming and MLOps on Snowflake, BigQuery, Databricks and Kafka, for businesses across India.',
   },
   readiness: 'ready',
-  review: 'draft',
+  review: 'approved',
 };
 
 const security: ServiceHub = {
@@ -744,7 +744,7 @@ const security: ServiceHub = {
         why: 'Tell us what you run. We’ll suggest where the biggest risk is.',
       },
     ],
-    review: 'draft',
+    review: 'approved',
   },
   includes: [
     { title: 'Clear scope', text: 'What we test, agreed in writing first.' },
@@ -791,7 +791,7 @@ const security: ServiceHub = {
       'Website and app security testing, AI and chatbot security, API security, data privacy and zero-trust cloud security, with clear, prioritised fixes.',
   },
   readiness: 'ready',
-  review: 'draft',
+  review: 'approved',
 };
 
 const blockchain: ServiceHub = {
@@ -966,7 +966,7 @@ const blockchain: ServiceHub = {
         { label: 'Best for', cells: ['Most business apps', 'Multi-party records, tokens'] },
       ],
     },
-    review: 'draft',
+    review: 'approved',
   },
   includes: [
     { title: 'Honest fit check', text: 'Blockchain only if it truly helps.' },
@@ -1008,7 +1008,7 @@ const blockchain: ServiceHub = {
       'Smart contract development and audits, real-world asset tokenization and cross-chain integration on Ethereum, Polygon and Chainlink, with honest advice first.',
   },
   readiness: 'ready',
-  review: 'draft',
+  review: 'approved',
 };
 
 export const advancedHubs: ServiceHub[] = [aiEngineering, data, security, blockchain];

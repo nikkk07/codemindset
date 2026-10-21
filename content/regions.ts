@@ -14,7 +14,7 @@ const r = (name: string, type: Region['type'] = 'state'): Region => ({
   name,
   type,
   local: null,
-  review: 'draft',
+  review: 'approved',
 });
 
 export const regions: Region[] = [
