@@ -1,0 +1,175 @@
+/*
+ * Motion layer (2026-11). Loaded last. Everything here only takes effect once JS adds a class
+ * (.motion-on on <html>, .field-on on the hero, .is-tilt / .is-lit / .flow--live on elements),
+ * so with no JS or with reduced motion the site looks exactly like the static design.
+ */
+
+/* ---------- Lenis ---------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* ---------- Hero: "Think in Algorithm" field ---------- */
+.hero-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s var(--ease);
+}
+.hero2.field-on .hero-field {
+  opacity: 1;
+}
+/* Copy sits on a soft veil so the field never costs legibility. */
+.hero2.field-on .hero2__badge,
+.hero2.field-on .hero2__stats li {
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* The mark: static dotted SVG first, then the live field takes over. */
+.hero2__visual--mark {
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+  padding: 0;
+  aspect-ratio: 360 / 172;
+}
+.hero-mark {
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+  transition: opacity 1s var(--ease);
+}
+.hero2.field-on .hero-mark {
+  opacity: 0;
+}
+.hero2__visual--mark .float-chip--a {
+  top: -14%;
+  right: 6%;
+}
+.hero2__visual--mark .float-chip--b {
+  bottom: -12%;
+  left: 2%;
+}
+.hero2__visual--mark .float-chip--c {
+  bottom: -26%;
+  right: 12%;
+}
+@media (max-width: 1023px) {
+  .hero2__visual--mark {
+    max-width: 520px;
+    margin-block: 8px 40px;
+  }
+}
+
+[data-count] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Tilt cards: glass + moving specular highlight ---------- */
+.svc.is-tilt {
+  position: relative;
+  isolation: isolate;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition:
+    border-color var(--t-fast),
+    box-shadow 0.45s var(--ease);
+}
+.svc.is-tilt::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      320px circle at var(--gx, 50%) var(--gy, 0%),
+      color-mix(in srgb, var(--tc, var(--accent)) 13%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      120px circle at var(--gx, 50%) var(--gy, 0%),
+      rgb(255 255 255 / 0.9),
+      transparent 70%
+    );
+  opacity: 0;
+  transition: opacity 0.35s var(--ease);
+  pointer-events: none;
+}
+.svc.is-lit::after {
+  opacity: 1;
+}
+.svc.is-lit {
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.9) inset,
+    0 28px 50px -28px color-mix(in srgb, var(--tc, var(--accent)) 45%, transparent),
+    var(--shadow-soft);
+}
+.svc.is-tilt > * {
+  transform: translateZ(18px);
+}
+.svc.is-tilt > .icon-box {
+  transform: translateZ(34px);
+}
+
+/* ---------- How it works: steps light up as you scroll ---------- */
+.flow--live {
+  position: relative;
+}
+.flow--live > li {
+  transition:
+    border-top-color 0.5s var(--ease),
+    transform 0.6s var(--ease);
+}
+/* Text keeps full contrast at all times; only the number, the border and the rail light up. */
+.flow--live > li:not(.is-on) {
+  transform: translateY(6px);
+}
+.section--ink .flow--live > li:first-child {
+  border-top-color: rgb(255 255 255 / 0.16);
+}
+.section--ink .flow--live > li.is-on {
+  border-top-color: #a78bfa;
+}
+.flow--live > li::before {
+  transition:
+    color 0.5s var(--ease),
+    text-shadow 0.5s var(--ease);
+}
+.section--ink .flow--live > li.is-on::before {
+  color: var(--amber);
+  text-shadow: 0 0 18px rgb(251 191 36 / 0.55);
+}
+@media (min-width: 1024px) {
+  /* One continuous rail across the four steps. */
+  .flow--live::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    transform-origin: left;
+    transform: scaleX(var(--flow-p, 0));
+    background: linear-gradient(90deg, #a78bfa, var(--amber));
+    box-shadow: 0 0 16px rgb(167 139 250 / 0.6);
+  }
+  .section--ink .flow--live > li.is-on {
+    border-top-color: transparent;
+  }
+}

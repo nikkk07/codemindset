@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/next';
 import { ActionBar } from '@/components/layout/ActionBar';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { MotionRoot } from '@/components/motion/MotionRoot';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { site } from '@/content/site';
 import { isProduction } from '@/lib/env';
@@ -16,6 +17,7 @@ import './styles/home.css';
 import './styles/pages.css';
 import './styles/forms.css';
 import './styles/calm.css';
+import './styles/motion.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -44,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <Footer />
         <ActionBar />
+        <MotionRoot />
         <JsonLd data={graph(organizationJsonLd(), websiteJsonLd())} />
         {isProduction() ? <Analytics /> : null}
       </body>

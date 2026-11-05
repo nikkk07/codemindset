@@ -39,7 +39,7 @@ const detail = [
     title: 'Launch and handover',
     points: [
       'We test on real phones, set up Google basics and analytics, then go live.',
-      'The domain, code, hosting and every login are handed over in your name.',
+      'We hand over the domain, code, hosting and every login in your name.',
       'A short walkthrough so your team can make everyday changes.',
     ],
   },
@@ -57,7 +57,7 @@ const faqs: FAQ[] = [
   {
     question: 'How does payment work?',
     answer:
-      'The payment schedule is written into your quote before any work starts, so you know exactly what is due and when.',
+      'We write the payment schedule into your quote before any work starts, so you know exactly what is due and when.',
   },
   {
     question: 'What do you need from me?',

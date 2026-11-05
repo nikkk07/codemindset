@@ -548,7 +548,7 @@ const data: ServiceHub = {
     {
       question: 'How much does data engineering cost?',
       answer:
-        'It depends on the number of sources and data volume. Tell us your systems and we send a fixed, written quote quickly.',
+        'It depends on the number of sources and data volume. Tell us your systems and we’ll send a fixed, written quote quickly.',
     },
   ],
   related: [
@@ -773,7 +773,7 @@ const security: ServiceHub = {
     {
       question: 'How much does a security test cost?',
       answer:
-        'It depends on the size of the website, app or API. Share the scope and we send a fixed, written quote quickly.',
+        'It depends on the size of the website, app or API. Share the scope and we’ll send a fixed, written quote quickly.',
     },
   ],
   related: [
@@ -990,7 +990,7 @@ const blockchain: ServiceHub = {
     {
       question: 'How much does blockchain development cost?',
       answer:
-        'It depends on contract complexity and audits needed. Share the idea and we send a fixed, written quote quickly.',
+        'It depends on contract complexity and audits needed. Share the idea and we’ll send a fixed, written quote quickly.',
     },
   ],
   related: [

@@ -95,12 +95,12 @@ function SubServicePage({ hub, s }: { hub: ServiceHub; s: SubService }) {
     {
       question: `How much does ${lcFirst(s.title)} cost?`,
       answer:
-        'It depends on what you need. Share your goal and we send a fixed, written quote, so you know the full cost before any work starts.',
+        'It depends on what you need. Share your goal and we’ll send a fixed, written quote, so you know the full cost before any work starts.',
     },
     {
       question: 'How long will it take?',
       answer:
-        'The delivery date is written into your quote. We work in short stages, so you see working progress early.',
+        'We write the delivery date into your quote. We work in short stages, so you see working progress early.',
     },
   ];
 

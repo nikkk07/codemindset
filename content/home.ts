@@ -45,7 +45,7 @@ export const steps: PlainStep[] = [
   },
   {
     title: 'See it as we build',
-    text: 'You review working versions along the way. Any change is agreed before it is made.',
+    text: 'You review working versions along the way, and we agree every change with you before we make it.',
   },
   {
     title: 'Launch and handover',
@@ -61,7 +61,7 @@ export const reasons: PlainStep[] = [
   },
   {
     title: 'You own everything',
-    text: 'Domain, code, hosting and accounts are in your name, handed over at launch.',
+    text: 'Domain, code, hosting and accounts sit in your name, and we hand them all over at launch.',
   },
   {
     title: 'Updates in plain words',
@@ -100,12 +100,12 @@ export const homeFaqs: FAQ[] = [
   {
     question: 'How much does a website or app cost?',
     answer:
-      'It depends on what it needs to do. A five-page business website costs far less than an online store or a booking app. Tell us your goal and we send a fixed, written quote, so you know the full cost before any work starts.',
+      'It depends on what it needs to do. A five-page business website costs far less than an online store or a booking app. Tell us your goal and we’ll send a fixed, written quote, so you know the full cost before any work starts.',
   },
   {
     question: 'How long does it take?',
     answer:
-      'Most business websites are ready in a few weeks; apps and larger systems take longer. The delivery date is written into your quote, and you see working progress along the way.',
+      'Most business websites are ready in a few weeks; apps and larger systems take longer. We write the delivery date into your quote, and you see working progress along the way.',
   },
   {
     question: 'I’m not technical. Can I still work with you?',
@@ -115,7 +115,7 @@ export const homeFaqs: FAQ[] = [
   {
     question: 'Will I own the website and the code?',
     answer:
-      'Yes. The domain, code, hosting and accounts are in your name and handed over at launch. You are never locked in to us.',
+      'Yes. Your domain, code, hosting and accounts sit in your name, and we hand them all over at launch. You’re never locked in to us.',
   },
   {
     question: 'Do you work with businesses outside your city?',
@@ -125,6 +125,6 @@ export const homeFaqs: FAQ[] = [
   {
     question: 'Do you also handle social media and ads?',
     answer:
-      'Marketing and advertising are handled by Social ScaleX, a CodeMindset-owned agency. CodeMindset builds the website, apps, chatbots and integrations.',
+      'Social ScaleX, a CodeMindset-owned agency, handles marketing and advertising. CodeMindset builds the websites, apps, chatbots and integrations.',
   },
 ];

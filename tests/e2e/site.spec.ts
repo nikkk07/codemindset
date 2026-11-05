@@ -9,6 +9,10 @@ async function sitemapPaths(page: Page): Promise<string[]> {
 }
 
 test.describe('key routes', () => {
+  // The accessibility scan measures the settled design. Mid-animation frames (a heading halfway
+  // through its fade-in) are not what a visitor reads; motion has its own spec (motion.spec.ts).
+  test.use({ reducedMotion: 'reduce' });
+
   for (const path of KEY_ROUTES) {
     test(`${path} renders, is accessible and has sound metadata`, async ({ page }) => {
       const errors: string[] = [];

@@ -1,9 +1,9 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { BrandDuo } from '@/components/brand/BrandDuo';
 import { CallbackForm } from '@/components/contact/CallbackForm';
 import { GuideCard } from '@/components/guides/GuideCard';
 import { ChatDemo } from '@/components/home/ChatDemo';
+import { HeroField } from '@/components/home/HeroField';
 import { FAQSection, SectionHead } from '@/components/ui/Blocks';
 import { ContactLink } from '@/components/ui/ContactLink';
 import {
@@ -58,6 +58,7 @@ export default function HomePage() {
     <>
       {/* 1. Hook: what we do, for whom, proof and the next step — all above the fold */}
       <section className="hero2" aria-labelledby="hero-title">
+        <HeroField />
         <div className="container hero2__grid">
           <div className="hero2__copy">
             <p className="hero2__badge">
@@ -72,7 +73,7 @@ export default function HomePage() {
               Fixed quote. Fast delivery. You own everything.
             </p>
             <div className="btn-row btn-row--grow">
-              <Link href="/contact/" className="btn btn--primary btn--lg">
+              <Link href="/contact/" className="btn btn--primary btn--lg" data-magnetic>
                 Get a free quote <ArrowIcon />
               </Link>
               <ContactLink
@@ -92,7 +93,7 @@ export default function HomePage() {
             </p>
             <ul className="hero2__stats">
               <li>
-                <strong>{site.proof.websitesLive}</strong>
+                <strong data-count>{site.proof.websitesLive}</strong>
                 <span>websites live</span>
               </li>
               <li>
@@ -106,34 +107,30 @@ export default function HomePage() {
             </ul>
           </div>
 
-          {featured.length > 0 ? (
-            <div className="hero2__visual" aria-hidden="true">
-              <div className="shots">
-                {featured.slice(0, 3).map((p) => (
-                  <div key={p.slug} className="shot">
-                    <div className="shot__bar">{new URL(p.url).hostname.replace(/^www\./, '')}</div>
-                    <Image
-                      src={p.image}
-                      alt=""
-                      width={800}
-                      height={500}
-                      priority
-                      sizes="(min-width: 1024px) 460px, 80vw"
-                    />
-                  </div>
-                ))}
-              </div>
-              <span className="float-chip float-chip--a">
-                <CheckIcon /> Mobile-first
-              </span>
-              <span className="float-chip float-chip--b">
-                <CheckIcon /> Google-ready
-              </span>
-              <span className="float-chip float-chip--c">
-                <ChatIcon /> WhatsApp built in
-              </span>
-            </div>
-          ) : null}
+          <div className="hero2__visual hero2__visual--mark" aria-hidden="true" data-field-anchor>
+            {/* Static first paint (and the no-WebGL / reduced-motion view): the mark in dots. */}
+            <svg className="hero-mark" viewBox="20 18 360 172" focusable="false">
+              <defs>
+                <pattern id="hero-mark-dots" width="6" height="6" patternUnits="userSpaceOnUse">
+                  <circle cx="3" cy="3" r="1.35" fill="#7c3aed" />
+                </pattern>
+              </defs>
+              <g fill="url(#hero-mark-dots)">
+                <path d="M20 76 L124 31 L124 65 L66 91 L124 117 L124 151 L20 106 Z" />
+                <path d="M380 76 L276 31 L276 65 L334 91 L276 117 L276 151 L380 106 Z" />
+                <path d="M231 18 L267 18 L169 190 L133 190 Z" />
+              </g>
+            </svg>
+            <span className="float-chip float-chip--a">
+              <CheckIcon /> Mobile-first
+            </span>
+            <span className="float-chip float-chip--b">
+              <CheckIcon /> Google-ready
+            </span>
+            <span className="float-chip float-chip--c">
+              <ChatIcon /> WhatsApp built in
+            </span>
+          </div>
         </div>
       </section>
 
@@ -177,6 +174,7 @@ export default function HomePage() {
                   key={h.slug}
                   href={hubHref(h.slug)}
                   className="svc"
+                  data-tilt="6"
                   data-tone={TONES[h.slug] ?? 'violet'}
                   data-testid={`tile-${h.slug}`}
                 >
@@ -190,11 +188,11 @@ export default function HomePage() {
                 </Link>
               ))}
               {help ? (
-                <Link href={hubHref(help.slug)} className="svc svc--help">
+                <Link href={hubHref(help.slug)} className="svc svc--help" data-tilt="6">
                   <span className="svc__title">Not sure what you need?</span>
                   <span className="svc__text">
-                    Tell us the problem. We will suggest the simplest fix, even if that is a tool
-                    you already have.
+                    Tell us the problem. We’ll suggest the simplest fix, even if it’s a tool you
+                    already have.
                   </span>
                   <span className="svc__more">Book a free consultation →</span>
                 </Link>

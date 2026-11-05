@@ -69,6 +69,11 @@ a:hover {
 .section--dark h3 {
   color: var(--ink);
 }
+.section--purple a:not(.btn):not(.chip),
+.section--dark a:not(.btn):not(.chip) {
+  /* These sections are light now; white links from the v1 dark design were invisible (1.08:1). */
+  color: var(--accent);
+}
 .section--purple .lead,
 .section--dark .lead,
 .section--purple .eyebrow,
@@ -267,7 +272,7 @@ a.card:hover {
 /* ---------- Header: simple dropdown ---------- */
 .site-header {
   border-bottom: 1px solid var(--line);
-  background: rgb(255 255 255 / 0.97);
+  background: var(--white); /* solid: a translucent bar lets buttons ghost through */
 }
 .nav__trigger,
 .nav__link {
@@ -1018,18 +1023,6 @@ a.card:hover {
     radial-gradient(60% 70% at 85% 30%, rgb(139 92 246 / 0.16), transparent 70%),
     radial-gradient(40% 50% at 10% 0%, rgb(251 191 36 / 0.1), transparent 70%), var(--white);
 }
-.hero2::after {
-  content: '</>';
-  position: absolute;
-  right: -2%;
-  bottom: -14%;
-  font-family: var(--font-brand);
-  font-size: clamp(160px, 26vw, 420px);
-  font-weight: 800;
-  letter-spacing: -0.06em;
-  color: rgb(109 40 217 / 0.04);
-  pointer-events: none;
-}
 .hero2__grid {
   position: relative;
   z-index: 1;
@@ -1301,7 +1294,7 @@ a.card:hover {
   right: 10px;
   bottom: 4px;
   font-size: 10px;
-  color: #667781;
+  color: #54656f; /* 5.7:1 on the green bubble (was 4.18:1) */
 }
 .chat__msg--customer {
   align-self: flex-end;

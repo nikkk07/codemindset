@@ -256,12 +256,11 @@ const website: ServiceHub = {
     {
       question: 'How much does website development cost?',
       answer:
-        'It depends on the platform, number of pages and features. Share your goal and we send a fixed, written quote quickly.',
+        'It depends on the platform, number of pages and features. Share your goal and we’ll send a fixed, written quote quickly.',
     },
     {
       question: 'How long does it take to build a website?',
-      answer:
-        'We move fast. You see progress early, and the launch date is written into your quote.',
+      answer: 'We move fast. You see progress early, and we write the launch date into your quote.',
     },
     {
       question: 'Can you redesign my existing website?',
@@ -526,7 +525,7 @@ const apps: ServiceHub = {
     {
       question: 'How much does an app cost?',
       answer:
-        'It depends on screens and features. Share what the app should do and we send a fixed, written quote quickly.',
+        'It depends on screens and features. Share what the app should do and we’ll send a fixed, written quote quickly.',
     },
   ],
   related: [
@@ -788,7 +787,7 @@ const ai: ServiceHub = {
     {
       question: 'How much does automation cost?',
       answer:
-        'It depends on the steps and tools involved. Explain the task and we send a fixed, written quote quickly.',
+        'It depends on the steps and tools involved. Explain the task and we’ll send a fixed, written quote quickly.',
     },
   ],
   related: [
@@ -1034,7 +1033,7 @@ const integrations: ServiceHub = {
     {
       question: 'How much does integration cost?',
       answer:
-        'It depends on the systems and data involved. Tell us what should connect and we send a fixed, written quote quickly.',
+        'It depends on the systems and data involved. Tell us what should connect and we’ll send a fixed, written quote quickly.',
     },
   ],
   related: [
@@ -1293,7 +1292,7 @@ const software: ServiceHub = {
     {
       question: 'How much does it cost?',
       answer:
-        'It depends on the features and users. Walk us through the process and we send a fixed, written quote quickly.',
+        'It depends on the features and users. Walk us through the process and we’ll send a fixed, written quote quickly.',
     },
   ],
   related: [
@@ -1532,7 +1531,7 @@ const seo: ServiceHub = {
     {
       question: 'How much does it cost?',
       answer:
-        'It depends on the site’s size and needs. Send your website address and we send a fixed, written quote quickly.',
+        'It depends on the site’s size and needs. Send your website address and we’ll send a fixed, written quote quickly.',
     },
   ],
   related: [
