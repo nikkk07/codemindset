@@ -33,6 +33,12 @@ export const site = {
     linkedin: 'https://www.linkedin.com/company/codemindset-ai/',
     instagram: 'https://www.instagram.com/codemindset.ai/',
   },
+  /**
+   * Last significant content change for pages without their own `updated` date (sitemap
+   * <lastmod>). Bump it whenever copy on core, service, industry or glossary pages changes:
+   * Google only trusts lastmod that is consistently accurate.
+   */
+  contentUpdated: '2026-11-06',
   /** Stated by the owner on 2026-10-20. Update as projects are added. */
   proof: {
     websitesLive: '20+',

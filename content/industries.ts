@@ -92,7 +92,7 @@ export const industries: Industry[] = [
     seo: {
       title: 'CRM, Portals & Automation for B2B Service Businesses',
       description:
-        'Lead management, quotation tools, client portals and dashboards for B2B and professional service firms across India.',
+        'Lead management, quotation tools, client portals and dashboards for B2B and professional service firms across India, with a fixed written quote.',
     },
     review: 'approved',
   },
@@ -185,7 +185,7 @@ export const industries: Industry[] = [
       },
     ],
     seo: {
-      title: 'Booking Systems, Websites & Automation for Clinics and Hospitals',
+      title: 'Booking Systems & Websites for Clinics and Hospitals',
       description:
         'Appointment booking, clinic websites, patient enquiry systems and WhatsApp reminders for healthcare providers across India.',
     },
@@ -233,7 +233,7 @@ export const industries: Industry[] = [
       },
     ],
     seo: {
-      title: 'Software, AI & Security for Banks, Fintechs and Insurers in India',
+      title: 'Software, AI & Security for Banks, Fintechs & Insurers',
       description:
         'Secure portals, AI agents with human approval, chatbot security, data platforms and legacy modernisation for finance and insurance businesses in India.',
     },
@@ -280,7 +280,7 @@ export const industries: Industry[] = [
       },
     ],
     seo: {
-      title: 'Software, Apps & Real-Time Data for Logistics Companies in India',
+      title: 'Software, Apps & Real-Time Data for Logistics in India',
       description:
         'Shipment tracking, WhatsApp delivery updates, driver apps, real-time data pipelines and route optimisation for logistics and supply-chain businesses in India.',
     },

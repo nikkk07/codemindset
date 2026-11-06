@@ -1305,7 +1305,7 @@ const software: ServiceHub = {
   cta: 'Describe my software',
   whatsapp: 'Hi CodeMindset, I need custom software for my business.',
   seo: {
-    title: 'Custom Software Development Company in India — CRM, ERP, SaaS',
+    title: 'Custom Software Development in India — CRM, ERP, SaaS',
     description:
       'Internal tools, dashboards, custom CRM and ERP, and SaaS products built around your process. Fast, staged delivery across India.',
   },

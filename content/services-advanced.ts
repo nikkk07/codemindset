@@ -561,7 +561,7 @@ const data: ServiceHub = {
   cta: 'Discuss my data project',
   whatsapp: 'Hi CodeMindset, I need help bringing our business data together.',
   seo: {
-    title: 'Data Engineering Services in India — Pipelines, Warehouses, MLOps',
+    title: 'Data Engineering Services in India — Pipelines & MLOps',
     description:
       'ETL pipelines, data warehouses and lakehouses, real-time streaming and MLOps on Snowflake, BigQuery, Databricks and Kafka, for businesses across India.',
   },
@@ -1003,7 +1003,7 @@ const blockchain: ServiceHub = {
   cta: 'Discuss my blockchain idea',
   whatsapp: 'Hi CodeMindset, I have a blockchain / smart contract project.',
   seo: {
-    title: 'Blockchain Development in India — Smart Contracts & Tokenization',
+    title: 'Blockchain & Smart Contract Development in India',
     description:
       'Smart contract development and audits, real-world asset tokenization and cross-chain integration on Ethereum, Polygon and Chainlink, with honest advice first.',
   },

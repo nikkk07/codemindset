@@ -4,7 +4,9 @@ import { CTABand, SectionHead } from '@/components/ui/Blocks';
 import { JsonLd } from '@/components/ui/JsonLd';
 import { PageHero } from '@/components/ui/PageHero';
 import { corePages } from '@/content/pages';
+import { glossaryQuestions } from '@/content/knowledge';
 import { buildMetadata, definedTermJsonLd, graph } from '@/lib/seo';
+import { fitMeta, fitTitle } from '@/lib/text';
 import { getVisibleGlossary, resolveRef } from '@/lib/visibility';
 
 type Params = { params: Promise<{ term: string }> };
@@ -20,8 +22,14 @@ export async function generateMetadata({ params }: Params) {
   const t = find((await params).term);
   if (!t) return {};
   return buildMetadata({
-    title: `What is ${t.term}? Explained simply`,
-    description: `${t.short} ${t.matters}`,
+    title: fitTitle([
+      `${glossaryQuestions[t.slug] ?? `What is ${t.term}?`} Explained simply`,
+      glossaryQuestions[t.slug] ?? `What is ${t.term}?`,
+    ]),
+    description: fitMeta(
+      [t.short, t.matters, t.explain],
+      'Explained in plain words by CodeMindset.',
+    ),
     path: `/knowledge/glossary/${t.slug}/`,
     review: t.review,
   });

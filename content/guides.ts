@@ -429,9 +429,9 @@ const websiteGuide: LongGuide = {
 const whatsappGuide: LongGuide = {
   slug: 'whatsapp-chatbot-guide',
   title: 'WhatsApp chatbot for business: the complete guide',
-  seoTitle: 'WhatsApp Chatbot for Business in India: Complete Guide (2026)',
+  seoTitle: 'WhatsApp Chatbot for Business in India: 2026 Guide',
   description:
-    'How WhatsApp chatbots work: the Business app vs the API, Meta’s per-message pricing, opt-in rules, set-up steps and what to automate first. Checked against Meta’s docs.',
+    'How WhatsApp chatbots work: Business app vs API, Meta’s per-message pricing, opt-in rules, set-up steps and what to automate first. Checked against Meta’s docs.',
   updated: '2026-10-21',
   readMinutes: 13,
   service: 'ai-chatbots-automation',
@@ -687,7 +687,7 @@ const whatsappGuide: LongGuide = {
 const searchGuide: LongGuide = {
   slug: 'seo-aeo-geo-guide',
   title: 'SEO, AEO and GEO: how to get found on Google and AI assistants',
-  seoTitle: 'SEO vs AEO vs GEO: Get Found on Google & AI Assistants (2026 Guide)',
+  seoTitle: 'SEO vs AEO vs GEO: Get Found on Google & AI (2026 Guide)',
   description:
     'What SEO, AEO and GEO mean, how Google and AI assistants choose sources, what research shows works, and a step-by-step plan for any business. No myths.',
   updated: '2026-10-21',
@@ -1008,9 +1008,9 @@ const searchGuide: LongGuide = {
 const appGuide: LongGuide = {
   slug: 'mobile-app-guide',
   title: 'Mobile app development in India: from idea to Play Store and App Store',
-  seoTitle: 'Mobile App Development Process in India: Idea to Play Store (2026 Guide)',
+  seoTitle: 'Mobile App Development Process in India (2026 Guide)',
   description:
-    'Do you need an app? Android vs iPhone in India, native vs Flutter, every development step, Google Play and App Store account rules, and what happens after launch.',
+    'Do you need an app? Android vs iPhone in India, native vs Flutter, every development step, Play Store and App Store rules, and what happens after launch.',
   updated: '2026-10-21',
   readMinutes: 13,
   service: 'mobile-app-development',

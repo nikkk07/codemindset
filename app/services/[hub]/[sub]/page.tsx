@@ -15,7 +15,7 @@ import { GUIDE_SLUG } from '@/content/services';
 import type { FAQ, ServiceHub, SubService } from '@/content/types';
 import { quoteHref, whatsappHref } from '@/lib/contact';
 import { buildMetadata, graph, serviceJsonLd } from '@/lib/seo';
-import { lcFirst } from '@/lib/text';
+import { fitMeta, fitTitle, lcFirst } from '@/lib/text';
 import {
   getHub,
   getSub,
@@ -42,10 +42,17 @@ export function generateStaticParams() {
 }
 
 /** Meta description: the plain line plus the reasons to choose us, within ~160 characters. */
-const subDescription = (_hub: ServiceHub, s: SubService) => {
-  const text = `${s.title} by CodeMindset: ${s.plain} Fixed written quote, and you own everything.`;
-  return text.length <= 160 ? text : `${s.title} by CodeMindset: ${s.plain}`;
-};
+const subDescription = (_hub: ServiceHub, s: SubService) =>
+  fitTitle(
+    [
+      `${s.title} by CodeMindset: ${s.plain} Fixed written quote, and you own everything.`,
+      `${s.title} by CodeMindset: ${s.plain} Fixed written quote, and you own it all.`,
+      `${s.title}: ${s.plain} Fixed written quote, and you own everything.`,
+      `${s.title} by CodeMindset: ${s.plain} Fixed written quote.`,
+      `${s.title} by CodeMindset: ${s.plain}`,
+    ],
+    160,
+  );
 
 export async function generateMetadata({ params }: Params) {
   const { hub: h, sub: x } = await params;
@@ -53,8 +60,8 @@ export async function generateMetadata({ params }: Params) {
   if (!hub) return {};
   if (x === GUIDE_SLUG) {
     return buildMetadata({
-      title: `${hub.guide.question} — Simple Guide`,
-      description: hub.guide.shortAnswer,
+      title: fitTitle([`${hub.guide.question} — Simple Guide`, hub.guide.question]),
+      description: fitMeta([hub.guide.shortAnswer], 'A plain-words guide from CodeMindset.'),
       path: guideHref(hub.slug),
       review: hub.guide.review === 'approved' && hub.review === 'approved' ? 'approved' : 'draft',
     });

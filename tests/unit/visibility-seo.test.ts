@@ -1,3 +1,4 @@
+import { fitMeta, fitTitle } from '@/lib/text';
 import { describe, expect, it } from 'vitest';
 import { corePages } from '@/content/pages';
 import { regions } from '@/content/regions';
@@ -68,7 +69,7 @@ describe('indexing controls', () => {
   it('allows search and AI-search crawlers in production and blocks training crawlers until decided', () => {
     const r = buildRobots(PROD, 'undecided');
     const rules = Array.isArray(r.rules) ? r.rules : [r.rules];
-    expect(rules).toContainEqual({ userAgent: '*', allow: '/' });
+    expect(rules).toContainEqual({ userAgent: '*', allow: '/', disallow: '/api/' });
     expect(
       rules.some(
         (x) =>
@@ -79,6 +80,10 @@ describe('indexing controls', () => {
     const allowed = buildRobots(PROD, 'allow');
     const allowedRules = Array.isArray(allowed.rules) ? allowed.rules : [allowed.rules];
     expect(allowedRules.some((x) => x.disallow === '/')).toBe(false);
+    // /_next/ carries the CSS and JS Google needs to render; it must never be blocked.
+    expect(JSON.stringify(allowedRules)).not.toContain('_next');
+    for (const bot of ['Googlebot', 'Bingbot', 'GPTBot', 'ClaudeBot', 'PerplexityBot'])
+      expect(JSON.stringify(allowedRules)).toContain(bot);
     expect(allowed.sitemap).toBe(`${ORIGIN}/sitemap.xml`);
   });
   it('marks draft pages noindex everywhere and approved pages indexable only in production', () => {
@@ -133,5 +138,29 @@ describe('structured data', () => {
   });
   it('escapes markup when serialising JSON-LD', () => {
     expect(serializeJsonLd({ a: '</script><script>x' })).not.toContain('</script>');
+  });
+});
+
+describe('sitemap dates and metadata limits', () => {
+  it('gives every URL a valid, non-future lastmod', () => {
+    const today = new Date().toISOString().slice(0, 10);
+    for (const e of buildSitemap(PROD)) {
+      const d = String(e.lastModified);
+      expect(d).toMatch(/^\d{4}-\d{2}-\d{2}/);
+      expect(d.slice(0, 10) <= today).toBe(true);
+    }
+  });
+  it('fits meta descriptions to 120–160 characters from on-page sentences', () => {
+    const d = fitMeta(
+      [
+        'A program that replies to customer messages automatically.',
+        'It answers instantly, even at night, and captures leads.',
+        'This third sentence would push it over the limit by quite a long way, so it is dropped.',
+      ],
+      'Explained in plain words.',
+    );
+    expect(d.length).toBeGreaterThanOrEqual(120);
+    expect(d.length).toBeLessThanOrEqual(160);
+    expect(fitTitle(['x'.repeat(70), 'short title'])).toBe('short title');
   });
 });

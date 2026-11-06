@@ -49,7 +49,7 @@ export const corePages: Record<CorePageKey, CorePage> = {
   },
   knowledge: {
     path: '/knowledge/',
-    title: 'Knowledge Hub — Guides, Blog and Tech Glossary in Plain Words',
+    title: 'Knowledge Hub: Guides, Blog & Plain-Words Tech Glossary',
     description:
       'Simple guides to choosing the right technology, articles from the CodeMindset team, and a plain-language glossary of tech terms for business owners.',
     review: 'approved',
@@ -72,7 +72,7 @@ export const corePages: Record<CorePageKey, CorePage> = {
     path: '/knowledge/glossary/',
     title: 'Tech Glossary in Plain Words — API, CRM, SEO, AEO and More',
     description:
-      'Technology terms explained simply for business owners: what they mean and why they matter.',
+      'Plain-words definitions of the tech terms business owners meet, from domain names and CRM to SEO, AEO and AI agents, and why each one matters.',
     review: 'approved',
   },
   about: {
@@ -100,7 +100,7 @@ export const corePages: Record<CorePageKey, CorePage> = {
     path: '/careers/',
     title: 'Careers at CodeMindset',
     description:
-      'Work with CodeMindset on websites, apps, AI and software for businesses across India.',
+      'Work with CodeMindset on websites, apps, AI and software for businesses across India. No roles are open now, but you can send your profile.',
     review: 'approved',
   },
   contact: {
@@ -112,16 +112,16 @@ export const corePages: Record<CorePageKey, CorePage> = {
   },
   privacy: {
     path: '/privacy/',
-    title: 'Privacy Notice',
+    title: 'Privacy Notice (DPDP Act, 2023)',
     description:
-      'How CodeMindset collects, uses and protects personal data under India’s Digital Personal Data Protection Act.',
+      'How CodeMindset collects, uses and protects personal data under India’s Digital Personal Data Protection Act, 2023, and what you can ask us to do.',
     review: 'approved',
   },
   terms: {
     path: '/terms/',
     title: 'Website Terms of Use',
     description:
-      'Terms for using the CodeMindset website: content, enquiries, intellectual property and links to other sites.',
+      'Terms for using the CodeMindset website: content, enquiries, intellectual property and links to other sites. Please read them before using the site.',
     review: 'approved',
   },
 };

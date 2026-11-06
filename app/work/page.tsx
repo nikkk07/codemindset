@@ -23,8 +23,11 @@ export default function WorkPage() {
         accent="live today."
         lead={`${site.proof.websitesLive} websites delivered and live: booking platforms, online stores, education and agency sites. Open any of them.`}
       />
-      <section className="section">
+      <section className="section" aria-labelledby="projects-title">
         <div className="container">
+          <h2 id="projects-title" className="sr-only">
+            Live projects
+          </h2>
           <div className="proj-grid proj-grid--2">
             {projects.map((p) => (
               <ProjectCard key={p.slug} p={p} detailed />

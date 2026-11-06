@@ -28,9 +28,12 @@ export function buildMetadata(
 ): Metadata {
   const indexable = isIndexable(review, env);
   const url = absoluteUrl(path);
-  const fullTitle = absoluteTitle ? title : `${title} | ${site.name}`;
+  // The brand suffix is added only when the whole title still fits in 60 characters; Google
+  // shows the site name separately (from WebSite schema), so long titles keep their keywords.
+  const branded = `${title} | ${site.name}`;
+  const fullTitle = absoluteTitle || branded.length > 60 ? title : branded;
   return {
-    title: absoluteTitle ? { absolute: title } : title,
+    title: { absolute: fullTitle },
     description,
     alternates: { canonical: url },
     robots: indexable ? { index: true, follow: true } : { index: false, follow: true },
